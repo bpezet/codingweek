@@ -19,7 +19,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("View/createParcoursView.fxml"));
-        loader.setControllerFactory(iC->new CreateParcoursView(gParcours));
+        loader.setControllerFactory(iC->new WelcomeView(gParcours));
         Parent root = loader.load();
         primaryStage.setScene(new Scene(root, 1000,1000));
         primaryStage.show();

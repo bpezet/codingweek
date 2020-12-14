@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
 import java.security.GeneralSecurityException;
 
 
@@ -26,7 +28,8 @@ public class CreateParcoursView {
         this.gParcours = gParcours;
     }
 
-    public void tracerParcours() {
+    @FXML
+    public void tracerParcours(ActionEvent e) {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);
         System.out.println(this.gParcours.getParcours().get(0).getName());
