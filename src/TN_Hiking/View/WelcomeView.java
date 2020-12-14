@@ -1,18 +1,18 @@
 package TN_Hiking.View;
 
+import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Parcours;
 
 import java.util.ArrayList;
 
 public class WelcomeView {
-    private ArrayList<Parcours> parcours;
+    private GestionnaireParcours gParcours;
     private int i=0;
     public WelcomeView() {
-        this.parcours = new ArrayList<Parcours>();
+        this.gParcours = new GestionnaireParcours();
     }
     public void parcoursCreate() {
-        i++;
-        System.out.println(i);
+
     }
 
 }

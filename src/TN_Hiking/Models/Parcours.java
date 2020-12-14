@@ -9,7 +9,14 @@ public class Parcours {
     protected String descriptionDetaillee;
     protected ArrayList<Etape> etapes;
     protected Etape etapeDebut;
+    protected String depart;
     protected Etape etapeFin;
+
+    public Parcours(String name, int difficulte, String depart) {
+        this.name = name;
+        this.difficulte = difficulte;
+        this.depart = depart;
+    }
 
     public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
         this.name = name;

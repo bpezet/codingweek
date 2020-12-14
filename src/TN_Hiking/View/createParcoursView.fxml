@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.CreateParcoursView">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label layoutX="51.0" layoutY="93.0" prefHeight="16.0" prefWidth="44.0" text="Titre :" />
+      <TextField fx:id="name" layoutX="175.0" layoutY="88.0" prefHeight="27.0" prefWidth="160.0" />
+      <Label layoutX="43.0" layoutY="152.0" prefHeight="17.0" prefWidth="49.0" text="Difficulté" />
+       <ChoiceBox fx:id="difficulte" layoutX="175.0" layoutY="147.0" prefHeight="27.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+           <items>
+               <FXCollections fx:factory="observableArrayList">
+                   <String fx:value="1" />
+                   <String fx:value="2" />
+                   <String fx:value="3" />
+                   <String fx:value="4" />
+                   <String fx:value="5" />
+               </FXCollections>
+           </items>
+       </ChoiceBox>
+      <Label layoutX="43.0" layoutY="209.0" prefHeight="17.0" prefWidth="126.0" text="Nom du lieu de départ :" />
+      <TextField fx:id="depart" layoutX="175.0" layoutY="204.0" />
+      <Button layoutX="347.0" layoutY="335.0" mnemonicParsing="false" onAction="#tracerParcours" prefHeight="27.0" prefWidth="126.0" text="Tracer le parcours" />
+      <Button layoutX="497.0" layoutY="335.0" mnemonicParsing="false" text="Annuler" />
+   </children>
+</Pane>
