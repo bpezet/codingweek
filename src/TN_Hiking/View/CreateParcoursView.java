@@ -22,14 +22,14 @@ public class CreateParcoursView {
 
     private GestionnaireParcours gParcours ;
 
-
+    public CreateParcoursView() {
+    }
 
     public CreateParcoursView(GestionnaireParcours gParcours) {
         this.gParcours = gParcours;
     }
 
-    @FXML
-    public void tracerParcours(ActionEvent e) {
+    public void tracerParcours() {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);
         System.out.println(this.gParcours.getParcours().get(0).getName());

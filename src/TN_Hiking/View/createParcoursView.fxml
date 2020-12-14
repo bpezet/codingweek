@@ -7,25 +7,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.CreateParcoursView">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="600.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <Label layoutX="51.0" layoutY="93.0" prefHeight="16.0" prefWidth="44.0" text="Titre :" />
       <TextField fx:id="name" layoutX="175.0" layoutY="88.0" prefHeight="27.0" prefWidth="160.0" />
       <Label layoutX="43.0" layoutY="152.0" prefHeight="17.0" prefWidth="49.0" text="Difficulté" />

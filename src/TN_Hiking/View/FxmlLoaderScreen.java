@@ -1,6 +1,8 @@
 package TN_Hiking.View;
 
+import TN_Hiking.Models.Parcours;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;

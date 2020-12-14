@@ -17,15 +17,13 @@ public class WelcomeView implements Initializable {
     @FXML
     private BorderPane mainPane;
 
-
     private GestionnaireParcours gestionnaireParcours;
-    private int i=0;
+
     public WelcomeView(GestionnaireParcours gestionnaireParcours) {
-        this.gestionnaireParcours = new GestionnaireParcours();
+        this.gestionnaireParcours = gestionnaireParcours;
     }
     public void parcoursCreate() {
-        i++;
-        System.out.println(i);
+
     }
 
 
@@ -34,7 +32,7 @@ public class WelcomeView implements Initializable {
     @FXML
     public void eventHandlerCreationParcours(){
         FxmlLoaderScreen object = new FxmlLoaderScreen();
-        Pane view = object.getPane("CreateParcoursView");
+        Pane view = object.getPane("createParcoursView");
         mainPane.setCenter(view);
 
     }
