@@ -1,40 +1,48 @@
 package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
-import TN_Hiking.Models.Parcours;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
+import javafx.stage.Stage;
+import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
-//Ceci est un commentaire
+
     @FXML
     protected BorderPane mainPane;
+    @FXML
+    private MenuBar my_bar;
 
     private GestionnaireParcours gestionnaireParcours;
 
+    /** Constructeur */
     public WelcomeView(GestionnaireParcours gestionnaireParcours) {
         this.gestionnaireParcours = gestionnaireParcours;
     }
-    public void parcoursCreate() {
 
-    }
+    /** Méthodes */
 
+    /** Outils > Créer un parcours */
+    public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("createParcoursView.fxml"));
+        loader.setControllerFactory(iC->new CreateParcoursView(this.gestionnaireParcours));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
 
+        Stage window = (Stage) my_bar.getScene().getWindow();
 
-    @FXML
-    public void eventHandlerCreationParcours(){
-        FxmlLoaderScreen object = new FxmlLoaderScreen();
-        Pane view = object.getPane("createParcoursView", this.gestionnaireParcours);
-        mainPane.setCenter(view);
-
+        window.setScene(createParcoursScene);
+        window.show();
     }
 
     @FXML
@@ -58,4 +66,6 @@ public class WelcomeView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+
 }
