@@ -62,6 +62,10 @@ public class Parcours {
         return etapes;
     }
 
+    public void addEtape(Etape etape){
+        this.etapes.add(etape);
+    }
+
     public void setEtapes(ArrayList<Etape> etapes) {
         this.etapes = etapes;
     }
