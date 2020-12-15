@@ -5,13 +5,10 @@ import TN_Hiking.Models.Parcours;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
-import java.security.GeneralSecurityException;
+import javafx.scene.layout.Pane;
 
 
-public class CreateParcoursView {
+public class CreateParcoursView  {
     @FXML
     private TextField name;
     @FXML
@@ -22,8 +19,6 @@ public class CreateParcoursView {
 
     private GestionnaireParcours gParcours ;
 
-    public CreateParcoursView() {
-    }
 
     public CreateParcoursView(GestionnaireParcours gParcours) {
         this.gParcours = gParcours;
@@ -33,6 +28,7 @@ public class CreateParcoursView {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);
         System.out.println(this.gParcours.getParcours().get(0).getName());
+
     }
 
 }

@@ -48,6 +48,9 @@ public class FxmlLoaderScreen {
 
                 this.pane = new FXMLLoader(url,r,null,iC -> new UpdateParcours(gestionnaireParcours)).load();
             }
+            else if (fileName == "parcoursTracerView"){
+                this.pane = new FXMLLoader(url, r, null, iC -> new ParcoursTarcerView()).load();
+            }
 
         }catch (Exception e){
             System.out.println("Pas de FXML : "+fileName);

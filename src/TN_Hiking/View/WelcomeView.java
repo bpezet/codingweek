@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class WelcomeView implements Initializable {
 //Ceci est un commentaire
     @FXML
-    private BorderPane mainPane;
+    protected BorderPane mainPane;
 
     private GestionnaireParcours gestionnaireParcours;
 
