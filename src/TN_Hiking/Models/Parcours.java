@@ -3,8 +3,8 @@ package TN_Hiking.Models;
 import java.util.ArrayList;
 
 public class Parcours {
-    protected String name;
-    protected int difficulte;
+    protected String name="";
+    protected int difficulte=0;
     protected String descriptionCourte;
     protected String descriptionDetaillee;
     protected ArrayList<Etape> etapes;
@@ -31,10 +31,11 @@ public class Parcours {
     public String getName() {
         return name;
     }
-
+    public String getDepart(){return this.depart;}
     public void setName(String name) {
         this.name = name;
     }
+    public void setDepart(String depart){this.depart = depart;}
 
     public int getDifficulte() {
         return difficulte;
@@ -77,7 +78,7 @@ public class Parcours {
     }
 
     public void setEtapeDebut(Etape etapeDebut) {
-        this.etapeDebut = etapeDebut;
+        this.etapes.add(etapeDebut);
     }
 
     public Etape getEtapeFin() {
@@ -85,6 +86,14 @@ public class Parcours {
     }
 
     public void setEtapeFin(Etape etapeFin) {
-        this.etapeFin = etapeFin;
+        this.etapes.add(etapeFin);
+    }
+
+    public void showParcours(){
+        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+depart);
+        for(int i = 0;i<etapes.size();i++) {
+            etapes.get(i).etapeShow();
+        }
+        System.out.println("Fin du parcours "+name);
     }
 }
