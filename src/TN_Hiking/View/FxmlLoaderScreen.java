@@ -44,6 +44,10 @@ public class FxmlLoaderScreen {
             else if (fileName == "UpdateParcours"){
                 this.pane = new FXMLLoader(url, r, null, iC -> new UpdateParcours(gestionnaireParcours)).load();
             }
+            else if (fileName == "showParcoursView") {
+
+                this.pane = new FXMLLoader(url,r,null,iC -> new UpdateParcours(gestionnaireParcours)).load();
+            }
 
         }catch (Exception e){
             System.out.println("Pas de FXML : "+fileName);
