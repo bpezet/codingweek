@@ -48,8 +48,13 @@ public class ModificationEtape {
     @FXML
     private MapView mapView;
 
+
     public ModificationEtape(Parcours parcours){
         this.parcours = parcours;
+        /*Afficher la map avec le tracer*/
+        /*Load les étapes*/
+
+
     }
 
 
