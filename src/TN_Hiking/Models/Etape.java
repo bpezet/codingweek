@@ -4,7 +4,7 @@ public class Etape {
     protected String name;
     protected double latitude;
     protected double longitude;
-    protected
+
 
 
     public Etape() {

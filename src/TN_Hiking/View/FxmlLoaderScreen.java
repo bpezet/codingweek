@@ -49,7 +49,7 @@ public class FxmlLoaderScreen {
                 this.pane = new FXMLLoader(url,r,null,iC -> new UpdateParcours(gestionnaireParcours)).load();
             }
             else if (fileName == "parcoursTracerView"){
-                this.pane = new FXMLLoader(url, r, null, iC -> new ParcoursTarcerView()).load();
+                this.pane = new FXMLLoader(url, r, null, iC -> new ParcoursTarcerView(gestionnaireParcours)).load();
             }
 
         }catch (Exception e){

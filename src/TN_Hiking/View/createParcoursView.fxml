@@ -23,7 +23,7 @@
        </ChoiceBox>
       <Label layoutX="43.0" layoutY="209.0" prefHeight="17.0" prefWidth="126.0" text="Nom du lieu de départ :" />
       <TextField fx:id="depart" layoutX="175.0" layoutY="204.0" />
-      <Button layoutX="347.0" layoutY="335.0" mnemonicParsing="false" onAction="#tracerParcours" prefHeight="27.0" prefWidth="126.0" text="Tracer le parcours" />
+      <Button layoutX="347.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeSceneCreateToTracer" prefHeight="27.0" prefWidth="126.0" text="Tracer le parcours" />
       <Button layoutX="497.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeSceneWelcomeView" text="Annuler" />
    </children>
 </Pane>
