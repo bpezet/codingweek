@@ -2,10 +2,17 @@ package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Parcours;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class CreateParcoursView  {
@@ -16,14 +23,16 @@ public class CreateParcoursView  {
     @FXML
     private TextField depart;
 
-
     private GestionnaireParcours gParcours ;
 
-
+    /** Constructeur */
     public CreateParcoursView(GestionnaireParcours gParcours) {
         this.gParcours = gParcours;
     }
 
+    /** Méthodes */
+
+    /** Boutton Tracer le parcours*/
     public void tracerParcours() {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);
@@ -31,4 +40,18 @@ public class CreateParcoursView  {
 
     }
 
+    /** Boutton Annuler*/
+    public void changeSceneWelcomeView(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC->new WelcomeView(this.gParcours));
+        Parent createWelcomeParent = loader.load();
+
+        Scene createWelcomeScene = new Scene(createWelcomeParent);
+
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(createWelcomeScene);
+        window.show();
+    }
 }
