@@ -1,7 +1,7 @@
 class BDD {
 	- GestionnaireParcours
 	- ArrayList<Parcours>
-    - String Writepath : "src/BDD"
+    - String BDpath : "src/BDD"
 
 
 	+ BDD()
@@ -9,14 +9,31 @@ class BDD {
     + pull() : GestionnaireParcours
     + setPath(Sring):
     + getPath(): String
+
+    + import(String OSPath)
+
+    + export(String OSPath)
 }
 
+class Writter(){
 
-class openCloseFile {
-	- String toWrite
+	- String BdPath
 
+	+ Writter(Path, GestionnaireParcours)
+	+ writeParcours(Path, Parcours)
+    + writeEtape(Path,Etape)
+    +getBDpath():String
+    +setBDpath(String)
+}
 
-    + openCloseFile(String,int):
+class Decoder(){
+	-String BDPath
+
+    +Decoder(Path): GestionnaireParcours
+    + parcoursDecoder(Path): Parcours
+	+ etapeDecoder(Path): Etape
+    +set BDPath
+    +get BDPath
 
 
 }
@@ -31,7 +48,7 @@ class GestionnaireParcours{
     + addParcours(Parcours)
     + getParcours() : ArrayList<Parcours>
     + setParcours(ArrayList<Parcours>)
-    # writePath :
+    # writePath() :
 
 
 
@@ -66,7 +83,7 @@ class Parcours{
   + void setEtapeDebut(Etape etapeDebut):
     + getEtapeFin() : Etape
     +setEtapeFin(Etape etapeFin):
-    # writePath :
+    # writePath()  :
 }
 
 
@@ -85,5 +102,9 @@ class Etape {
  	+ setLatitude(double latitude) :
     + getLongitude() : double
    	+ setLongitude(double longitude) :
+    # setPath(String):
     # writePath() :
 }
+
+
+
