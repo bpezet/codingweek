@@ -38,6 +38,15 @@ public class WelcomeView implements Initializable {
     }
 
 
+
+    @FXML
+    public void eventHandlerAfficheParcours(){
+        FxmlLoaderScreen object = new FxmlLoaderScreen();
+        Pane view = object.getPane("showParcoursView");
+        mainPane.setCenter(view);
+    }
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
