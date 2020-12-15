@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.UpdateParcours">
+   <children>
+      <Pane layoutX="14.0" layoutY="31.0" prefHeight="310.0" prefWidth="480.0">
+         <children>
+            <Button layoutX="68.0" layoutY="276.0" mnemonicParsing="false" onAction="#eventHandlerModificationEtape" text="Modifier les étapes" />
+            <Button layoutX="311.0" layoutY="276.0" mnemonicParsing="false" text="Enregistrer" />
+            <Label layoutY="3.0" prefHeight="18.0" prefWidth="31.0" text="Titre" />
+            <Label layoutY="29.0" prefHeight="18.0" prefWidth="31.0" text="Note" />
+            <Label layoutY="59.0" prefHeight="26.0" prefWidth="132.0" text="Nom du lieu de début :" />
+            <Label layoutY="91.0" prefHeight="18.0" prefWidth="99.0" text="Nom du lieu de fin" />
+            <Label layoutY="125.0" prefHeight="18.0" prefWidth="53.0" text="Résumé" />
+            <Label layoutY="193.0" prefHeight="18.0" prefWidth="62.0" text="Description" />
+            <TextArea fx:id="description" layoutY="212.0" prefHeight="50.0" prefWidth="467.0" />
+            <TextArea fx:id="resume" layoutY="144.0" prefHeight="8.0" prefWidth="467.0" />
+            <TextField fx:id="titre" layoutX="52.0" />
+            <TextField fx:id="note" layoutX="52.0" layoutY="26.0" />
+            <TextField fx:id="debut" layoutX="143.0" layoutY="60.0" />
+            <TextField fx:id="fin" layoutX="132.0" layoutY="88.0" />
+         </children>
+      </Pane>
+       <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <menus>
+               <Menu mnemonicParsing="false" text="Home">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Close" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Outils">
+                   <items>
+                       <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
+                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Randonnées">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
+                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                       <MenuItem mnemonicParsing="false" text="Importer" />
+                       <MenuItem mnemonicParsing="false" text="Exporter" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Gestion">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Favoris" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+   </children>
+</AnchorPane>

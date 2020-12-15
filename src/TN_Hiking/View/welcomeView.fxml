@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+
+    <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+    <menus>
+        <Menu mnemonicParsing="false" text="Home">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Outils">
+            <items>
+                <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
+                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Randonnées">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
+                <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                <MenuItem mnemonicParsing="false" text="Importer" />
+                <MenuItem mnemonicParsing="false" text="Exporter" />
+            </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Gestion">
+            <items>
+                <MenuItem mnemonicParsing="false" text="Favoris" />
+            </items>
+        </Menu>
+    </menus>
+    </MenuBar>
+   <Pane layoutY="113.0" prefHeight="119.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <children>
+         <ImageView fitHeight="114.0" fitWidth="188.0" layoutX="412.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../Ressources/lapin.jpeg" />
+            </image>
+         </ImageView>
+         <Label layoutX="28.0" layoutY="14.0" text="Titre" textFill="#fffefe" />
+         <TextArea layoutX="2.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="121.0" layoutY="14.0" />
+         <TextArea layoutX="105.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="127.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
+         <TextArea layoutX="207.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
+         <TextArea layoutX="310.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
+      </children></Pane>
+   <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Meilleurs parcours à essayer" textFill="#c30808" textOverrun="CLIP">
+      <font>
+         <Font name="Bangla MN" size="21.0" />
+      </font>
+   </Label>
+   <Pane layoutY="244.0" prefHeight="119.0" prefWidth="600.0" style="-fx-background-color: black;">
+      <opaqueInsets>
+         <Insets />
+      </opaqueInsets>
+      <children>
+         <ImageView fitHeight="114.0" fitWidth="188.0" layoutX="412.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../Ressources/lapin.jpeg" />
+            </image>
+         </ImageView>
+         <Label layoutX="28.0" layoutY="14.0" text="Titre" textFill="#fffefe" />
+         <TextArea layoutX="2.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="121.0" layoutY="14.0" />
+         <TextArea layoutX="105.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="127.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
+         <TextArea layoutX="207.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
+         <TextArea layoutX="310.0" layoutY="34.0" prefHeight="65.0" prefWidth="76.0" />
+         <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
+      </children>
+   </Pane>
+</Pane>

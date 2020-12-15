@@ -1,0 +1,113 @@
+class BDD {
+	- GestionnaireParcours
+	- ArrayList<Parcours>
+    - String BDpath : "src/BDD"
+
+
+	+ BDD()
+    + push(GestionnaireParcours)
+    + pull() : GestionnaireParcours
+    + setPath(Sring):
+    + getPath(): String
+
+    + import(String OSPath)
+
+    + export(String OSPath)
+}
+
+class Writter(){
+
+	- String BdPath
+
+	+ Writter(Path, GestionnaireParcours)
+	+ writeParcours(Path, Parcours)
+    + writeEtape(Path,Etape)
+    +getBDpath():String
+    +setBDpath(String)
+}
+
+class Decoder(){
+	-String BDPath
+
+    +Decoder(Path): GestionnaireParcours
+    + parcoursDecoder(Path): Parcours
+	+ etapeDecoder(Path): Etape
+    +set BDPath
+    +get BDPath
+
+
+}
+
+
+class GestionnaireParcours{
+	- ArrayList<Parcours>
+    # String WritePath
+
+
+	+ GestionnaireParcours()
+    + addParcours(Parcours)
+    + getParcours() : ArrayList<Parcours>
+    + setParcours(ArrayList<Parcours>)
+    # writePath() :
+
+
+
+}
+
+class Parcours{
+
+	- String name;
+    - int difficulte;
+    - String descriptionCourte;
+    - String descriptionDetaillee;
+    - ArrayList<Etape> etapes;
+    - Etape etapeDebut;
+    - String depart;
+    - Etape etapeFin;
+    # string Writepath
+
+   + Parcours(String name, int difficulte, String depart)
+   + Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin)
+   + getName(): String
+	+ setName(String name):
+    + getDifficulte() :int
+    + setDifficulte(int difficulte)
+    + getDescriptionCourte() : String
+    + setDescriptionCourte(String descriptionCourte) :
+    + getDescriptionDetaillee() : String
+    + setDescriptionDetaillee(String descriptionDetaillee) :
+    + getEtapes(): ArrayList<Etape>
+    + addEtape(Etape etape):
+    + setEtapes(ArrayList<Etape> etapes):
+    +getEtapeDebut(): Etape
+  + void setEtapeDebut(Etape etapeDebut):
+    + getEtapeFin() : Etape
+    +setEtapeFin(Etape etapeFin):
+    # writePath()  :
+}
+
+
+
+class Etape {
+    - String name
+    - double latitude
+    - double longitude
+    # string Writepath
+
+    + Etape()
+    + Etape(String name, double latitude, double longitude)
+    + getName() : String
+    + setName(String name) :
+  	+ getLatitude() : double
+ 	+ setLatitude(double latitude) :
+    + getLongitude() : double
+   	+ setLongitude(double longitude) :
+    # setPath(String):
+    # writePath() :
+}
+
+Nouvelle version : https://liveuml.com/view/5fd8bf984796fa7b0d1358a5
+--> Ajout de plusieurs classes
+--> Ajout de liens pour enlever les arrayList
+--> Getters et setters supprimés (il y en a trop pour rien)
+
