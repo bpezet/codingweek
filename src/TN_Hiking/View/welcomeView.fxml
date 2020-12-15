@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
     <Button layoutX="266.0" layoutY="185.0" mnemonicParsing="false" onAction="#eventHandlerAfficheParcours" prefHeight="31.0" prefWidth="69.0" text="Button" BorderPane.alignment="CENTER" />
 
     <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
@@ -29,7 +29,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Gestion">
             <items>
-                <MenuItem mnemonicParsing="false" text="Favoris" />
+                <MenuItem mnemonicParsing="false" onAction="#testMap" text="Favoris" />
             </items>
         </Menu>
     </menus>

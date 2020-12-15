@@ -48,17 +48,20 @@ public class ModificationEtape {
     @FXML
     private MapView mapView;
 
-
     public ModificationEtape(Parcours parcours){
-        this.parcours = parcours;
-        /*Afficher la map avec le tracer*/
-        /*Load les étapes*/
 
+        this.parcours = parcours;
 
     }
 
+    @FXML
+    public void initialize(){
+        this.mapView.initialize();
+        this.mapView.setCenter(new Coordinate(48.85,2.34));
 
 
 
+
+    }
 
 }

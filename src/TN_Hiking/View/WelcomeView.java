@@ -21,6 +21,9 @@ public class WelcomeView implements Initializable {
     @FXML
     private MenuBar my_bar;
 
+    @FXML
+    private MenuBar my_bar2;
+
     private GestionnaireParcours gestionnaireParcours;
 
     /** Constructeur */
@@ -46,12 +49,23 @@ public class WelcomeView implements Initializable {
     }
 
     @FXML
-    public void eventHandlerUpdateBouton(){
-        FxmlLoaderScreen object = new FxmlLoaderScreen();
-        Pane view = object.getPane("updateParcours", this.gestionnaireParcours);
-        mainPane.setCenter(view);
+    public void eventHandlerUpdateBouton() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("updateParcours.fxml"));
+        loader.setControllerFactory(iC->new UpdateParcours(this.gestionnaireParcours));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
     }
 
+    @FXML
+    public void testMap() throws IOException{
+    }
 
 
     @FXML
