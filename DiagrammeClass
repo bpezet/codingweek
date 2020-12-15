@@ -1,0 +1,89 @@
+class BDD {
+	- GestionnaireParcours
+	- ArrayList<Parcours>
+    - String Writepath : "src/BDD"
+
+
+	+ BDD()
+    + push(GestionnaireParcours)
+    + pull() : GestionnaireParcours
+    + setPath(Sring):
+    + getPath(): String
+}
+
+
+class openCloseFile {
+	- String toWrite
+
+
+    + openCloseFile(String,int):
+
+
+}
+
+
+class GestionnaireParcours{
+	- ArrayList<Parcours>
+    # String WritePath
+
+
+	+ GestionnaireParcours()
+    + addParcours(Parcours)
+    + getParcours() : ArrayList<Parcours>
+    + setParcours(ArrayList<Parcours>)
+    # writePath :
+
+
+
+}
+
+class Parcours{
+
+	- String name;
+    - int difficulte;
+    - String descriptionCourte;
+    - String descriptionDetaillee;
+    - ArrayList<Etape> etapes;
+    - Etape etapeDebut;
+    - String depart;
+    - Etape etapeFin;
+    # string Writepath
+
+   + Parcours(String name, int difficulte, String depart)
+   + Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin)
+   + getName(): String
+	+ setName(String name):
+    + getDifficulte() :int
+    + setDifficulte(int difficulte)
+    + getDescriptionCourte() : String
+    + setDescriptionCourte(String descriptionCourte) :
+    + getDescriptionDetaillee() : String
+    + setDescriptionDetaillee(String descriptionDetaillee) :
+    + getEtapes(): ArrayList<Etape>
+    + addEtape(Etape etape):
+    + setEtapes(ArrayList<Etape> etapes):
+    +getEtapeDebut(): Etape
+  + void setEtapeDebut(Etape etapeDebut):
+    + getEtapeFin() : Etape
+    +setEtapeFin(Etape etapeFin):
+    # writePath :
+}
+
+
+
+class Etape {
+    - String name
+    - double latitude
+    - double longitude
+    # string Writepath
+
+    + Etape()
+    + Etape(String name, double latitude, double longitude)
+    + getName() : String
+    + setName(String name) :
+  	+ getLatitude() : double
+ 	+ setLatitude(double latitude) :
+    + getLongitude() : double
+   	+ setLongitude(double longitude) :
+    # writePath() :
+}
