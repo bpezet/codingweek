@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
-
+//Ceci est un commentaire
     @FXML
     private BorderPane mainPane;
 
@@ -35,6 +35,22 @@ public class WelcomeView implements Initializable {
         Pane view = object.getPane("createParcoursView", this.gestionnaireParcours);
         mainPane.setCenter(view);
 
+    }
+
+    @FXML
+    public void eventHandlerUpdateBouton(){
+        FxmlLoaderScreen object = new FxmlLoaderScreen();
+        Pane view = object.getPane("UpdateParcours", this.gestionnaireParcours);
+        mainPane.setCenter(view);
+    }
+
+
+
+    @FXML
+    public void eventHandlerAfficheParcours(){
+        FxmlLoaderScreen object = new FxmlLoaderScreen();
+        Pane view = object.getPane("showParcoursView",this.gestionnaireParcours);
+        mainPane.setCenter(view);
     }
 
 
