@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
 
     <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
     <menus>
@@ -18,7 +18,7 @@
         <Menu mnemonicParsing="false" text="Outils">
             <items>
                 <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Randonnées">
