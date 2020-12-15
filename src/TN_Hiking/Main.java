@@ -21,7 +21,7 @@ public class Main extends Application {
         loader.setLocation(getClass().getResource("View/welcomeView.fxml"));
         loader.setControllerFactory(iC->new WelcomeView(gParcours));
         Parent root = loader.load();
-        primaryStage.setScene(new Scene(root, 500,500));
+        primaryStage.setScene(new Scene(root, 1000,1000));
         primaryStage.show();
     }
 }
