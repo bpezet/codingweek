@@ -106,5 +106,8 @@ class Etape {
     # writePath() :
 }
 
-
+Nouvelle version : https://liveuml.com/view/5fd8bf984796fa7b0d1358a5
+--> Ajout de plusieurs classes
+--> Ajout de liens pour enlever les arrayList
+--> Getters et setters supprimés (il y en a trop pour rien)
 
