@@ -38,7 +38,12 @@ public class FxmlLoaderScreen {
                     return null;
                 }
             };
-            this.pane = new FXMLLoader(url, r, null, iC->new CreateParcoursView(gestionnaireParcours)).load();
+            if (fileName == "createParcoursView") {
+                this.pane = new FXMLLoader(url, r, null, iC -> new CreateParcoursView(gestionnaireParcours)).load();
+            }
+            else if (fileName == "UpdateParcours"){
+                this.pane = new FXMLLoader(url, r, null, iC -> new UpdateParcours(gestionnaireParcours)).load();
+            }
 
         }catch (Exception e){
             System.out.println("Pas de FXML : "+fileName);
