@@ -20,7 +20,7 @@ import java.security.GeneralSecurityException;
 
 
 public class showParcours {
-
+    GestionnaireParcours gParcours;
     // Ce qu'on recupere d'un Parcours
     private String name = "Best Hiking";
     private int difficulte = 2;

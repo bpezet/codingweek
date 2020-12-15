@@ -49,7 +49,7 @@ public class WelcomeView implements Initializable {
     @FXML
     public void eventHandlerAfficheParcours(){
         FxmlLoaderScreen object = new FxmlLoaderScreen();
-        Pane view = object.getPane("showParcoursView");
+        Pane view = object.getPane("showParcoursView",this.gestionnaireParcours);
         mainPane.setCenter(view);
     }
 
