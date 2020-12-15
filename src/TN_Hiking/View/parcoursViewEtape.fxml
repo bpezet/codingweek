@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ParcoursViewEtape">
    <children>
       <Label layoutX="208.0" layoutY="14.0" prefHeight="88.0" prefWidth="185.0" text="Créer une étape" underline="true">
          <font>
@@ -12,14 +12,14 @@
          </font>
       </Label>
       <Label layoutX="78.0" layoutY="102.0" text="Nom de l'étape :" />
-      <TextField layoutX="199.0" layoutY="98.0" />
+      <TextField fx:id="name" layoutX="199.0" layoutY="98.0" />
       <Label layoutX="89.0" layoutY="140.0" text="Coordonnées :" />
-      <TextField layoutX="273.0" layoutY="136.0" prefHeight="25.0" prefWidth="103.0" />
+      <TextField fx:id="latitude" layoutX="273.0" layoutY="136.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="199.0" layoutY="140.0" text="Latitude" />
-      <TextField layoutX="273.0" layoutY="171.0" prefHeight="25.0" prefWidth="103.0" />
+      <TextField fx:id="longitude" layoutX="273.0" layoutY="171.0" prefHeight="25.0" prefWidth="103.0" />
       <Label layoutX="199.0" layoutY="175.0" text="Longitude" />
       <Button layoutX="199.0" layoutY="206.0" mnemonicParsing="false" text="Choisir un point sur la map" />
       <Button layoutX="199.0" layoutY="239.0" mnemonicParsing="false" text="Utiliser sa position gps" />
-      <Button layoutX="274.0" layoutY="351.0" mnemonicParsing="false" text="Créer !" />
+      <Button layoutX="274.0" layoutY="351.0" mnemonicParsing="false" onAction="#changeSceneParcoursTracer" text="Créer !" />
    </children>
 </Pane>

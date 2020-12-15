@@ -32,14 +32,6 @@ public class CreateParcoursView  {
 
     /** Méthodes */
 
-    /** Boutton Tracer le parcours
-    public void tracerParcours() {
-        Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
-        this.gParcours.addParcours(parcours);
-        System.out.println(this.gParcours.getParcours().get(0).getName());
-
-    }*/
-
     /** Boutton Annuler*/
     public void changeSceneWelcomeView(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -58,7 +50,7 @@ public class CreateParcoursView  {
     public void changeSceneCreateToTracer(ActionEvent actionEvent) throws IOException {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);
-        System.out.println(this.gParcours.getParcours().get(0).getName());
+        //System.out.println(this.gParcours.getParcours().get(0).getName());
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("parcoursTracerView.fxml"));
         loader.setControllerFactory(iC->new ParcoursTarcerView(this.gParcours));

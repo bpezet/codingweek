@@ -6,7 +6,6 @@ public class Etape {
     protected double longitude;
 
 
-
     public Etape() {
     }
 

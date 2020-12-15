@@ -16,6 +16,7 @@ public class Parcours {
         this.name = name;
         this.difficulte = difficulte;
         this.depart = depart;
+        this.etapes = new ArrayList<>();
     }
 
     public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
@@ -23,6 +24,7 @@ public class Parcours {
         this.difficulte = difficulte;
         this.etapeDebut = etapeDebut;
         this.etapeFin = etapeFin;
+        this.etapes = new ArrayList<>();
     }
                 /** Getters and setters */
 

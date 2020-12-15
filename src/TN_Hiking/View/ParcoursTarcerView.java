@@ -13,8 +13,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Observable;
-import java.util.Observer;
 
 public class ParcoursTarcerView {
     @FXML
@@ -23,23 +21,14 @@ public class ParcoursTarcerView {
 
     GestionnaireParcours gParcours;
 
+    /** Constructeur */
     public ParcoursTarcerView(GestionnaireParcours gParcours) {
         this.gParcours = gParcours;
     }
 
-    public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("createParcoursView.fxml"));
-        loader.setControllerFactory(iC->new CreateParcoursView(this.gParcours));
-        Parent createParcoursParent = loader.load();
+    /** Méthodes */
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
-
-        Stage window = (Stage) my_bar.getScene().getWindow();
-
-        window.setScene(createParcoursScene);
-        window.show();
-    }
+    /** Boutton Annuler le parcours*/
     public void changeSceneTracerToWelcomeView(ActionEvent actionEvent) throws IOException {
         this.gParcours.deleteParcours();
         FXMLLoader loader = new FXMLLoader();
@@ -55,7 +44,7 @@ public class ParcoursTarcerView {
         window.show();
     }
 
-
+    /** Boutton Finir le parcours*/
     public void finirParcours(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Confirmation");
@@ -66,6 +55,21 @@ public class ParcoursTarcerView {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("welcomeView.fxml"));
         loader.setControllerFactory(iC->new WelcomeView(this.gParcours));
+        Parent createWelcomeParent = loader.load();
+
+        Scene createWelcomeScene = new Scene(createWelcomeParent);
+
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(createWelcomeScene);
+        window.show();
+    }
+
+    /** Boutton Créer une étape*/
+    public void changeSceneCreerParcours(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("parcoursViewEtape.fxml"));
+        loader.setControllerFactory(iC->new ParcoursViewEtape(this.gParcours));
         Parent createWelcomeParent = loader.load();
 
         Scene createWelcomeScene = new Scene(createWelcomeParent);
