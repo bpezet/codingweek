@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
-
+//Ceci est un commentaire
     @FXML
     private BorderPane mainPane;
 
