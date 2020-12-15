@@ -10,7 +10,7 @@
          <center>
             <ImageView fx:id="image" fitHeight="140.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../../ressources/lapin.jpeg" />
+                  <Image url="@../Ressources/lapin.jpeg" />
                </image></ImageView>
          </center>
          <left>
