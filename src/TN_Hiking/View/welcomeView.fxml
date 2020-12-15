@@ -16,7 +16,7 @@
         <Menu mnemonicParsing="false" text="Outils">
             <items>
                 <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
+                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Randonnées">

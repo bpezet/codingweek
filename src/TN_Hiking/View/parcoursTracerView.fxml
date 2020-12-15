@@ -15,5 +15,33 @@
          </image>
       </ImageView>
       <Label layoutX="247.0" layoutY="223.0" prefHeight="27.0" prefWidth="112.0" text="Parcours en cours..." />
+       <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+           <menus>
+               <Menu mnemonicParsing="false" text="Home">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Close" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Outils">
+                   <items>
+                       <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
+                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Randonnées">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
+                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                       <MenuItem mnemonicParsing="false" text="Importer" />
+                       <MenuItem mnemonicParsing="false" text="Exporter" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Gestion">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Favoris" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
    </children>
 </Pane>
