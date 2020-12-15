@@ -1,0 +1,7 @@
+#INIT#
+#debutGestion
+#debutParcours
+;Mon Premier Parcours ;3;Strasbourg;:name1:123.092:49.008764::name2:450.302:53.0097:#finParcours
+#debutParcours
+;Mon Deuxieme Parcours ;4;Nancy;:name2:450.302:53.0097::name1:123.092:49.008764:#finParcours
+#finGestion

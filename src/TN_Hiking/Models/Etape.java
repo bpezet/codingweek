@@ -4,11 +4,6 @@ public class Etape {
     protected String name;
     protected double latitude;
     protected double longitude;
-    protected
-
-
-    public Etape() {
-    }
 
     public Etape(String name, double latitude, double longitude) {
         this.name = name;
@@ -39,5 +34,9 @@ public class Etape {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public void etapeShow(){
+        System.out.println("Etape "+name+"("+latitude+","+longitude+")");
     }
 }
