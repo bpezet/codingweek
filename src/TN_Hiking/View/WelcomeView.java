@@ -40,7 +40,7 @@ public class WelcomeView implements Initializable {
     @FXML
     public void eventHandlerUpdateBouton(){
         FxmlLoaderScreen object = new FxmlLoaderScreen();
-        Pane view = object.getPane("UpdateParcours", this.gestionnaireParcours);
+        Pane view = object.getPane("updateParcours", this.gestionnaireParcours);
         mainPane.setCenter(view);
     }
 
