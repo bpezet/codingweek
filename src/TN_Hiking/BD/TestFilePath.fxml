@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="171.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.BD.TestFilePath">
+   <children>
+      <Button layoutX="224.0" layoutY="73.0" mnemonicParsing="false" text="Browse" />
+   </children>
+</AnchorPane>

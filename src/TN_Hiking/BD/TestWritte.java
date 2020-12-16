@@ -9,8 +9,9 @@ import java.io.*;
 public class TestWritte {
 
     public static void main(String[] args) {
-        String pathName = "src\\TN_Hiking\\BD\\INTEL";
+        String pathName = "localVersion";
         Writter wr = new Writter();
+        wr.setPathName(pathName);
 
 
 
@@ -27,14 +28,14 @@ public class TestWritte {
         Parcours parcours = new Parcours("",0,"");
         parcours.setDifficulte(3);
         parcours.setDepart("Strasbourg");
-        parcours.setName("Mon Premier Parcours ");
+        parcours.setName("Mon Premier Parcours");
         parcours.setEtapeDebut(etape1);
         parcours.setEtapeFin(etape2);
 
         Parcours parcours2 = new Parcours("",2,"");
         parcours2.setDepart("Nancy");
         parcours2.setDifficulte(4);
-        parcours2.setName("Mon Deuxieme Parcours ");
+        parcours2.setName("Mon Deuxieme Parcours");
         parcours2.setEtapeDebut(etape2);
         parcours2.setEtapeFin(etape1);
 
