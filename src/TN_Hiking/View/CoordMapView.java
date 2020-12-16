@@ -2,10 +2,15 @@ package TN_Hiking.View;
 
 import com.sothawo.mapjfx.*;
 import com.sothawo.mapjfx.event.MapViewEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class CoordMapView {
+
+    private ParcoursViewEtape parcoursViewEtape;
 
     @FXML
     private MapView myMap;
@@ -13,9 +18,13 @@ public class CoordMapView {
     private Label latitude;
     @FXML
     private Label longitude;
+    @FXML
+    private Button validateButton;
 
     /** Constructeur */
-    public CoordMapView(){}
+    public CoordMapView(ParcoursViewEtape parcoursViewEtape){
+        this.parcoursViewEtape = parcoursViewEtape;
+    }
 
     /** Méthodes */
 
@@ -31,6 +40,13 @@ public class CoordMapView {
             latitude.setText(newPosition.getLatitude().toString());
             longitude.setText(newPosition.getLongitude().toString());
         });
+    }
+
+    /** Bouton Valider */
+    public void validateCoordinate(ActionEvent actionEvent) {
+        this.parcoursViewEtape.getLatitude().setText(this.latitude.getText());
+        this.parcoursViewEtape.getLongitude().setText(this.longitude.getText());
+        ((Stage) validateButton.getScene().getWindow()).close();
     }
 
     @FXML

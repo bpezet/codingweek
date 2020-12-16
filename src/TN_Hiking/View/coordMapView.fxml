@@ -12,5 +12,6 @@
       <Label fx:id="latitude" layoutX="262.0" layoutY="341.0" text="..." />
       <Label layoutX="194.0" layoutY="367.0" text="Longitude = " />
       <Label fx:id="longitude" layoutX="262.0" layoutY="367.0" text="..." />
+      <Button fx:id="validateButton" layoutX="534.0" layoutY="355.0" mnemonicParsing="false" onAction="#validateCoordinate" text="Valider" />
    </children>
 </Pane>

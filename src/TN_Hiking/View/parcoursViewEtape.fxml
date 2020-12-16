@@ -14,9 +14,9 @@
       <Label layoutX="78.0" layoutY="102.0" text="Nom de l'étape :" />
       <TextField fx:id="name" layoutX="199.0" layoutY="98.0" />
       <Label layoutX="89.0" layoutY="140.0" text="Coordonnées :" />
-      <TextField fx:id="latitude" layoutX="273.0" layoutY="136.0" prefHeight="25.0" prefWidth="103.0" />
+      <TextField fx:id="latitude" layoutX="273.0" layoutY="136.0" prefHeight="25.0" prefWidth="136.0" />
       <Label layoutX="199.0" layoutY="140.0" text="Latitude" />
-      <TextField fx:id="longitude" layoutX="273.0" layoutY="171.0" prefHeight="25.0" prefWidth="103.0" />
+      <TextField fx:id="longitude" layoutX="273.0" layoutY="171.0" prefHeight="25.0" prefWidth="136.0" />
       <Label layoutX="199.0" layoutY="175.0" text="Longitude" />
       <Button layoutX="199.0" layoutY="206.0" mnemonicParsing="false" onAction="#chooseCoordMap" text="Choisir un point sur la map" />
       <Button layoutX="199.0" layoutY="239.0" mnemonicParsing="false" text="Utiliser sa position gps" />
@@ -31,7 +31,7 @@
                <Menu mnemonicParsing="false" text="Outils">
                    <items>
                        <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false"  text="Mise a jour" />
+                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Randonnées">

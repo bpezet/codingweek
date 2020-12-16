@@ -95,7 +95,7 @@ public class ParcoursViewEtape implements Initializable {
     public void chooseCoordMap(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("coordMapView.fxml"));
-        loader.setControllerFactory(iC->new CoordMapView());
+        loader.setControllerFactory(iC->new CoordMapView(this));
         Parent root1 = loader.load();
 
         CoordMapView coordMapView = loader.getController();
@@ -105,5 +105,13 @@ public class ParcoursViewEtape implements Initializable {
         stage.setTitle("Map");
         stage.setScene(new Scene(root1, 600, 400));
         stage.show();
+    }
+
+    /** Setters */
+    public TextField getLatitude() {
+        return latitude;
+    }
+    public TextField getLongitude() {
+        return longitude;
     }
 }
