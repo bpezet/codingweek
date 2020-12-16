@@ -42,6 +42,6 @@ public class Etape {
     }
 
     public void etapeShow(){
-        System.out.println("Etape "+name+"("+latitude+","+longitude+")");
+        System.out.println("Etape "+name+"(lon:"+longitude+",lag:"+latitude+")");
     }
 }

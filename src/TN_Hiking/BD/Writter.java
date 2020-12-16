@@ -54,7 +54,7 @@ public class  Writter{
         int diff = parcours.getDifficulte();
         String debut = parcours.getDepart();
 
-        try{ bufferedWriter.write(":"+name+":"+diff+":"+debut+":");} catch(IOException e){e.printStackTrace();}
+        try{ bufferedWriter.write(":"+name+":"+diff+":"+debut+":\n");} catch(IOException e){e.printStackTrace();}
         // on rajoute les etapes
         ArrayList<Etape> arrayList = new ArrayList<Etape>();
         arrayList = parcours.getEtapes();
