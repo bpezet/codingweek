@@ -60,6 +60,9 @@ public class UpdateParcours {
         loader.setControllerFactory(iC->new ModificationEtape(this.parcours));
         Parent createParcoursParent = loader.load();
 
+        ModificationEtape modificationEtape = loader.getController();
+        modificationEtape.initMapAndControls();
+
         Scene createParcoursScene = new Scene(createParcoursParent);
 
         Stage window = (Stage) my_bar.getScene().getWindow();

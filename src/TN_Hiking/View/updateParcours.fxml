@@ -27,7 +27,7 @@
            <menus>
                <Menu mnemonicParsing="false" text="Home">
                    <items>
-                       <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                       <MenuItem mnemonicParsing="false"  text="Close" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Outils">

@@ -12,7 +12,7 @@
 
          </right>
          <left>
-            <ListView prefHeight="257.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="listView" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="257.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </left>
          <bottom>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
