@@ -2,6 +2,7 @@ package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,7 +19,8 @@ import java.io.IOException;
 public class ParcoursViewEtape {
 
     private GestionnaireParcours gestionnaireParcours;
-
+    @FXML
+    private MenuBar my_bar;
     @FXML
     private TextField name;
     @FXML
@@ -63,5 +66,18 @@ public class ParcoursViewEtape {
 
         window.setScene(createWelcomeScene);
         window.show();
+    }
+
+    /** Creer parcours dans le menu quand on est entrain de creer un parcours*/
+    public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Alerte");
+        alert.setHeaderText("Attention !");
+        alert.setContentText("Vous êtes deja entrai de créer un parcours : Action impossible");
+        alert.show();
+    }
+    /** Bouton : fermer l'application*/
+    public void closeApp() {
+        Platform.exit();
     }
 }
