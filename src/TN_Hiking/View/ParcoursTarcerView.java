@@ -52,15 +52,10 @@ public class ParcoursTarcerView implements Initializable {
 
     /** Boutton Finir le parcours*/
     public void finirParcours(ActionEvent actionEvent) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Confirmation");
-        alert.setHeaderText("Félicitations");
-        alert.setContentText("Votre parcours est crée avec succès!");
 
-        alert.showAndWait();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("welcomeView.fxml"));
-        loader.setControllerFactory(iC->new WelcomeView(this.gParcours));
+        loader.setLocation(getClass().getResource("finalisationParcours.fxml"));
+        loader.setControllerFactory(iC->new FinalisationParcours(this.gParcours));
         Parent createWelcomeParent = loader.load();
 
         Scene createWelcomeScene = new Scene(createWelcomeParent);

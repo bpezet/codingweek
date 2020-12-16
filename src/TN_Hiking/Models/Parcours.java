@@ -3,39 +3,35 @@ package TN_Hiking.Models;
 import java.util.ArrayList;
 
 public class Parcours {
-    protected String name="";
-    protected int difficulte=0;
+    protected String name;
+    protected int difficulte;
     protected String descriptionCourte;
     protected String descriptionDetaillee;
     protected ArrayList<Etape> etapes;
+    protected int note;
     protected Etape etapeDebut;
-    protected String depart;
     protected Etape etapeFin;
 
     public Parcours(String name, int difficulte, String depart) {
         this.name = name;
         this.difficulte = difficulte;
-        this.depart = depart;
+        this.etapeDebut = new Etape();
+        this.etapeDebut.setName(depart);
+        this.etapeFin = new Etape();
         this.etapes = new ArrayList<>();
+        this.etapes.add(this.etapeDebut);
     }
 
-    public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
-        this.name = name;
-        this.difficulte = difficulte;
-        this.etapeDebut = etapeDebut;
-        this.etapeFin = etapeFin;
-        this.etapes = new ArrayList<>();
-    }
                 /** Getters and setters */
 
     public String getName() {
         return name;
     }
-    public String getDepart(){return this.depart;}
+
     public void setName(String name) {
         this.name = name;
     }
-    public void setDepart(String depart){this.depart = depart;}
+
 
     public int getDifficulte() {
         return difficulte;
@@ -55,6 +51,14 @@ public class Parcours {
 
     public String getDescriptionDetaillee() {
         return descriptionDetaillee;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
     }
 
     public void setDescriptionDetaillee(String descriptionDetaillee) {
@@ -90,7 +94,7 @@ public class Parcours {
     }
 
     public void showParcours(){
-        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+depart);
+        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+etapeDebut.getName());
         for(int i = 0;i<etapes.size();i++) {
             etapes.get(i).etapeShow();
         }
