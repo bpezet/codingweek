@@ -30,9 +30,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -50,6 +48,8 @@ public class ModificationEtape {
     @FXML
     private ListView<String> listView;
 
+    private CoordinateLine track;
+
     /**Constructeur*/
     public ModificationEtape(Parcours parcours){
 
@@ -58,17 +58,40 @@ public class ModificationEtape {
         this.parcours.addEtape(new Etape("Toulouse", 43.6, 1.43));
         this.parcours.addEtape(new Etape("Montcuq", 44.3333, 1.21667));
         this.parcours.addEtape(new Etape("Carcassonne", 43.21667, 2.35));
+        Coordinate coords= new Coordinate(43.6, 1.43);
+        this.markerSet = Marker.createProvided(Marker.Provided.BLUE).setVisible(false);
+        //this.markerSet = new Marker(getClass().getResource("/Logo.png"), -20, -20).setPosition(coords)
+        //        .setVisible(false);
     }
 
 
     public void initMapAndControls(){
         mapView.setZoom(ZOOM_DEFAULT);
-        Coordinate coords= new Coordinate(43.6, 1.43);
-        this.markerSet = Marker.createProvided(Marker.Provided.BLUE).setPosition(coords).setVisible(
-                false);
         this.mapView.addMarker(this.markerSet);
-        markerSet.setVisible(true);
+
+        this.track= Objects.requireNonNull(getCoordinateFromFile(getClass().getResource("/M1.csv"))).orElse(new CoordinateLine
+                ()).setColor(Color.MAGENTA).setWidth(7);
+        this.track.setVisible(true);
+        this.mapView.addCoordinateLine(this.track);
+
+
     }
+
+    /**Prendre les coordonnées d'un fichier csv*/
+
+    private Optional<CoordinateLine> getCoordinateFromFile(URL url){
+        try(Stream<String> lignes = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8)).lines())
+        { CoordinateLine coords = new CoordinateLine(lignes.map(ligne -> ligne.split(";")).filter(cordsFichier -> cordsFichier.length ==2)
+                .map(coordsValeurs -> new Coordinate(Double.valueOf(coordsValeurs[0]),Double.valueOf(coordsValeurs[1])))
+                .collect(Collectors.toList()));
+        return Optional.of(coords);
+        }catch (IOException e){ System.out.println("Problème chargement fichier");}
+        return Optional.empty();
+
+
+    }
+
+
 
     /**Les actions à faire dès lors que l'on clic sur un item de la liste*/
     @FXML
@@ -77,6 +100,12 @@ public class ModificationEtape {
             System.out.println("Tu as cliquer sur : " + this.listView.getSelectionModel().getSelectedItem());
             Etape etapeselected = this.parcours.getSpecificEtape(this.listView.getSelectionModel().getSelectedIndex());
             this.mapView.setCenter(new Coordinate(etapeselected.getLatitude(), etapeselected.getLongitude()));
+
+            this.markerSet.setVisible(true);
+            this.markerSet.setPosition(new Coordinate(etapeselected.getLatitude(),etapeselected.getLongitude()));
+            this.mapView.addMarker(this.markerSet);
+
+
         }catch(Exception e){
             System.out.println("Fait gaffe bro");
         }
@@ -87,17 +116,14 @@ public class ModificationEtape {
     @FXML
     public void initialize(){
         this.mapView.initialize();
-        this.mapView.setCenter(new Coordinate(43.6, 1.43));
+        this.mapView.setCenter(new Coordinate(49.00515,8.394922));
         for (Etape etape : this.parcours.getEtapes()){
             this.listView.getItems().add(etape.getName());
             //this.mapView.addMarker(new Marker());
         }
         this.listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        Coordinate coords= new Coordinate(43.6, 1.43);
-        this.markerSet = Marker.createProvided(Marker.Provided.BLUE).setPosition(coords).setVisible(
-                false);
-        this.mapView.addMarker(this.markerSet);
-        markerSet.setVisible(true);
+
+
 
     }
 
