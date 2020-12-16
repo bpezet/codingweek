@@ -225,7 +225,7 @@ public class WelcomeView implements Initializable {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 //Thirs step: write in the new parcors
-                System.out.println(line);
+                //System.out.println(line);
                 String[] split = line.split(";");
                 //System.out.println(split.length+"");
                 // for(int i = 0;i<split.length;i++) { System.out.println(split[i]); }
