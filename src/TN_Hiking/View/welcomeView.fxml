@@ -20,7 +20,7 @@
                 <MenuItem fx:id="RefreshButton" mnemonicParsing="false" text="Refresh" onAction="#setRefreshButton"/>
                 <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
                 <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" text="SaveAS.." onAction="#setSaveAsButton"/>
-                <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" text="Open from .." />
+                <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" text="Open from .." onAction="#setOpenFromButton"/>
                 <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" text="addGpx from.." onAction="#setAddGpxFromButton" />
             </items>
         </Menu>

@@ -188,7 +188,20 @@ public class WelcomeView implements Initializable {
         wr.writeAction(this.gestionnaireParcours); //done
     }
     @FXML
-    public void setOpenFromButton(){}
+    public void setOpenFromButton()
+    {
+        GestionnaireParcours neuGP;
+        //FIRST STEP: find file
+        fileChooser = new FileChooser();
+        Stage stage = (Stage) firstPane.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        System.out.println("Le fichier choisis est:"+file.getPath().toString());
+
+        Decoder dc = new Decoder();
+        dc.setPathName(file.getPath().toString());
+        neuGP = dc.decodeAction();
+        gestionnaireParcours = neuGP;
+    }
     @FXML
     public void setAddGpxFromButton(){
         // aim : add a new parcours made of only those point from .csv file
