@@ -1,6 +1,7 @@
 package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -78,5 +79,10 @@ public class ParcoursTarcerView {
 
         window.setScene(createWelcomeScene);
         window.show();
+    }
+
+    /** App close*/
+    public void closeApp() {
+        Platform.exit();
     }
 }

@@ -3,6 +3,7 @@ package TN_Hiking.View;
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -96,6 +97,10 @@ public class UpdateParcours {
         window.show();
     }
 
+    /** Close App*/
+    public void closeApp() {
+        Platform.exit();
+    }
     
 
 }

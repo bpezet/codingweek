@@ -2,15 +2,26 @@ package TN_Hiking.View;
 
 import TN_Hiking.BD.Writter;
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
+
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
+
+import javafx.application.Platform;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+
 import javafx.scene.control.MenuItem;
+
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -46,7 +57,25 @@ public class WelcomeView implements Initializable {
     private MenuBar my_bar;
 
     @FXML
-    private MenuBar my_bar2;
+    private Label titre1;
+    @FXML
+    private Label titre2;
+    @FXML
+    private Label duree1;
+    @FXML
+    private Label duree2;
+    @FXML
+    private Label difficulte1;
+    @FXML
+    private Label difficulte2;
+    @FXML
+    private Label distance1;
+    @FXML
+    private Label distance2;
+    @FXML
+    private ImageView image1;
+    @FXML
+    private ImageView image2;
 
     private GestionnaireParcours gestionnaireParcours;
 
@@ -177,9 +206,17 @@ public class WelcomeView implements Initializable {
         this.gestionnaireParcours.showGestionnaire();}
 
 
+    /** Bouton : fermer l'application*/
+    public void closeApp() {
+        Platform.exit();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image img1 = new Image("TN_Hiking/Ressources/lapin.jpeg");
+        image1.setImage(img1);
+        Image img2 = new Image("TN_Hiking/Ressources/lapin.jpeg");
+        image2.setImage(img2);
 
     }
 
