@@ -14,13 +14,13 @@
                </image></ImageView>
          </center>
          <left>
-            <VBox prefHeight="354.0" prefWidth="154.0" style="-fx-border-color: Black;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="238.0" prefWidth="210.0" style="-fx-border-color: Black;" BorderPane.alignment="CENTER">
                <children>
-                  <Label prefHeight="19.0" prefWidth="156.0" style="-fx-border-color: Grey;" text="Nom Du Parcours:" textAlignment="CENTER" />
+                  <Label prefHeight="19.0" prefWidth="210.0" style="-fx-border-color: Grey;" text="Nom Du Parcours:" textAlignment="CENTER" />
                   <Label fx:id="LabelParcours" text="Label" textAlignment="CENTER" />
-                  <Label fx:id="LabelName" prefHeight="18.0" prefWidth="155.0" style="-fx-border-color: Grey;" text="Difficultée du Parcours:" />
+                  <Label fx:id="LabelName" prefHeight="19.0" prefWidth="211.0" style="-fx-border-color: Grey;" text="Difficultée du Parcours:" />
                   <Label fx:id="LabelDifficultee" text="Label" textAlignment="CENTER" />
-                  <Label prefHeight="18.0" prefWidth="155.0" style="-fx-border-color: Grey;" text="Lieu du Départ:" />
+                  <Label prefHeight="19.0" prefWidth="209.0" style="-fx-border-color: Grey;" text="Lieu du Départ:" />
                   <Label fx:id="LabelDepart" text="Label" textAlignment="CENTER" />
    </children>
             </VBox>

@@ -87,7 +87,6 @@ public class ParcoursTarcerView implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.borderPane.setDisable(true);
+    public void initialize(URL url, ResourceBundle resourceBundle) {this.borderPane.setDisable(true);
     }
 }

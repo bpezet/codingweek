@@ -69,7 +69,7 @@ public class ModificationEtape {
         mapView.setZoom(ZOOM_DEFAULT);
         this.mapView.addMarker(this.markerSet);
 
-        this.track= Objects.requireNonNull(getCoordinateFromFile(getClass().getResource("/M1.csv"))).orElse(new CoordinateLine
+        this.track= Objects.requireNonNull(getCoordinateFromFile(getClass().getResource("../Ressources/M1.csv"))).orElse(new CoordinateLine
                 ()).setColor(Color.MAGENTA).setWidth(7);
 
         this.track.setVisible(true);

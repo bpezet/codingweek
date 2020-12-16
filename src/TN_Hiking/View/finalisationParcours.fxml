@@ -42,8 +42,8 @@
          </menus>
       </MenuBar>
       <Button layoutX="232.0" layoutY="344.0" mnemonicParsing="false" onAction="#confirmerCreationparcours" text="Confirmer le parcours" />
-      <Button layoutX="513.0" layoutY="344.0" mnemonicParsing="false" text="Annuler" />
-      <Button layoutX="420.0" layoutY="344.0" mnemonicParsing="false" text="Retour" />
+      <Button layoutX="513.0" layoutY="344.0" mnemonicParsing="false" onAction="#retourAuDebut" text="Annuler" />
+      <Button layoutX="420.0" layoutY="344.0" mnemonicParsing="false" onAction="#retourEnArriere" text="Retour" />
       <Label layoutX="149.0" layoutY="109.0" text="Mauvais" />
       <Label layoutX="383.0" layoutY="109.0" text="Excellent" />
    </children>
