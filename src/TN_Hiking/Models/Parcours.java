@@ -13,7 +13,7 @@ public class Parcours {
     protected int note;
     protected String departName;
     protected Etape etapeDebut;
-    protected Image imageParcours;
+    protected String imageParcours;
     protected Etape etapeFin;
     private String fichierExcelCoords;
 
@@ -122,6 +122,9 @@ public class Parcours {
     public void setEtapeFin(Etape etapeFin) {
         this.etapes.add(etapeFin);
     }
+
+    public String getImage(){return this.imageParcours;}
+    public void setImage(String imageParcours){this.imageParcours = imageParcours;}
 
     public void showParcours(){
         System.out.println("Parcours "+name+" diff "+difficulte+" depart "+departName);

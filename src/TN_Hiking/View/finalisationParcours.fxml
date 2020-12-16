@@ -46,6 +46,6 @@
       <Button layoutX="420.0" layoutY="344.0" mnemonicParsing="false" onAction="#retourEnArriere" text="Retour" />
       <Label layoutX="149.0" layoutY="109.0" text="Mauvais" />
       <Label layoutX="383.0" layoutY="109.0" text="Excellent" />
-      <Button layoutX="37.0" layoutY="344.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="108.0" text="Charger Image" />
+      <Button fx:id="Image" layoutX="37.0" layoutY="344.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="108.0" onAction="#ajoutImage" text="Image" />
    </children>
 </Pane>
