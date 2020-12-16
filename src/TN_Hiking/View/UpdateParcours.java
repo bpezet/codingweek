@@ -50,7 +50,7 @@ public class UpdateParcours {
 
     public UpdateParcours(GestionnaireParcours gestionnaireParcours){
         this.ges = gestionnaireParcours;
-        this.parcours = new Parcours("ParcoursTest",5, new Etape("Moncuq",1,1),new Etape("Moncuq",1,1));
+        this.parcours = new Parcours("ParcoursTest",5, new Etape("Moncuq",1,1),new Etape("Moncuq",2,2));
 
     }
 

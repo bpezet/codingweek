@@ -71,6 +71,7 @@ public class ModificationEtape {
 
         this.track= Objects.requireNonNull(getCoordinateFromFile(getClass().getResource("/M1.csv"))).orElse(new CoordinateLine
                 ()).setColor(Color.MAGENTA).setWidth(7);
+
         this.track.setVisible(true);
         this.mapView.addCoordinateLine(this.track);
 

@@ -28,6 +28,7 @@ public class Parcours {
         this.difficulte = difficulte;
         this.etapeDebut = etapeDebut;
         this.etapeFin = etapeFin;
+        this.etapes = new ArrayList<>();
     }
 
 
