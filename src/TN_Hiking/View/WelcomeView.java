@@ -1,5 +1,6 @@
 package TN_Hiking.View;
 
+import TN_Hiking.BD.Decoder;
 import TN_Hiking.BD.Writter;
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 
@@ -28,10 +29,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.file.DirectoryIteratorException;
 import java.nio.file.LinkOption;
@@ -142,7 +140,17 @@ public class WelcomeView implements Initializable {
     //#####################################
     String localSave = "localSave";
     @FXML
-    public void setRefreshButton(){}
+    public void setRefreshButton(){
+        //cliquer sur ce boutton va vous faire charger
+        // le gestionnaire de parcours enregistre en local sur votre pc
+        // suppose qu'il y a deja eu une version locale enregistree auparavant
+        // (ie: que le fichier localSave existe)
+        Decoder dc = new Decoder();
+        // pas besoin d'indiquer le pathname, il est déjà preenregistre
+        GestionnaireParcours neuGP;
+        neuGP = dc.decodeAction();
+        gestionnaireParcours = neuGP;
+    }
     @FXML
     public void setSaveButton() {
         // permet d'ecrire dans notre base de donnes locale
@@ -150,7 +158,6 @@ public class WelcomeView implements Initializable {
         // nomme BDD a la racine, un projet = un fichier pour l'instant
 
 
-        //Path path = Paths.get(".gitignore");
         //try{System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS));} catch(IOException e){e.printStackTrace();}
 
         // on utilise l'outil d'exportation writter :)
@@ -181,7 +188,20 @@ public class WelcomeView implements Initializable {
         wr.writeAction(this.gestionnaireParcours); //done
     }
     @FXML
-    public void setOpenFromButton(){}
+    public void setOpenFromButton()
+    {
+        GestionnaireParcours neuGP;
+        //FIRST STEP: find file
+        fileChooser = new FileChooser();
+        Stage stage = (Stage) firstPane.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        System.out.println("Le fichier choisis est:"+file.getPath().toString());
+
+        Decoder dc = new Decoder();
+        dc.setPathName(file.getPath().toString());
+        neuGP = dc.decodeAction();
+        gestionnaireParcours = neuGP;
+    }
     @FXML
     public void setAddGpxFromButton(){
         // aim : add a new parcours made of only those point from .csv file

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 public class CoordMapView {
 
     private ParcoursViewEtape parcoursViewEtape;
+    private Marker markerClick;
 
     @FXML
     private MapView myMap;
@@ -24,6 +25,7 @@ public class CoordMapView {
     /** Constructeur */
     public CoordMapView(ParcoursViewEtape parcoursViewEtape){
         this.parcoursViewEtape = parcoursViewEtape;
+        this.markerClick = Marker.createProvided(Marker.Provided.ORANGE).setVisible(true);
     }
 
     /** Méthodes */
@@ -39,6 +41,9 @@ public class CoordMapView {
             final Coordinate newPosition = event.getCoordinate().normalize();
             latitude.setText(newPosition.getLatitude().toString());
             longitude.setText(newPosition.getLongitude().toString());
+
+            this.markerClick.setPosition(newPosition);
+            this.myMap.addMarker(this.markerClick);
         });
     }
 
