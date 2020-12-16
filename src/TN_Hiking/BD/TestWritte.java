@@ -9,8 +9,9 @@ import java.io.*;
 public class TestWritte {
 
     public static void main(String[] args) {
-        String pathName = "src\\TN_Hiking\\BD\\INTEL";
+        String pathName = "localVersion";
         Writter wr = new Writter();
+        wr.setPathName(pathName);
 
 
 

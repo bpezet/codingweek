@@ -18,7 +18,7 @@
         <Menu mnemonicParsing="false" text="File">
             <items>
                 <MenuItem fx:id="RefreshButton" mnemonicParsing="false" text="Refresh" />
-                <MenuItem fx:id="SaveButton" mnemonicParsing="false" text="Save" />
+                <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
                 <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" text="SaveAS.." />
                 <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" text="Open from .." />
                 <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" text="addGpx from.." />
@@ -27,7 +27,7 @@
         <Menu mnemonicParsing="false" text="Debugg">
             <items>
                 <MenuItem fx:id="printActiveButton" mnemonicParsing="false" onAction="#setPrintActiveButton" text="printFromActive" />
-                <MenuItem fx:id="printLocalButton" mnemonicParsing="false" text="printFromLocal" />
+                <MenuItem fx:id="printLocalButton" mnemonicParsing="false" onAction="#setPrintLocalButton" text="printFromLocal" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Outils">

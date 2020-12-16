@@ -1,5 +1,6 @@
 package TN_Hiking.View;
 
+import TN_Hiking.BD.Writter;
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
@@ -12,9 +13,13 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.LinkOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
@@ -96,12 +101,34 @@ public class WelcomeView implements Initializable {
     //#####################################
     //######### FILE ######################
     //#####################################
+    String localSave = "localSave";
     @FXML
     public void setRefreshButton(){}
     @FXML
-    public void setSaveButton() {}
+    public void setSaveButton() {
+        // permet d'ecrire dans notre base de donnes locale
+        // elle est materialise ici par un  dossier de merde
+        // nomme BDD a la racine, un projet = un fichier pour l'instant
+
+
+        //Path path = Paths.get(".gitignore");
+        //try{System.out.println(path.toRealPath(LinkOption.NOFOLLOW_LINKS));} catch(IOException e){e.printStackTrace();}
+
+        // on utilise l'outil d'exportation writter :)
+        Writter wr = new Writter();
+        wr.setPathName(localSave);
+        wr.writeAction(this.gestionnaireParcours);
+    }
+    //for SaveAsButton
+    FileChooser fileChooser;
     @FXML
-    public void setSaveAsButton(){}
+    public void setSaveAsButton() {
+        // le truc est la gestion du
+        fileChooser = new FileChooser();
+        //question: comment avoir acces a la window precedente
+        //fileChooser.showOpenDialog();
+        // permet d'ouvrir le fichier
+    }
     @FXML
     public void setOpenFromButton(){}
     @FXML
@@ -140,12 +167,14 @@ public class WelcomeView implements Initializable {
 
         gestionnaireParcours.addParcours(parcours);
         gestionnaireParcours.addParcours(parcours2);
-
         gestionnaireParcours.showGestionnaire();
 
     }
     @FXML
-    public void setPrintLocalButton(){}
+    public void setPrintLocalButton(){
+        // fonction qui est cense afficher le gestionnaire contenu dans BDD
+        // pour l'instant on va print le local lol
+        this.gestionnaireParcours.showGestionnaire();}
 
 
 
