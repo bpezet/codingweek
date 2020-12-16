@@ -162,24 +162,23 @@ public class WelcomeView implements Initializable {
     FileChooser fileChooser;
     @FXML
     public void setSaveAsButton() {
-        // le path du fileChooser
-        String pathname = "";
-        // le truc est la gestion du
-        fileChooser = new FileChooser();
-        //question: comment avoir acces a la window precedente
-        //fileChooser.showOpenDialog();
-
+        // first step: find directory where you wanna your saveFile "localSave"
         DirectoryChooser directoryChooser = new DirectoryChooser();
         Stage stage = (Stage) firstPane.getScene().getWindow();
         File file = directoryChooser.showDialog(stage);
-
-        // permet d'ouvrir le fichier
-
-        System.out.println(file.getPath().toString());
-
-        file = fileChooser.showOpenDialog(stage);
-        System.out.println(file.getPath().toString());
-
+        System.out.println(file.getPath().toString()); // on verifie qu'on a bien le bon directory
+        //second step: as always we need ton write in this directory: we call Writter man
+        Writter wr = new Writter();
+        //quete annexe: trouver le delimiteur approprié (windows ou linux ?)
+        System.out.print("Operating System: ");
+        System.out.println(System.getProperty("os.name"));
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            wr.setPathName(file.getPath().toString()+"\\"+localSave);
+        } else { // then it is a mac/linux piece of shit
+            wr.setPathName(file.getPath().toString()+"/"+localSave);
+        }
+        wr.writeAction(this.gestionnaireParcours); //done
     }
     @FXML
     public void setOpenFromButton(){}
@@ -213,16 +212,12 @@ public class WelcomeView implements Initializable {
                 if (split.length == 2) {
                     Etape etape = new Etape("Etape"+nbEtape,Double.parseDouble(split[0]),Double.parseDouble(split[1]));
                     NewParcours.addEtape(etape);
-                } else {
-                    System.out.println("Error au splitage ligne: FILE NOT CONVENTIONAL");
-                }
-                nbEtape++;
 
+                } else { System.out.println("Error au splitage ligne: FILE NOT CONVENTIONAL"); } // faut verifier la gueule du fichier
+                nbEtape++; // pour nommer les etapes comme il se faut
             }/*whileBalise*/ } catch(IOException e) { e.printStackTrace(); }
-        try {
-            assert bufferedReader != null;
-            bufferedReader.close();
-        } catch (IOException e){  e.printStackTrace(); }
+        // on vide le bufferReader
+        try { assert bufferedReader != null; bufferedReader.close(); } catch (IOException e){  e.printStackTrace(); }
         //4° etape on ajoute le parcours au gestionnaire
         gestionnaireParcours.addParcours(NewParcours);
 
