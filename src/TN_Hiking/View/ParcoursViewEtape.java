@@ -74,6 +74,23 @@ public class ParcoursViewEtape implements Initializable {
         window.show();
     }
 
+    /** Boutton Annuler*/
+    public void cancelEtapeCreate(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("parcoursTracerView.fxml"));
+        loader.setControllerFactory(iC->new ParcoursTarcerView(this.gestionnaireParcours));
+        Parent createWelcomeParent = loader.load();
+
+        Scene createWelcomeScene = new Scene(createWelcomeParent);
+
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+
+        window.setScene(createWelcomeScene);
+        window.show();
+    }
+
+    /** Menu */
+
     /** Creer parcours dans le menu quand on est entrain de creer un parcours*/
     public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
