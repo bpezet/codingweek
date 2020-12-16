@@ -96,4 +96,9 @@ public class Parcours {
         }
         System.out.println("Fin du parcours "+name);
     }
+
+    public Etape getSpecificEtape(int i){
+        return this.etapes.get(i);
+    }
+
 }

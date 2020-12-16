@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -40,6 +41,9 @@ public class UpdateParcours {
     @FXML
     private TextArea description;
 
+    @FXML
+    private MenuItem menuItemUpdate = new MenuItem();
+
 
     GestionnaireParcours ges;
     Parcours parcours;
@@ -47,8 +51,7 @@ public class UpdateParcours {
     public UpdateParcours(GestionnaireParcours gestionnaireParcours){
         this.ges = gestionnaireParcours;
         this.parcours = new Parcours("ParcoursTest",5, new Etape("Moncuq",1,1),new Etape("Moncuq",1,1));
-        this.titre.setPromptText(this.parcours.getName());
-        this.debut.setPromptText(this.parcours.getEtapeDebut().getName());
+
     }
 
     public void eventHandlerModificationEtape() throws IOException {
@@ -97,10 +100,36 @@ public class UpdateParcours {
         window.show();
     }
 
-    /** Close App*/
-    public void closeApp() {
-        Platform.exit();
+    @FXML
+    public void eventHandlerEnregistrerParcours(){
+        if (this.titre.getText()!="") {
+            this.parcours.setName(this.titre.getText());
+        }
+        if (this.debut.getText()!="") {
+            //Coords `a modifier
+            this.parcours.setEtapeDebut(new Etape(this.fin.getText(), 1.00,1.00));
+        }
+        if (this.note.getText()!=""){
+            //A mettre//
+        }
+        if (this.fin.getText() != ""){
+            //Coords `a modifier
+            this.parcours.setEtapeFin(new Etape(this.fin.getText(), 1.00,1.00));
+        }
+        if (this.resume.getText()!=""){
+            this.parcours.setDescriptionCourte(this.resume.getText());
+        }
+        if(this.description.getText()!=""){
+            this.parcours.setDescriptionDetaillee(this.description.getText());
+        }
     }
-    
+
+    @FXML
+    public void initialize(){
+        this.titre.setPromptText(this.parcours.getName());
+        this.debut.setPromptText(this.parcours.getEtapeDebut().getName());
+        this.menuItemUpdate.setDisable(false);
+    }
+
 
 }
