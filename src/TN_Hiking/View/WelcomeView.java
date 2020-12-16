@@ -9,6 +9,7 @@ import TN_Hiking.Models.Parcours;
 
 import javafx.application.Platform;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -273,6 +274,25 @@ public class WelcomeView implements Initializable {
 
     }
 
+    /** Randonnées > Visualiser un parcours */
+    public void visualiserParcours(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
+        loader.setControllerFactory(iC->new VisualiserParcours());
+        Parent createParcoursParent = loader.load();
+
+        VisualiserParcours visualiserParcours = loader.getController();
+        visualiserParcours.initMapAndControls();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+
     //#####################################
     //######### debugg ######################
     //#####################################
@@ -334,10 +354,4 @@ public class WelcomeView implements Initializable {
         image2.setImage(img2);
 
     }
-
-
-
-
-
-
 }
