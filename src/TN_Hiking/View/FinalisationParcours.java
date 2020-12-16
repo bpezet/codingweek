@@ -84,6 +84,9 @@ public class FinalisationParcours implements Initializable {
         window.show();
 
     }
+    public void ajoutImage() {
+
+    }
     public void closeApp() {
         Platform.exit();
     }

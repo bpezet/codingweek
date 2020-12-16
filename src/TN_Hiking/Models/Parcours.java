@@ -1,5 +1,7 @@
 package TN_Hiking.Models;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Parcours {
@@ -11,6 +13,7 @@ public class Parcours {
     protected int note;
     protected String depart;
     protected Etape etapeDebut;
+    protected Image imageParcours;
     protected Etape etapeFin;
     private String fichierExcelCoords;
 
@@ -23,6 +26,7 @@ public class Parcours {
         this.etapes = new ArrayList<>();
         this.etapes.add(this.etapeDebut);
     }
+
     public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
         this.name = name;
         this.difficulte = difficulte;
