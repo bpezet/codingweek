@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.sothawo.mapjfx.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="TN_Hiking.View.CoordMapView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-   <center>
-      <MapView fx:id="myMap" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
-   </center>
-</BorderPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.CoordMapView">
+   <children>
+      <MapView fx:id="myMap" prefHeight="335.0" prefWidth="600.0" />
+      <Label layoutX="32.0" layoutY="341.0" text="Cordonées sélectionnées :" underline="true" />
+      <Label layoutX="194.0" layoutY="341.0" text="Latitude = " />
+      <Label fx:id="latitude" layoutX="262.0" layoutY="341.0" text="..." />
+      <Label layoutX="194.0" layoutY="367.0" text="Longitude = " />
+      <Label fx:id="longitude" layoutX="262.0" layoutY="367.0" text="..." />
+   </children>
+</Pane>
