@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,8 +26,12 @@ public class TrouverParcoursView implements Initializable {
     MenuBar my_bar;
     @FXML
     MenuItem trouverParcours;
-
+    @FXML
+    ScrollPane rechercheParcours;
+    @FXML
+    TextField titreRecherche;
     private GestionnaireParcours gParcours;
+    private GestionnaireParcours gParcours2;
 
     public void closeApp() {
         Platform.exit();
@@ -76,6 +82,17 @@ public class TrouverParcoursView implements Initializable {
         stage.setTitle("Critère possible pour affiner la recherche");
         stage.setScene(new Scene(root1, 487, 214));
         stage.show();
+    }
+
+
+    public void rechercherParcours() {
+        String titre = this.titreRecherche.getText();
+        System.out.println(titre);
+        for (int k=0; k < gParcours.getSize(); k++) {
+            if (gParcours.getParcours(k).getName() == titre) {
+                this.gParcours2.addParcours(gParcours.getParcours(k));
+            }
+        }
     }
 
     @Override

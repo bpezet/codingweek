@@ -5,7 +5,6 @@ import TN_Hiking.Models.Parcours;
 
 
 import java.util.ArrayList;
-import java.util.Observable;
 
 public class GestionnaireParcours {
 
@@ -32,6 +31,13 @@ public class GestionnaireParcours {
         this.parcours = parcours;
     }
 
+    public int getSize() {return this.parcours.size();}
+    public Parcours getParcours(int index) {
+        return  this.parcours.get(index);
+    }
+    public ArrayList<Parcours> getPGestionnaireParcours() {
+        return this.parcours;
+    }
     public void showGestionnaire(){
 
 

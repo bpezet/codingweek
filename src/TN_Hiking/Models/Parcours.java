@@ -1,6 +1,6 @@
 package TN_Hiking.Models;
 
-import javafx.scene.image.Image;
+
 
 import java.util.ArrayList;
 
