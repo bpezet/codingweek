@@ -91,4 +91,15 @@ public class ParcoursViewEtape implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.borderPane.setDisable(true);
     }
+
+    public void chooseCoordMap(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("coordMapView.fxml"));
+        loader.setControllerFactory(iC->new CoordMapView());
+        Parent root1 = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Map");
+        stage.setScene(new Scene(root1, 600, 400));
+        stage.show();
+    }
 }
