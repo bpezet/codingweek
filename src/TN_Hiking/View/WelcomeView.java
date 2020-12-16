@@ -108,7 +108,19 @@ public class WelcomeView implements Initializable {
         window.setScene(createParcoursScene);
         window.show();
     }
+    public void trouverParcoursMenu(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("trouverParcoursView.fxml"));
+        loader.setControllerFactory(iC->new TrouverParcoursView(this.gestionnaireParcours));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
     @FXML
     public void eventHandlerUpdateBouton() throws IOException{
         FXMLLoader loader = new FXMLLoader();

@@ -17,11 +17,11 @@
         </Menu>
         <Menu mnemonicParsing="false" text="File">
             <items>
-                <MenuItem fx:id="RefreshButton" mnemonicParsing="false" text="Refresh" onAction="#setRefreshButton"/>
+                <MenuItem fx:id="RefreshButton" mnemonicParsing="false" onAction="#setRefreshButton" text="Refresh" />
                 <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
-                <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" text="SaveAS.." onAction="#setSaveAsButton"/>
-                <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" text="Open from .." onAction="#setOpenFromButton"/>
-                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" text="addGpx from.." onAction="#setAddGpxFromButton" />
+                <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" onAction="#setSaveAsButton" text="SaveAS.." />
+                <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" onAction="#setOpenFromButton" text="Open from .." />
+                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addGpx from.." />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Debugg">
@@ -38,7 +38,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Randonnées">
             <items>
-                <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
+                <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
                 <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
                 <MenuItem mnemonicParsing="false" text="Importer" />
                 <MenuItem mnemonicParsing="false" text="Exporter" />
