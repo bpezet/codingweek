@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+<Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
 
     <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
     <menus>
@@ -19,9 +19,9 @@
             <items>
                 <MenuItem fx:id="RefreshButton" mnemonicParsing="false" text="Refresh" />
                 <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
-                <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" text="SaveAS.." />
+                <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" text="SaveAS.." onAction="#setSaveAsButton"/>
                 <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" text="Open from .." />
-                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" text="addGpx from.." />
+                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" text="addGpx from.." onAction="#setAddGpxFromButton" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Debugg">
