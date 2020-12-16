@@ -9,6 +9,7 @@ public class Parcours {
     protected String descriptionDetaillee;
     protected ArrayList<Etape> etapes;
     protected int note;
+    protected String depart;
     protected Etape etapeDebut;
     protected Etape etapeFin;
 
@@ -21,8 +22,26 @@ public class Parcours {
         this.etapes = new ArrayList<>();
         this.etapes.add(this.etapeDebut);
     }
+    public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
+        this.name = name;
+        this.difficulte = difficulte;
+        this.etapeDebut = etapeDebut;
+        this.etapeFin = etapeFin;
+    }
 
-                /** Getters and setters */
+
+
+    /** Getters and setters */
+    public String getDepart() {
+        return depart;
+    }
+
+    public void setDepart(String depart) {
+        this.depart = depart;
+    }
+
+
+
 
     public String getName() {
         return name;
