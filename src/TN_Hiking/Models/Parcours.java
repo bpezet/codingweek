@@ -11,20 +11,25 @@ public class Parcours {
     protected String descriptionDetaillee;
     protected ArrayList<Etape> etapes;
     protected int note;
-    protected String depart;
+    protected String departName;
     protected Etape etapeDebut;
-    protected Image imageParcours;
+    protected String imageParcours;
     protected Etape etapeFin;
     private String fichierExcelCoords;
 
-    public Parcours(String name, int difficulte, String depart) {
+    public Parcours(String name, int difficulte, String departName) {
         this.name = name;
         this.difficulte = difficulte;
-        this.etapeDebut = new Etape();
-        this.etapeDebut.setName(depart);
-        this.etapeFin = new Etape();
+        this.departName = departName;
+
         this.etapes = new ArrayList<>();
-        this.etapes.add(this.etapeDebut);
+
+
+    }
+
+    public void setEtapeDebut(){
+        this.etapeDebut = new Etape(this.departName,0,0);
+        this.etapes.set(0,this.etapeDebut);
     }
 
     public Parcours(String name, int difficulte, Etape etapeDebut, Etape etapeFin) {
@@ -39,11 +44,11 @@ public class Parcours {
 
     /** Getters and setters */
     public String getDepart() {
-        return depart;
+        return departName;
     }
 
     public void setDepart(String depart) {
-        this.depart = depart;
+        this.departName = depart;
     }
 
 
@@ -118,8 +123,11 @@ public class Parcours {
         this.etapes.add(etapeFin);
     }
 
+    public String getImage(){return this.imageParcours;}
+    public void setImage(String imageParcours){this.imageParcours = imageParcours;}
+
     public void showParcours(){
-        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+etapeDebut.getName());
+        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+departName);
         for(int i = 0;i<etapes.size();i++) {
             etapes.get(i).etapeShow();
         }

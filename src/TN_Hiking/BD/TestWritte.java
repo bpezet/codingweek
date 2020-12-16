@@ -9,9 +9,22 @@ import java.io.*;
 public class TestWritte {
 
     public static void main(String[] args) {
-        String pathName = "localVersion";
+        String BDD ="BDD";
+        String localSave = "localSave";
+
         Writter wr = new Writter();
-        wr.setPathName(pathName);
+
+
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            wr.setPathName(BDD+"\\"+localSave);
+        } else { // then it is a mac/linux piece of shit
+            wr.setPathName(BDD + "/" + localSave);
+        }
+
+
+
+
 
 
 
@@ -25,17 +38,11 @@ public class TestWritte {
         Etape etape1 = new Etape(name1,lat1,long1);
         Etape etape2 = new Etape(name2,lat2,long2);
 
-        Parcours parcours = new Parcours("",0,"");
-        parcours.setDifficulte(3);
-        parcours.setDepart("Strasbourg");
-        parcours.setName("Mon Premier Parcours");
+        Parcours parcours = new Parcours("Mon Premier Parcours",3,"Strasbourg");
         parcours.setEtapeDebut(etape1);
         parcours.setEtapeFin(etape2);
 
-        Parcours parcours2 = new Parcours("",2,"");
-        parcours2.setDepart("Nancy");
-        parcours2.setDifficulte(4);
-        parcours2.setName("Mon Deuxieme Parcours");
+        Parcours parcours2 = new Parcours("Mon Deuxieme Parcours",4,"Nancy");
         parcours2.setEtapeDebut(etape2);
         parcours2.setEtapeFin(etape1);
 

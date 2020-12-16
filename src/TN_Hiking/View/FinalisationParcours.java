@@ -1,6 +1,8 @@
 package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
+import TN_Hiking.BD.FileHandling;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,17 +12,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FinalisationParcours implements Initializable {
-    @FXML
-    MenuItem borderPane;
+    // First Main pane
     @FXML
     Slider note;
+
+    @FXML
+    public Button Image;
+    @FXML
+    MenuItem borderPane;
+
     @FXML
     TextField lieuFin;
     @FXML
@@ -84,7 +93,44 @@ public class FinalisationParcours implements Initializable {
         window.show();
 
     }
+    // #############################
+    /// Image things
+    // #############################
     public void ajoutImage() {
+        //System.out.println("hello");
+        String pathnameSRC;
+
+        String pathnameDEST;
+
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            pathnameDEST = "src\\TN_Hiking\\Ressources\\Import\\";
+        } else { // then it is a mac/linux piece of shit
+            pathnameDEST = "src/TN_Hiking/Ressources/";
+        }
+
+
+        FileChooser fileChooser;
+        fileChooser = new FileChooser();
+        //FIRST STEP: find file
+
+        FileHandling fl = new FileHandling();
+
+        Stage stage = (Stage) note.getScene().getWindow();
+        //File file = fileChooser.showOpenDialog(stage);
+        pathnameSRC = fl.getFilePath(stage);
+
+        //pour recuperer la tete du fichier
+        File file = new File(pathnameSRC);
+        System.out.println("Le fichier choisis est:"+pathnameSRC);
+
+        //Second Step: copie/move into Ressources
+        // + rename it if needed
+        fl.fileCopieColle(pathnameSRC,pathnameDEST+file.getName());
+
+        //TroisiemeEtape: Lier cette image a un parcours
+        int size = this.gParcours.getParcours().size();
+        this.gParcours.getParcours().get(size-1).setImage(pathnameDEST);
 
     }
     public void closeApp() {
