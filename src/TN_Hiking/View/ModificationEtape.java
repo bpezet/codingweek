@@ -42,8 +42,20 @@ public class ModificationEtape {
 
     private Marker markerSet;
 
+    private Double new_latitude =-1.0;
+
+    private Double new_longitude=-1.0;
+
+    private Marker newEtapeMarker;
+
     @FXML
-    private MapView mapView;
+    private TextField nomNewEtape;
+
+    @FXML
+    private TextField numEtape;
+
+    @FXML
+    private MapView mapView = new MapView();
 
     @FXML
     private ListView<String> listView;
@@ -60,8 +72,17 @@ public class ModificationEtape {
         this.parcours.addEtape(new Etape("Carcassonne", 43.21667, 2.35));
         Coordinate coords= new Coordinate(43.6, 1.43);
         this.markerSet = Marker.createProvided(Marker.Provided.BLUE).setVisible(false);
-        //this.markerSet = new Marker(getClass().getResource("/Logo.png"), -20, -20).setPosition(coords)
-        //        .setVisible(false);
+
+        List<Coordinate> list = new ArrayList<>();
+        for (Etape etape : this.parcours.getEtapes()){
+            list.add(new Coordinate(etape.getLatitude(), etape.getLongitude()));
+        }
+
+        this.track = new CoordinateLine(list).setColor(Color.BLACK).setWidth(10);
+        this.track.setVisible(true);
+
+        this.newEtapeMarker = Marker.createProvided(Marker.Provided.GREEN).setVisible(true);
+
     }
 
 
@@ -69,28 +90,13 @@ public class ModificationEtape {
         mapView.setZoom(ZOOM_DEFAULT);
         this.mapView.addMarker(this.markerSet);
 
-        this.track= Objects.requireNonNull(getCoordinateFromFile(getClass().getResource("../Ressources/M1.csv"))).orElse(new CoordinateLine
-                ()).setColor(Color.MAGENTA).setWidth(7);
-
+        setupEventHandlers();
         this.track.setVisible(true);
         this.mapView.addCoordinateLine(this.track);
 
 
     }
 
-    /**Prendre les coordonnées d'un fichier csv*/
-
-    private Optional<CoordinateLine> getCoordinateFromFile(URL url){
-        try(Stream<String> lignes = new BufferedReader(new InputStreamReader(url.openStream(), StandardCharsets.UTF_8)).lines())
-        { CoordinateLine coords = new CoordinateLine(lignes.map(ligne -> ligne.split(";")).filter(cordsFichier -> cordsFichier.length ==2)
-                .map(coordsValeurs -> new Coordinate(Double.valueOf(coordsValeurs[0]),Double.valueOf(coordsValeurs[1])))
-                .collect(Collectors.toList()));
-        return Optional.of(coords);
-        }catch (IOException e){ System.out.println("Problème chargement fichier");}
-        return Optional.empty();
-
-
-    }
 
 
 
@@ -112,19 +118,100 @@ public class ModificationEtape {
         }
     }
 
+    /**Mise à jour du tracer*/
+    @FXML
+    public void eventHandlerTracer(){
+        this.track.setVisible(false);
+        List<Coordinate> list = new ArrayList<>();
+        for (Etape etape : this.parcours.getEtapes()){
+            list.add(new Coordinate(etape.getLatitude(), etape.getLongitude()));
+        }
+        this.track = new CoordinateLine(list).setColor(Color.BLACK).setWidth(10);
+        this.track.setVisible(true);
+        this.mapView.addCoordinateLine(this.track);
+    }
+
+    @FXML
+    public void addEtape(){
+        if (this.new_longitude !=-1){
+            if (this.nomNewEtape.getText() != ""){
+                if (this.numEtape.getText() != ""){
+                    try{
+                        int i = Integer.parseInt(this.numEtape.getText());
+                        if (i<=this.parcours.getEtapes().size() && i>=0){
+                            ArrayList<Etape> newEtapes = new ArrayList<>();
+                            int k=0;
+                            for (int j=0; j<=this.parcours.getEtapes().size();j++) {
+                                if (j == i) {
+                                    newEtapes.add(new Etape(this.nomNewEtape.getText(), this.new_latitude, this.new_longitude));
+                                    k = 1;
+                                } else {
+                                    newEtapes.add(this.parcours.getSpecificEtape(j - k));
+                                }
+                            }
+                            this.parcours.setEtapes(newEtapes);
+                            this.updateList();
+                            this.newEtapeMarker.setVisible(false);
+                            this.numEtape.setText("");
+                            this.nomNewEtape.setText("");
+                        }
+                    }
+
+                    catch (Exception e){
+                        System.out.println("Le numéro d'étape n'est pas un entier :(");
+                    }
+
+                }
+            }
+        }
+    }
+
+    /**Mise à jour de la liste*/
+    public void updateList(){
+        List<String> listEtape = new ArrayList<>();
+        for (Etape etape : this.parcours.getEtapes()){
+            listEtape.add(etape.getName());
+        }
+        this.listView.getItems().setAll(listEtape);
+    }
+
+    /**Suppression d'une étape sélectionné de la liste*/
+    @FXML
+    public void supprimeEtape(){
+        try{
+            int i = this.listView.getSelectionModel().getSelectedIndex();
+            this.parcours.suppressionEtape(i);
+            this.updateList();
+            this.eventHandlerTracer();
+        }catch (Exception e){
+            System.out.println("Rien a été sélectionné dans la liste :(");
+        }
+    }
+
+    /**SetUp afin de connaitre les coordonnées de là où l'on a cliqué sur la carte*/
+    @FXML
+    public void setupEventHandlers(){
+        // add an event handler for singleclicks, set the click marker to the new position when it's visible
+        mapView.addEventHandler(MapViewEvent.MAP_CLICKED, event -> {
+            event.consume();
+            final Coordinate newPosition = event.getCoordinate().normalize();
+            this.new_latitude = newPosition.getLatitude();
+            this.new_longitude = newPosition.getLongitude();
+            this.newEtapeMarker.setVisible(true);
+            this.newEtapeMarker.setPosition(newPosition);
+            this.mapView.addMarker(this.newEtapeMarker);
+        });
+    }
+
 
 
     @FXML
     public void initialize(){
         this.mapView.initialize();
         this.mapView.setCenter(new Coordinate(49.00515,8.394922));
-        for (Etape etape : this.parcours.getEtapes()){
-            this.listView.getItems().add(etape.getName());
-            //this.mapView.addMarker(new Marker());
-        }
+        this.updateList();
         this.listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
-
+        this.eventHandlerTracer();
 
     }
 

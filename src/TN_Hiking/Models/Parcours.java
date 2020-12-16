@@ -130,4 +130,10 @@ public class Parcours {
         return this.etapes.get(i);
     }
 
+    public void suppressionEtape (int i){this.etapes.remove(i);}
+
+    public void addSpecificEtape(int i,Etape etape){
+        this.etapes.add(i,etape);
+    }
+
 }
