@@ -54,10 +54,13 @@ public class WelcomeView implements Initializable {
     public MenuItem printActiveButton;
     @FXML
     public MenuItem printLocalButton;
+    @FXML
+    public MenuItem generateParcours;
 
     // First Main pane
     @FXML
     public Pane firstPane;
+
 
     @FXML
     protected BorderPane mainPane;
@@ -139,6 +142,7 @@ public class WelcomeView implements Initializable {
     //######### FILE ######################
     //#####################################
     String localSave = "localSave";
+    String localBDD="BDD";
     @FXML
     public void setRefreshButton(){
         //cliquer sur ce boutton va vous faire charger
@@ -146,8 +150,14 @@ public class WelcomeView implements Initializable {
         // suppose qu'il y a deja eu une version locale enregistree auparavant
         // (ie: que le fichier localSave existe)
         Decoder dc = new Decoder();
-        // pas besoin d'indiquer le pathname, il est déjà preenregistre
         GestionnaireParcours neuGP;
+
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            dc.setPathName(localBDD+"\\"+localSave);
+        } else { // then it is a mac/linux piece of shit
+            dc.setPathName(localBDD + "/" + localSave);
+        }
         neuGP = dc.decodeAction();
         gestionnaireParcours = neuGP;
     }
@@ -162,7 +172,14 @@ public class WelcomeView implements Initializable {
 
         // on utilise l'outil d'exportation writter :)
         Writter wr = new Writter();
-        wr.setPathName(localSave);
+        System.out.println(System.getProperty("os.name"));
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            wr.setPathName(localBDD+"\\"+localSave);
+        } else { // then it is a mac/linux piece of shit
+            wr.setPathName(localBDD+"/"+localSave);
+        }
+
         wr.writeAction(this.gestionnaireParcours);
     }
     //for SaveAsButton
@@ -245,12 +262,13 @@ public class WelcomeView implements Initializable {
     }
 
     //#####################################
-    //######### FILE ######################
+    //######### debugg ######################
     //#####################################
     @FXML
     public void setPrintActiveButton(){
         // permet d'afficher le gestionnaire courant du array list
         // pour l'exemple on se créer un gestionnaire
+        /*
         String name1 = "name1";
         String name2 = "name2";
         double lat1 = 49.008764;
@@ -277,14 +295,48 @@ public class WelcomeView implements Initializable {
 
         gestionnaireParcours.addParcours(parcours);
         gestionnaireParcours.addParcours(parcours2);
-        gestionnaireParcours.showGestionnaire();
 
+         */
+        this.gestionnaireParcours.showGestionnaire();
     }
     @FXML
     public void setPrintLocalButton(){
         // fonction qui est cense afficher le gestionnaire contenu dans BDD
-        // pour l'instant on va print le local lol
-        this.gestionnaireParcours.showGestionnaire();}
+        Decoder dc;
+        dc = new Decoder();
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            dc.setPathName(localBDD+"\\"+localSave);
+        } else { // then it is a mac/linux piece of shit
+            dc.setPathName(localBDD + "/" + localSave);
+        }
+        GestionnaireParcours gp;
+        gp = dc.decodeAction();
+        gp.showGestionnaire();
+
+    }
+
+    public void setGenerateParcours(){
+        String name1 = "name1";
+        String name2 = "name2";
+        double lat1 = 49.008764;
+        double lat2 = 53.0097;
+        double long1 = 123.092;
+        double long2 = 450.302;
+
+        Etape etape1 = new Etape(name1,lat1,long1);
+        Etape etape2 = new Etape(name2,lat2,long2);
+
+        Parcours parcours = new Parcours("Mon Premier Parcours",3,"Strasbourg");
+        parcours.setEtapeDebut(etape1);
+        parcours.setEtapeFin(etape2);
+
+        Parcours parcours2 = new Parcours("Mon Deuxieme Parcours",2,"Nancy");
+        parcours2.setEtapeDebut(etape2);
+        parcours2.setEtapeFin(etape1);
+        gestionnaireParcours.addParcours(parcours);
+        gestionnaireParcours.addParcours(parcours2);
+    }
 
 
     /** Bouton : fermer l'application*/
