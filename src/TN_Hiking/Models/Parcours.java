@@ -172,7 +172,7 @@ public class Parcours {
         // y a une conversion degrés radian a faire
         // 180° = 2pi rad donc
         // x°   = x*2pi/180
-        ecart = 6371*Math.acos(   Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2-long1));
+        ecart = 6371*Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2-long1));
 
         return ecart;
     }
@@ -181,7 +181,7 @@ public class Parcours {
     {
         Double vitesseMoyenne = 4.0; //  km.h-1
         Double distance = this.getDistance();
-        return vitesseMoyenne*distance;
+        return distance/vitesseMoyenne;
     }
 
 }
