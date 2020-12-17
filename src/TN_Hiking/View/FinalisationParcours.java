@@ -23,6 +23,8 @@ import java.util.ResourceBundle;
 public class FinalisationParcours implements Initializable {
     // First Main pane
     @FXML
+    private  MenuBar my_bar;
+    @FXML
     Slider note;
 
     @FXML
@@ -42,6 +44,7 @@ public class FinalisationParcours implements Initializable {
     public FinalisationParcours(GestionnaireParcours gParcours) {
         this.gParcours = gParcours;
     }
+
     public void retourEnArriere(ActionEvent actionEvent) throws IOException {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("parcoursTracerView.fxml"));
@@ -55,7 +58,22 @@ public class FinalisationParcours implements Initializable {
             window.setScene(createWelcomeScene);
             window.show();
     }
+    @FXML
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.gParcours));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
     public void retourAuDebut(ActionEvent actionEvent) throws IOException {
+        this.gParcours.deleteParcours();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("welcomeView.fxml"));
         loader.setControllerFactory(iC->new WelcomeView(this.gParcours));

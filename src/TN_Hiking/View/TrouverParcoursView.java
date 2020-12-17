@@ -24,33 +24,35 @@ import java.util.ResourceBundle;
 public class TrouverParcoursView implements Initializable {
 
     @FXML
-    MenuBar my_bar;
+    private MenuBar my_bar;
     @FXML
-    MenuItem trouverParcours;
+    private MenuItem trouverParcours;
     @FXML
-    ScrollPane rechercheParcours;
+    private ScrollPane rechercheParcours;
     @FXML
-    TextField titreRecherche;
+    private TextField titreRecherche;
     @FXML
-    Slider distance;
+    private Slider distance;
     @FXML
-    Slider duree;
+    private Slider duree;
     @FXML
-    Slider difficulte;
+    private Slider difficulte;
     @FXML
-    TextField depart;
+    private TextField depart;
     @FXML
-    CheckBox distanceCheck;
+    private CheckBox distanceCheck;
     @FXML
-    CheckBox dureeCheck;
+    private CheckBox dureeCheck;
     @FXML
-    CheckBox difficulteCheck;
+    private CheckBox difficulteCheck;
     @FXML
-    CheckBox departCheck;
+    private CheckBox departCheck;
     @FXML
-    Button valider;
+    private Button valider;
     @FXML
     private ListView affichageResultats;
+    @FXML
+    private MenuItem homeButton;
 
     private GestionnaireParcours gParcours;
     private GestionnaireParcours resultatRecherche ;
@@ -85,6 +87,20 @@ public class TrouverParcoursView implements Initializable {
         window.show();
     }
 
+    @FXML
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.gParcours));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
 
     public void eventHandlerUpdateBouton(javafx.event.ActionEvent actionEvent) throws IOException{
         try {
