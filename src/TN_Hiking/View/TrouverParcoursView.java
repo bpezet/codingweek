@@ -47,11 +47,11 @@ public class TrouverParcoursView implements Initializable {
     Button valider;
 
     private GestionnaireParcours gParcours;
-    private GestionnaireParcours resultatRecherche = new GestionnaireParcours();
-    int difficultep = 3;
-    int distancep = 1;
-    int dureep = 1;
-    String departp;
+    private GestionnaireParcours resultatRecherche ;
+    private int difficultep = 6;
+    private int distancep = 21;
+    private int dureep = 11;
+    private String departp;
 
     public void closeApp() {
         Platform.exit();
@@ -119,21 +119,89 @@ public class TrouverParcoursView implements Initializable {
         if (this.departCheck.isSelected() == false) {
             departp = this.depart.getText();
         }
-        System.out.println(departp);
-        System.out.println(dureep);
-        System.out.println(distancep);
-        System.out.println(difficultep);
         ((Stage) valider.getScene().getWindow()).close();
     }
     public void rechercherParcours() {
+        this.resultatRecherche = new GestionnaireParcours();
         String titre = this.titreRecherche.getText();
         for (int k = 0; k < gParcours.getSize(); k++) {
-            if (gParcours.getParcours(k).getName() == titre ) {
+            if (gParcours.getParcours(k).getName().equals(titre)) {
                 this.resultatRecherche.addParcours(gParcours.getParcours(k));
             }
         }
 
+        if (resultatRecherche.getSize() > 1) {
+            if (distancep < 21) {
+                System.out.println("distance");
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDistance() > distancep) {
+                        this.resultatRecherche.deleteParcours();
+                    }
+                }
+            }
 
+            if (dureep < 11) {
+                System.out.println("duree");
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDuree() > distancep) {
+                        this.resultatRecherche.deleteParcours();
+                    }
+                }
+            }
+            if (difficultep <6) {
+                System.out.println("difficulte");
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    System.out.println(resultatRecherche.getParcours(k).getDifficulte());
+                    if (resultatRecherche.getParcours(k).getDifficulte() > distancep) {
+
+                        this.resultatRecherche.deleteParcours();
+                    }
+                }
+            }
+            /**if (!departp.equals(null)) {
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (!resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
+                        this.resultatRecherche.deleteParcours();
+                    }
+                }
+            }*/
+
+        }
+
+        else { //seulemnt distance est modifée
+            if (distancep < 21 && dureep == 6 && difficultep == 11 ) {
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDistance() < distancep) {
+                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                    }
+                }
+            }
+            //seulement duree est mofifiée
+            if (distancep ==21 && dureep < 6 && difficultep == 11 ) {
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDuree() > dureep) {
+                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                    }
+                }
+            }
+            if (difficultep <6) {
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDifficulte() > distancep) {
+                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                    }
+                }
+            }
+           /** if (!departp.equals(null)) {
+                for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                    if (resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
+                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                    }
+                }
+            }*/
+        }
+        for (int k = 0; k < resultatRecherche.getSize(); k++) {
+            System.out.println(resultatRecherche.getParcours().get(k).getName());
+        }
     }
 
     @Override

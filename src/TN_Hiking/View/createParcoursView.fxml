@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.CreateParcoursView">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#retourButton" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.CreateParcoursView">
    <children>
        <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
            <menus>
@@ -51,7 +51,8 @@
        </ChoiceBox>
       <Label layoutX="43.0" layoutY="209.0" prefHeight="17.0" prefWidth="126.0" text="Nom du lieu de départ :" />
       <TextField fx:id="depart" layoutX="175.0" layoutY="204.0" />
-      <Button layoutX="347.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeSceneCreateToTracer" prefHeight="27.0" prefWidth="126.0" text="Tracer le parcours" />
+      <Button layoutX="255.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeSceneCreateToTracer" prefHeight="27.0" prefWidth="126.0" text="Tracer le parcours" />
       <Button layoutX="497.0" layoutY="335.0" mnemonicParsing="false" onAction="#changeSceneWelcomeView" text="Annuler" />
+      <Button layoutX="413.0" layoutY="335.0" mnemonicParsing="false" text="Retour" />
    </children>
 </Pane>

@@ -129,13 +129,13 @@ public class Parcours {
     public void setImage(String imageParcours){this.imageParcours = imageParcours;}
 
     public void showParcours(){
-        System.out.println("ParcoursNom:"+name+" Difficulte:"+difficulte+" DepartName:"+departName);
-        System.out.println("DescriptionCourte:"+descriptionCourte+" Note:"+note+" imageParcours:" +imageParcours);
-        System.out.println("DescriptionDetaillee:"+descriptionDetaillee);
+        System.out.println("ParcoursNom:"+this.name+" Difficulte:"+this.difficulte+" DepartName:"+this.departName);
+        System.out.println("DescriptionCourte:"+this.descriptionCourte+" Note:"+this.note+" imageParcours:" +this.imageParcours);
+        System.out.println("DescriptionDetaillee:"+this.descriptionDetaillee);
         for(int i = 0;i<etapes.size();i++) {
             etapes.get(i).etapeShow();
         }
-        System.out.println("Fin du parcours "+name);
+        System.out.println("Fin du parcours "+this.name);
     }
 
     public Etape getSpecificEtape(int i){
