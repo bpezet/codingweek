@@ -139,7 +139,7 @@ public class VisualiserParcours {
         this.myMap.addCoordinateLine(this.track);
         try {
             File file = new File(this.p.getImage());
-            Image image = new Image("lapin.jpeg");
+            Image image = new Image("TN_Hiking/Ressources/lapin.jpeg");
             this.imageParcours.setImage(image);
         }catch(Exception e){
             e.printStackTrace();
