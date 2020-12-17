@@ -177,4 +177,11 @@ public class Parcours {
         return ecart;
     }
 
+    public Double getDuree()
+    {
+        Double vitesseMoyenne = 4.0; //  km.h-1
+        Double distance = this.getDistance();
+        return vitesseMoyenne*distance;
+    }
+
 }
