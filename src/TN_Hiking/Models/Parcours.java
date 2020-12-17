@@ -1,6 +1,9 @@
 package TN_Hiking.Models;
 
 import javafx.scene.image.Image;
+
+
+
 import java.util.ArrayList;
 
 public class Parcours {
@@ -138,6 +141,12 @@ public class Parcours {
 
     public Etape getSpecificEtape(int i){
         return this.etapes.get(i);
+    }
+
+    public void suppressionEtape (int i){this.etapes.remove(i);}
+
+    public void addSpecificEtape(int i,Etape etape){
+        this.etapes.add(i,etape);
     }
 
 }

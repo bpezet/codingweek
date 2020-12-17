@@ -9,6 +9,7 @@ import TN_Hiking.Models.Parcours;
 
 import javafx.application.Platform;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,6 +83,8 @@ public class WelcomeView implements Initializable {
     private ImageView image1;
     @FXML
     private ImageView image2;
+
+    private int k=0;
 
     private GestionnaireParcours gestionnaireParcours;
 
@@ -267,6 +270,25 @@ public class WelcomeView implements Initializable {
 
     }
 
+    /** Randonnées > Visualiser un parcours */
+    public void visualiserParcours(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
+        loader.setControllerFactory(iC->new VisualiserParcours());
+        Parent createParcoursParent = loader.load();
+
+        VisualiserParcours visualiserParcours = loader.getController();
+        visualiserParcours.initMapAndControls();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+
     //#####################################
     //######### debugg ######################
     //#####################################
@@ -327,10 +349,91 @@ public class WelcomeView implements Initializable {
     }
 
 
+    public void eventHandlerFirstButtonParcours() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
+        loader.setControllerFactory(iC->new VisualiserParcours(/*this.gestionnaireParcours.getParcours(0)*/));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+
+    public void eventHandlerSecondButtonParcours() throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
+        loader.setControllerFactory(iC->new VisualiserParcours(/*this.gestionnaireParcours.getParcours(1)*/));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+
+
     /** Bouton : fermer l'application*/
     public void closeApp() {
         Platform.exit();
     }
+
+
+    public void affichageParcoursSuivantBouton(){
+        k=k+2;
+        affichageParcours(1);
+    }
+
+    public void affichageParcoursPrecedantBouton(){
+        k=k-2;
+        affichageParcours(-1);
+    }
+
+    /**@param type = 1 si l'on a incrémenté de 2
+     * @param type = -1 si l'on a désincementé de 2
+     * Cela permet de remonté à l'état initial si erreur il y a*/
+    public void affichageParcours(int type){
+        try {
+            /**Test de l'affichage des parcours*/
+            /**Premier Parcours*/
+            this.setGenerateParcours();
+            this.titre1.setText(this.gestionnaireParcours.getParcours(k).getName());
+            //this.duree1.setText(this.gestionnaireParcours.getParcours(k).getDuree());
+            this.difficulte1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDifficulte()));
+            //this.distance1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDistance()));
+        }catch(Exception e){
+            System.out.println("Parcours 1 inconnu :(");
+            if (type ==1){
+                k=k-2;
+            } else if (type == -1) {
+                k=k+2;
+            }
+        }
+
+        try {
+            /**Deuxième parcours*/
+            this.titre2.setText(this.gestionnaireParcours.getParcours(k+1).getName());
+            //this.duree2.setText(this.gestionnaireParcours.getParcours(k+1).getDuree());
+            this.difficulte2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDifficulte()));
+            //this.distance2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDistance()));
+        }catch(Exception e){
+            System.out.println("Parcours 2 inconnu :(");
+            if (type ==1){
+                k=k-2;
+            } else if (type == -1) {
+                k=k+2;
+            }
+        }
+
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -339,11 +442,7 @@ public class WelcomeView implements Initializable {
         Image img2 = new Image("TN_Hiking/Ressources/lapin.jpeg");
         image2.setImage(img2);
 
+        this.affichageParcours(0);
+
     }
-
-
-
-
-
-
 }
