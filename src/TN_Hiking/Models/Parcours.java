@@ -1,9 +1,9 @@
 package TN_Hiking.Models;
 
 import javafx.scene.image.Image;
+import java.lang.Math.*;
 
-
-
+import javax.swing.plaf.synth.SynthScrollBarUI;
 import java.util.ArrayList;
 
 public class Parcours {
@@ -146,6 +146,35 @@ public class Parcours {
 
     public void addSpecificEtape(int i,Etape etape){
         this.etapes.add(i,etape);
+    }
+
+    public double getDistance(){
+        double dist =0.0;
+        if( this.etapes.size()<=1 ){
+            System.out.println("error: pas assez d'etapes \n");
+        } else {
+
+            for(int i = 0; i < this.etapes.size()-1 ; i++){
+                dist += getEcart(this.etapes.get(i),this.etapes.get(i+1));
+            }
+        }
+        return dist;
+    }
+    public double getEcart(Etape e1,Etape e2){
+        double ecart = 0.0;
+        double lat1 = e1.getLatitude()*((2*Math.PI)/180);
+        double lat2 = e2.getLatitude()*((2*Math.PI)/180);
+
+        double long1 = e1.getLongitude()*((2*Math.PI)/180);
+        double long2 = e2.getLongitude()*((2*Math.PI)/180);
+
+        // Distance en Km= ACOS(SIN(lat1)SIN(lat2)+COS(lat1)COS(lat2)COS(lon2-lon1))6371
+        // y a une conversion degrés radian a faire
+        // 180° = 2pi rad donc
+        // x°   = x*2pi/180
+        ecart = 6371*Math.acos(   Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2) *Math.cos(long2-long1));
+
+        return ecart;
     }
 
 }

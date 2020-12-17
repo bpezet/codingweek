@@ -255,8 +255,8 @@ public class WelcomeView implements Initializable {
                 if (split.length == 2) {
                     Etape etape = new Etape("Etape"+nbEtape,Double.parseDouble(split[0]),Double.parseDouble(split[1]));
                     etape.setName("Etape"+nbEtape);
-                    etape.setLongitude(Double.parseDouble(split[0]));
-                    etape.setLatitude(Double.parseDouble(split[1]));
+                    etape.setLongitude(Double.parseDouble(split[1]));
+                    etape.setLatitude(Double.parseDouble(split[0]));
                     NewParcours.addEtape(etape);
 
                 } else { System.out.println("Error au splitage ligne: FILE NOT CONVENTIONAL"); } // faut verifier la gueule du fichier
