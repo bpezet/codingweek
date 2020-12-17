@@ -141,8 +141,8 @@ public class VisualiserParcours {
         this.track.setVisible(true);
         this.myMap.addCoordinateLine(this.track);
         try {
-            File file = new File(this.p.getImage());
-            Image image = new Image(file.toPath().toString());
+          //File file = new File(this.p.getImage());
+            Image image = new Image(this.p.getImage().substring(4));
             this.imageParcours.setImage(image);
         }catch(Exception e){
             e.printStackTrace();
