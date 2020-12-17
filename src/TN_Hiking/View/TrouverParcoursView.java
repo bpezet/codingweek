@@ -10,10 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,8 +27,21 @@ public class TrouverParcoursView implements Initializable {
     ScrollPane rechercheParcours;
     @FXML
     TextField titreRecherche;
+    @FXML
+    Slider distance;
+    @FXML
+    Slider duree;
+    @FXML
+    Slider difficulte;
+    @FXML
+    TextField depart;
+
     private GestionnaireParcours gParcours;
-    private GestionnaireParcours gParcours2;
+    private GestionnaireParcours resultatRecherche = new GestionnaireParcours();
+    Double difficultep;
+    Double distancep;
+    Double dureep;
+    String departp;
 
     public void closeApp() {
         Platform.exit();
@@ -82,17 +92,21 @@ public class TrouverParcoursView implements Initializable {
         stage.setTitle("Critère possible pour affiner la recherche");
         stage.setScene(new Scene(root1, 487, 214));
         stage.show();
+        difficultep = this.distance.getValue();
+        dureep = this.duree.getValue();
+        distancep = this.difficulte.getValue();
+        departp = this.depart.getText();
     }
 
 
     public void rechercherParcours() {
         String titre = this.titreRecherche.getText();
-        System.out.println(titre);
         for (int k=0; k < gParcours.getSize(); k++) {
-            if (gParcours.getParcours(k).getName() == titre) {
-                this.gParcours2.addParcours(gParcours.getParcours(k));
+            if (gParcours.getParcours(k).getName() == titre ) {
+                this.resultatRecherche.addParcours(gParcours.getParcours(k));
             }
         }
+
     }
 
     @Override

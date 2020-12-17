@@ -18,8 +18,7 @@ public class Parcours {
     protected String imageParcours;
     protected Etape etapeFin;
     //private String fichierExcelCoords;
-    // j'ai supprime fichier ExcelCoors car on a GPX import
-
+    // j'ai supprime fichier ExcelCoors car on a GPX impport
     public Parcours(String name, int difficulte, String departName) {
         this.name = name;
         this.difficulte = difficulte;

@@ -40,8 +40,8 @@ public class VisualiserParcours {
 
     /** Constructeur */
     public VisualiserParcours(){
-        Etape deb = new Etape("Telecom Nancy", 54.0,600.0);
-        Etape fin = new Etape("Place Stanislas", 54.54,654.0);
+        Etape deb = new Etape("Telecom Nancy", 48.669679,6.154803);
+        Etape fin = new Etape("Place Stanislas", 48.693829,6.182534);
         this.p = new Parcours("Balade en centre-ville",1,deb,fin);
         this.p.setDescriptionCourte("Petit parcours commençant à l'école Telecom menant à la place Stanislas.");
         this.p.setDifficulte(1);
@@ -87,6 +87,7 @@ public class VisualiserParcours {
 
     @FXML
     public void eventHandlerTracer(){
+        /**
         this.track.setVisible(false);
         List<Coordinate> list = new ArrayList<>();
         for (Etape etape : this.p.getEtapes()){
@@ -95,9 +96,19 @@ public class VisualiserParcours {
         this.track = new CoordinateLine(list).setColor(Color.BLACK).setWidth(10);
         this.track.setVisible(true);
         this.myMap.addCoordinateLine(this.track);
+        */
     }
 
+
     public void extendInfo(MouseEvent mouseEvent) {
+        this.track.setVisible(false);
+        List<Coordinate> list = new ArrayList<>();
+        for (Etape etape : this.p.getEtapes()){
+            list.add(new Coordinate(etape.getLatitude(), etape.getLongitude()));
+        }
+        this.track = new CoordinateLine(list).setColor(Color.BLACK).setWidth(10);
+        this.track.setVisible(true);
+        this.myMap.addCoordinateLine(this.track);
         /**
         this.expandClick++;
         //Click impair : more info
