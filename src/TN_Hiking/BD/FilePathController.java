@@ -25,8 +25,6 @@ public class FilePathController {
             fl.copydir(srcDir, destDir.toPath().toRealPath().toFile());
         } catch(IOException e) { e.printStackTrace();}
 
-
-
         //fl.fileCopieColle(srcDir.toPath().toString(),destDir.toPath().toString());
         //fl.fileCopy(srcDir,destDir.toPath().toFile());
         //fl.fileCopy(srcDir,destDir);
@@ -37,8 +35,5 @@ public class FilePathController {
         */
 
         //fl.fileCopy();
-
-
-
     }
 }

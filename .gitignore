@@ -63,3 +63,6 @@ crashlytics.properties
 crashlytics-build.properties
 
 # Created by .ignore support plugin (hsz.mobi)
+/src/TN_Hiking/Ressources/Import/
+#keep the directory
+!/src/TN_Hiking/Ressources/Import/.gitkeep

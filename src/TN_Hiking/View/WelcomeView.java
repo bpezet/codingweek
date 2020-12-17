@@ -19,7 +19,6 @@ import javafx.scene.control.MenuBar;
 
 import javafx.scene.control.MenuItem;
 
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -31,10 +30,6 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.LinkOption;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
@@ -154,7 +149,11 @@ public class WelcomeView implements Initializable {
     //######### FILE ######################
     //#####################################
     String localSave = "localSave";
-    String localBDD="BDD";
+    String BDD ="BDD";
+    //for SaveAsButton
+    FileChooser fileChooser;
+    DirectoryChooser directoryChooser;
+
     @FXML
     public void setRefreshButton(){
         //cliquer sur ce boutton va vous faire charger
@@ -163,13 +162,8 @@ public class WelcomeView implements Initializable {
         // (ie: que le fichier localSave existe)
         Decoder dc = new Decoder();
         GestionnaireParcours neuGP;
-
-        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
-        {
-            dc.setPathName(localBDD+"\\"+localSave);
-        } else { // then it is a mac/linux piece of shit
-            dc.setPathName(localBDD + "/" + localSave);
-        }
+        dc.setPathDirName(BDD);
+        dc.setLocalSave(localSave);
         neuGP = dc.decodeAction();
         gestionnaireParcours = neuGP;
     }
@@ -185,35 +179,20 @@ public class WelcomeView implements Initializable {
         // on utilise l'outil d'exportation writter :)
         Writter wr = new Writter();
         System.out.println(System.getProperty("os.name"));
-        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
-        {
-            wr.setPathName(localBDD+"\\"+localSave);
-        } else { // then it is a mac/linux piece of shit
-            wr.setPathName(localBDD+"/"+localSave);
-        }
-
+        wr.setPathDirName(BDD);
         wr.writeAction(this.gestionnaireParcours);
     }
-    //for SaveAsButton
-    FileChooser fileChooser;
+
     @FXML
     public void setSaveAsButton() {
         // first step: find directory where you wanna your saveFile "localSave"
-        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser = new DirectoryChooser();
         Stage stage = (Stage) firstPane.getScene().getWindow();
         File file = directoryChooser.showDialog(stage);
         System.out.println(file.getPath().toString()); // on verifie qu'on a bien le bon directory
         //second step: as always we need ton write in this directory: we call Writter man
         Writter wr = new Writter();
-        //quete annexe: trouver le delimiteur approprié (windows ou linux ?)
-        System.out.print("Operating System: ");
-        System.out.println(System.getProperty("os.name"));
-        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
-        {
-            wr.setPathName(file.getPath().toString()+"\\"+localSave);
-        } else { // then it is a mac/linux piece of shit
-            wr.setPathName(file.getPath().toString()+"/"+localSave);
-        }
+        wr.setPathDirName(file.getAbsolutePath());
         wr.writeAction(this.gestionnaireParcours); //done
     }
     @FXML
@@ -221,13 +200,13 @@ public class WelcomeView implements Initializable {
     {
         GestionnaireParcours neuGP;
         //FIRST STEP: find file
-        fileChooser = new FileChooser();
+        directoryChooser = new DirectoryChooser();
         Stage stage = (Stage) firstPane.getScene().getWindow();
-        File file = fileChooser.showOpenDialog(stage);
-        System.out.println("Le fichier choisis est:"+file.getPath().toString());
+        File file = directoryChooser.showDialog(stage);
+        System.out.println("Le directory choisis est:"+file.getPath());
 
         Decoder dc = new Decoder();
-        dc.setPathName(file.getPath().toString());
+        dc.setPathDirName(file.getPath());
         neuGP = dc.decodeAction();
         gestionnaireParcours = neuGP;
     }
@@ -239,6 +218,18 @@ public class WelcomeView implements Initializable {
         // etape1,etape2,etape3 ect..
 
         Parcours NewParcours = new Parcours("NewParcours",0,"Tera");
+        NewParcours.setNote(0);
+        NewParcours.setDescriptionDetaillee("DetailedDesc");
+        NewParcours.setDescriptionCourte("ShortDesc");
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            NewParcours.setImage("src\\TN_Hiking\\Ressources\\Import\\lapin.jpeg");
+        } else { // then it is a mac/linux piece of shit
+            NewParcours.setImage("src/TN_Hiking/Ressources/Import/lapin.jpeg");
+        }
+
+
+
         int nbEtape = 0;
         //FIRST STEP: find file
         fileChooser = new FileChooser();
@@ -260,6 +251,9 @@ public class WelcomeView implements Initializable {
                 // for(int i = 0;i<split.length;i++) { System.out.println(split[i]); }
                 if (split.length == 2) {
                     Etape etape = new Etape("Etape"+nbEtape,Double.parseDouble(split[0]),Double.parseDouble(split[1]));
+                    etape.setName("Etape"+nbEtape);
+                    etape.setLongitude(Double.parseDouble(split[0]));
+                    etape.setLatitude(Double.parseDouble(split[1]));
                     NewParcours.addEtape(etape);
 
                 } else { System.out.println("Error au splitage ligne: FILE NOT CONVENTIONAL"); } // faut verifier la gueule du fichier
@@ -286,12 +280,7 @@ public class WelcomeView implements Initializable {
         // fonction qui est cense afficher le gestionnaire contenu dans BDD
         Decoder dc;
         dc = new Decoder();
-        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
-        {
-            dc.setPathName(localBDD+"\\"+localSave);
-        } else { // then it is a mac/linux piece of shit
-            dc.setPathName(localBDD + "/" + localSave);
-        }
+        dc.setPathDirName(BDD);
         GestionnaireParcours gp;
         gp = dc.decodeAction();
         gp.showGestionnaire();
@@ -312,10 +301,27 @@ public class WelcomeView implements Initializable {
         Parcours parcours = new Parcours("Mon Premier Parcours",3,"Strasbourg");
         parcours.setEtapeDebut(etape1);
         parcours.setEtapeFin(etape2);
+        parcours.setNote(3);
+        parcours.setDescriptionCourte("descCourte1");
+        parcours.setDescriptionDetaillee("descdetaille1");
+
 
         Parcours parcours2 = new Parcours("Mon Deuxieme Parcours",2,"Nancy");
         parcours2.setEtapeDebut(etape2);
         parcours2.setEtapeFin(etape1);
+        parcours2.setNote(20);
+        parcours2.setDescriptionCourte("descCourte2");
+        parcours2.setDescriptionDetaillee("descDetaille2");
+
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            parcours.setImage("src\\TN_Hiking\\Ressources\\lapin.jpeg");
+            parcours2.setImage("src\\TN_Hiking\\Ressources\\Logo.png");
+        } else { // then it is a mac/linux piece of shit
+            parcours.setImage("src/TN_Hiking/Ressources/lapin.jpeg");
+            parcours2.setImage("src/TN_Hiking/Ressources/Logo.png");
+        }
+
         gestionnaireParcours.addParcours(parcours);
         gestionnaireParcours.addParcours(parcours2);
     }
