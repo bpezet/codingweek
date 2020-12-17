@@ -5,18 +5,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ModificationEtape">
+<AnchorPane prefHeight="400.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ModificationEtape">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="535.0">
+      <BorderPane prefHeight="400.0" prefWidth="652.0">
+         <top>
+            <MenuBar fx:id="my_bar" prefHeight="26.0" prefWidth="627.0" BorderPane.alignment="CENTER">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Home">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Outils">
+                     <items>
+                        <MenuItem fx:id="borderPane" mnemonicParsing="false" text="Créer un parcours" />
+                        <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Randonnées">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
+                        <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                        <MenuItem mnemonicParsing="false" text="Importer" />
+                        <MenuItem mnemonicParsing="false" text="Exporter" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Gestion">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Favoris" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </top>
          <right>
 
          </right>
          <left>
-            <ListView fx:id="listView" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="257.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="listView" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="275.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
          </left>
          <bottom>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="557.0" spacing="15.0" BorderPane.alignment="CENTER">
                <children>
+                  <Button mnemonicParsing="false" onAction="#eventHandlerBackButton" text="Retour" />
                   <Button mnemonicParsing="false" onAction="#eventHandlerTracer" text="Tracer le parcours" />
                   <Button mnemonicParsing="false" onAction="#supprimeEtape" text="Supprimer étape" />
                   <Button mnemonicParsing="false" onAction="#addEtape" prefHeight="28.0" prefWidth="88.0" text="Ajouter Etape" />
@@ -27,10 +58,10 @@
             </HBox>
          </bottom>
          <center>
-            <MapView fx:id="mapView" />
+            <MapView fx:id="mapView" prefHeight="274.0" prefWidth="462.0" />
          </center>
       </BorderPane>
-      <TextField fx:id="nomNewEtape" layoutX="464.0" layoutY="319.0" prefHeight="26.0" prefWidth="156.0" promptText="Nom de la nouvelle étape" />
-      <TextField fx:id="numEtape" layoutX="464.0" layoutY="345.0" prefHeight="26.0" prefWidth="156.0" promptText="Numéro de la nouvelle étape" />
+      <TextField fx:id="nomNewEtape" layoutX="523.0" layoutY="319.0" prefHeight="26.0" prefWidth="128.0" promptText="Nom de la nouvelle étape" />
+      <TextField fx:id="numEtape" layoutX="523.0" layoutY="345.0" prefHeight="26.0" prefWidth="128.0" promptText="Numéro de la nouvelle étape" />
    </children>
 </AnchorPane>

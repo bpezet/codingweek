@@ -78,17 +78,20 @@ public class TrouverParcoursView implements Initializable {
 
 
     public void eventHandlerUpdateBouton(javafx.event.ActionEvent actionEvent) throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("updateParcours.fxml"));
-        loader.setControllerFactory(iC->new UpdateParcours(this.gParcours));
-        Parent createParcoursParent = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("updateParcours.fxml"));
+            loader.setControllerFactory(iC -> new UpdateParcours(this.gParcours, this.gParcours.getParcours(0)));
+            Parent createParcoursParent = loader.load();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
+            Scene createParcoursScene = new Scene(createParcoursParent);
 
-        Stage window = (Stage) my_bar.getScene().getWindow();
+            Stage window = (Stage) my_bar.getScene().getWindow();
 
-        window.setScene(createParcoursScene);
-        window.show();
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+        }
     }
 
     public void plusDeCritère(ActionEvent actionEvent) throws IOException {

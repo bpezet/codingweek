@@ -123,31 +123,36 @@ public class WelcomeView implements Initializable {
         window.show();
     }
     @FXML
-    public void eventHandlerUpdateBouton() throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("updateParcours.fxml"));
-        loader.setControllerFactory(iC->new UpdateParcours(this.gestionnaireParcours));
-        Parent createParcoursParent = loader.load();
+    public void eventHandlerUpdateBouton() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("updateParcours.fxml"));
+            loader.setControllerFactory(iC -> new UpdateParcours(this.gestionnaireParcours, this.gestionnaireParcours.getParcours(0)));
+            Parent createParcoursParent = loader.load();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
+            Scene createParcoursScene = new Scene(createParcoursParent);
 
-        Stage window = (Stage) my_bar.getScene().getWindow();
+            Stage window = (Stage) my_bar.getScene().getWindow();
 
-        window.setScene(createParcoursScene);
-        window.show();
+            window.setScene(createParcoursScene);
+            window.show();
+        } catch (Exception e) {
+        }
     }
 
     @FXML
     public void testMap() throws IOException{
     }
 
-
+/*
     @FXML
     public void eventHandlerAfficheParcours(){
         FxmlLoaderScreen object = new FxmlLoaderScreen();
         Pane view = object.getPane("showParcoursView",this.gestionnaireParcours);
         mainPane.setCenter(view);
     }
+
+ */
     //#####################################
     //######### FILE ######################
     //#####################################

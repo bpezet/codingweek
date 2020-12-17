@@ -48,7 +48,7 @@ public class UpdateParcours {
     GestionnaireParcours ges;
     Parcours parcours;
 
-    public UpdateParcours(GestionnaireParcours gestionnaireParcours){
+    public UpdateParcours(GestionnaireParcours gestionnaireParcours,Parcours parcours){
         this.ges = gestionnaireParcours;
         this.parcours = new Parcours("ParcoursTest",5, new Etape("Moncuq",1,1),new Etape("Moncuq",2,2));
 
@@ -57,7 +57,7 @@ public class UpdateParcours {
     public void eventHandlerModificationEtape() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("modificationEtape.fxml"));
-        loader.setControllerFactory(iC->new ModificationEtape(this.parcours));
+        loader.setControllerFactory(iC->new ModificationEtape(this.ges,this.parcours));
         Parent createParcoursParent = loader.load();
 
         ModificationEtape modificationEtape = loader.getController();
@@ -90,17 +90,20 @@ public class UpdateParcours {
 
     @FXML
     public void eventHandlerUpdateBouton() throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("updateParcours.fxml"));
-        loader.setControllerFactory(iC->new UpdateParcours(this.ges));
-        Parent createParcoursParent = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("updateParcours.fxml"));
+            loader.setControllerFactory(iC -> new UpdateParcours(this.ges, this.ges.getParcours(0)));
+            Parent createParcoursParent = loader.load();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
+            Scene createParcoursScene = new Scene(createParcoursParent);
 
-        Stage window = (Stage) my_bar.getScene().getWindow();
+            Stage window = (Stage) my_bar.getScene().getWindow();
 
-        window.setScene(createParcoursScene);
-        window.show();
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+        }
     }
 
     @FXML
