@@ -276,11 +276,12 @@ public class WelcomeView implements Initializable {
 
     }
 
-    /** Randonnées > Visualiser un parcours */
+    /** À ENLEVER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    /** Randonnées > Visualiser un parcours
     public void visualiserParcours(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
-        loader.setControllerFactory(iC->new VisualiserParcours());
+        loader.setControllerFactory(iC->new VisualiserParcours(this.selectedParcours));
         Parent createParcoursParent = loader.load();
 
         VisualiserParcours visualiserParcours = loader.getController();
@@ -293,7 +294,7 @@ public class WelcomeView implements Initializable {
         window.setScene(createParcoursScene);
         window.show();
     }
-
+*/
 
     //#####################################
     //######### debugg ######################

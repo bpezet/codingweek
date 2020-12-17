@@ -40,7 +40,7 @@
         <Menu mnemonicParsing="false" text="Randonnées">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
-                <MenuItem mnemonicParsing="false" onAction="#visualiserParcours" text="Visualiser un parcours" />
+                <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
                 <MenuItem mnemonicParsing="false" text="Importer" />
                 <MenuItem mnemonicParsing="false" text="Exporter" />
             </items>

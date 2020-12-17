@@ -1,6 +1,7 @@
 package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
+import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -11,10 +12,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class TrouverParcoursView implements Initializable {
@@ -45,6 +49,8 @@ public class TrouverParcoursView implements Initializable {
     CheckBox departCheck;
     @FXML
     Button valider;
+    @FXML
+    private ListView affichageResultats;
 
     private GestionnaireParcours gParcours;
     private GestionnaireParcours resultatRecherche ;
@@ -52,6 +58,9 @@ public class TrouverParcoursView implements Initializable {
     private int distancep = 21;
     private int dureep = 11;
     private String departp;
+
+    private List<String> listResultat;
+    private Parcours selectedParcours;
 
     public void closeApp() {
         Platform.exit();
@@ -265,10 +274,39 @@ public class TrouverParcoursView implements Initializable {
             System.out.println(resultatRecherche.getParcours().get(k).getDistance());
             System.out.println(resultatRecherche.getParcours().get(k).getDuree());
         }
+
+        /** affichage dans la ListView */
+
+        this.listResultat = new ArrayList<>();
+        for(Parcours p : this.resultatRecherche.getParcours()){
+            listResultat.add(p.getName());
+        }
+        this.affichageResultats.getItems().setAll(listResultat);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.trouverParcours.setDisable(true);
+    }
+
+    public void parcoursSelectionned(MouseEvent mouseEvent) {
+        this.selectedParcours = this.resultatRecherche.getParcours(this.affichageResultats.getSelectionModel().getSelectedIndex());
+    }
+
+    public void visualiserParcours(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
+        loader.setControllerFactory(iC->new VisualiserParcours(this.selectedParcours));
+        Parent createParcoursParent = loader.load();
+
+        VisualiserParcours visualiserParcours = loader.getController();
+        visualiserParcours.initMapAndControls();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
     }
 }
