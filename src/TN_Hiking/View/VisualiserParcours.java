@@ -48,6 +48,10 @@ public class VisualiserParcours {
     @FXML
     private Label end;
     @FXML
+    private Label length;
+    @FXML
+    private Label duration;
+    @FXML
     private ImageView imageParcours = new ImageView();
     @FXML
     private Button fermerButton;
@@ -93,9 +97,6 @@ public class VisualiserParcours {
         Platform.exit();
     }
 
-    public void changeSceneCreerParcours(ActionEvent actionEvent) {
-    }
-
 
     @FXML
     public void eventHandlerBoutonModifier(){
@@ -131,6 +132,12 @@ public class VisualiserParcours {
         this.begin.setText(this.p.getSpecificEtape(0).getName());
         this.end.setText(this.p.getSpecificEtape(this.p.getEtapes().size()-1).getName());
         this.long_desc.setText(this.p.getDescriptionDetaillee());
+        this.length.setText(String.valueOf(this.p.getDistance()).substring(0,3)+" km");
+
+        String heure = String.valueOf((int)(((this.p.getDuree()*60)/60)));
+        String minutes = String.valueOf((int)(((this.p.getDuree()*60)%60)));
+        if(minutes.length()==1){ minutes = "0"+minutes; }
+        this.duration.setText(heure+"h"+minutes+"min");
 
         /** tracer le parcours */
         List<Coordinate> list = new ArrayList<>();
@@ -141,8 +148,7 @@ public class VisualiserParcours {
         this.track.setVisible(true);
         this.myMap.addCoordinateLine(this.track);
         try {
-            File file = new File(this.p.getImage());
-            //System.out.println(file.getName().substring(4));
+          //File file = new File(this.p.getImage());
             Image image = new Image(this.p.getImage().substring(4));
             this.imageParcours.setImage(image);
         }catch(Exception e){
