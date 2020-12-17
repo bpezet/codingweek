@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ModificationEtape">
+<AnchorPane prefHeight="400.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ModificationEtape">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="652.0">
          <top>
@@ -27,8 +27,6 @@
                      <items>
                         <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
                         <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                        <MenuItem mnemonicParsing="false" text="Importer" />
-                        <MenuItem mnemonicParsing="false" text="Exporter" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Gestion">

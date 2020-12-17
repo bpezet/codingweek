@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="246.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ListeParcoursView">
+<AnchorPane prefHeight="246.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ListeParcoursView">
     <children>
         <Pane prefHeight="246.0" prefWidth="394.0">
             <children>
@@ -28,8 +28,6 @@
                     <items>
                         <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
                         <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                        <MenuItem mnemonicParsing="false" text="Importer" />
-                        <MenuItem mnemonicParsing="false" text="Exporter" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Gestion">

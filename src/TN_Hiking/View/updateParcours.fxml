@@ -42,8 +42,6 @@
                    <items>
                        <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
                        <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Importer" />
-                       <MenuItem mnemonicParsing="false" text="Exporter" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Gestion">
