@@ -99,16 +99,16 @@ public class FinalisationParcours implements Initializable {
     public void ajoutImage() {
         //System.out.println("hello");
         String pathnameSRC;
-
         String pathnameDEST;
-
+        String demarcor="";
         if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
         {
+            demarcor = "\\";
             pathnameDEST = "src\\TN_Hiking\\Ressources\\Import\\";
         } else { // then it is a mac/linux piece of shit
-            pathnameDEST = "src/TN_Hiking/Ressources/";
+            pathnameDEST = "src/TN_Hiking/Ressources/import/";
+            demarcor="/";
         }
-
 
         FileChooser fileChooser;
         fileChooser = new FileChooser();
@@ -130,7 +130,7 @@ public class FinalisationParcours implements Initializable {
 
         //TroisiemeEtape: Lier cette image a un parcours
         int size = this.gParcours.getParcours().size();
-        this.gParcours.getParcours().get(size-1).setImage(pathnameDEST);
+        this.gParcours.getParcours().get(size-1).setImage(pathnameDEST+file.getName());
 
     }
     public void closeApp() {

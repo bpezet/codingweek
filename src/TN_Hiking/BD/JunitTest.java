@@ -13,7 +13,14 @@ public class JunitTest {
         assertEquals(abc,"abc");
 
         }
+    @Test
+    public void testCezek() {
+
+        String abc = "abc";
+        assertEquals(abc,"abc");
+
     }
+}
 
 
 
