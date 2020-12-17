@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -48,6 +49,8 @@ public class VisualiserParcours {
     private Label end;
     @FXML
     private ImageView imageParcours = new ImageView();
+    @FXML
+    private Button fermerButton;
 
     private GestionnaireParcours gestionnaireGlobale;
 
@@ -139,7 +142,7 @@ public class VisualiserParcours {
         this.myMap.addCoordinateLine(this.track);
         try {
             File file = new File(this.p.getImage());
-            Image image = new Image("TN_Hiking/Ressources/lapin.jpeg");
+            Image image = new Image(file.toPath().toString());
             this.imageParcours.setImage(image);
         }catch(Exception e){
             e.printStackTrace();
@@ -178,5 +181,25 @@ public class VisualiserParcours {
         stage.setTitle("Étapes du parcours");
         stage.setScene(new Scene(root1, 500, 300));
         stage.show();
+    }
+
+    /** Home > Home */
+    @FXML
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.gestionnaireGlobale));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+    public void closeWindow(ActionEvent actionEvent) {
+        ((Stage)this.fermerButton.getScene().getWindow()).close();
     }
 }

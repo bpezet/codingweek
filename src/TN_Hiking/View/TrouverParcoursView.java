@@ -312,17 +312,15 @@ public class TrouverParcoursView implements Initializable {
     public void visualiserParcours(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
-        loader.setControllerFactory(iC->new VisualiserParcours(this.selectedParcours));
-        Parent createParcoursParent = loader.load();
+        loader.setControllerFactory(iC-> new VisualiserParcours(this.selectedParcours));
+        Parent root1 = loader.load();
 
         VisualiserParcours visualiserParcours = loader.getController();
         visualiserParcours.initMapAndControls();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
-
-        Stage window = (Stage) my_bar.getScene().getWindow();
-
-        window.setScene(createParcoursScene);
-        window.show();
+        Stage stage = new Stage();
+        stage.setTitle("Vue du parcours");
+        stage.setScene(new Scene(root1, 600, 400));
+        stage.show();
     }
 }
