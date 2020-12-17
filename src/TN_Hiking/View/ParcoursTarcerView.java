@@ -15,6 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -39,6 +40,7 @@ public class ParcoursTarcerView implements Initializable {
 
     /** Boutton Annuler le parcours*/
     public void changeSceneTracerToWelcomeView(ActionEvent actionEvent) throws IOException {
+        
         this.gParcours.deleteParcours();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("welcomeView.fxml"));

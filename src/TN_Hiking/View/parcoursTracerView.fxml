@@ -8,7 +8,7 @@
    <children>
       <Button layoutX="47.0" layoutY="336.0" mnemonicParsing="false" onAction="#changeSceneCreerParcours" prefHeight="27.0" prefWidth="123.0" text="Créer une étape" />
       <Button layoutX="240.0" layoutY="336.0" mnemonicParsing="false" onAction="#finirParcours" prefHeight="27.0" prefWidth="123.0" text="Finir le parcours" />
-      <Button layoutX="438.0" layoutY="336.0" mnemonicParsing="false" onAction="#changeSceneTracerToWelcomeView" text="Annuler le parcours" />
+      <Button fx:id="annuler" layoutX="438.0" layoutY="336.0" mnemonicParsing="false" onAction="#changeSceneTracerToWelcomeView" text="Annuler le parcours" />
       <ImageView fitHeight="119.0" fitWidth="279.0" layoutX="160.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Ressources/Logo.png" />
@@ -20,7 +20,7 @@
                <Menu mnemonicParsing="false" text="Home">
                    <items>
                        <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
-                       <MenuItem fx:id="homeButton" mnemonicParsing="false"  text="Home" />
+                       <MenuItem fx:id="homeButton" mnemonicParsing="false" text="Home" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Outils">
