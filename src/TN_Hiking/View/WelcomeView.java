@@ -472,9 +472,9 @@ public class WelcomeView implements Initializable {
             /**Test de l'affichage des parcours*/
             /**Premier Parcours*/
             this.titre1.setText(this.gestionnaireParcours.getParcours(k).getName());
-            this.duree1.setText(String.valueOf(gestionnaireParcours.getParcours(k).getDuree()));
+            this.duree1.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k).getDuree()*1000)/1000+"km"));
             this.difficulte1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDifficulte()));
-            this.distance1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDistance()));
+            this.distance1.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k).getDistance()*1000)/1000+"km"));
         }catch(Exception e){
             System.out.println("Parcours 1 inconnu :(");
             this.titre1.setText("");
@@ -487,10 +487,10 @@ public class WelcomeView implements Initializable {
 
         try {
             /**Deuxième parcours*/
-            this.titre2.setText(this.gestionnaireParcours.getParcours(k+1).getName());
-            this.duree2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDuree()));
+            this.titre2.setText((this.gestionnaireParcours.getParcours(k+1).getName()));
+            this.duree2.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k+1).getDuree()*100)/100)+"h");
             this.difficulte2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDifficulte()));
-            this.distance2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDistance()));
+            this.distance2.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k+1).getDistance()*1000)/1000+"km"));
         }catch(Exception e){
             System.out.println("Parcours 2 inconnu :(");
             this.titre2.setText("");
