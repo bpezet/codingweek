@@ -44,11 +44,19 @@
          </image></ImageView>
       <TitledPane animated="false" expanded="false" layoutX="315.0" layoutY="223.0" onMouseClicked="#extendInfo" prefHeight="4.0" prefWidth="273.0" text="plus d'informations">
         <content>
-          <AnchorPane minHeight="145.0" minWidth="0.0" prefHeight="128.0" prefWidth="271.0" />
+          <AnchorPane minHeight="145.0" minWidth="0.0" prefHeight="128.0" prefWidth="271.0">
+               <children>
+                  <Label fx:id="long_desc" layoutX="12.0" prefHeight="79.0" prefWidth="248.0" text="description_detaillée" wrapText="true" />
+                  <Label layoutX="12.0" layoutY="93.0" text="Durée estimée : " />
+                  <Label fx:id="length" layoutX="111.0" layoutY="73.0" text=".........." />
+                  <Label layoutX="12.0" layoutY="73.0" text="Longueur :" />
+                  <Button layoutX="14.0" layoutY="119.0" mnemonicParsing="false" onAction="#showEtapesParcours" text="Voir toutes les étapes" />
+                  <Label fx:id="duration" layoutX="111.0" layoutY="93.0" text=".........." />
+               </children></AnchorPane>
         </content>
       </TitledPane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000007" height="161.0" layoutX="315.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="273.0" />
-      <Label layoutX="369.0" layoutY="46.0" text="Parcours : nom_du_parcours">
+      <Label layoutX="369.0" layoutY="46.0" text="Parcours : ">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -66,6 +74,6 @@
              <Label fx:id="end" layoutX="108.0" layoutY="129.0" text="" />
          </children>
       </Pane>
-      <Button layoutX="300.0" layoutY="25.0" mnemonicParsing="false" onAction="#eventHandlerTracer" text="Button" />
+      <Label fx:id="name" layoutX="428.0" layoutY="46.0" text="nom_du_parcours" />
    </children>
 </Pane>
