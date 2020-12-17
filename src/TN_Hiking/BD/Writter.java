@@ -10,13 +10,38 @@ import java.util.ArrayList;
 
 public class  Writter{
 
-    private String pathName = "src\\TN_Hiking\\BD\\INTEL";
+    private String pathDirName = "BDD";
+    private String localSave = "localSave";
     public void Writter(){}
-
     // methode principale qui permet d'ecrire dans le fichier en ecrasant tout
     public void writeAction(GestionnaireParcours gestionnaireParcours){
-        // pour ouvrir et lire un fichier ligne par ligne
-        File file = new File(pathName);
+        // on peut commencer par ajouter toutes les photos dans ressources/import
+        // dans le dossier pathName
+        String pathlocalSave;
+
+        //#################################################################################################
+        // deja on recupere la gueule du dossier ressources/import
+            String pathRSR;
+            if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            pathRSR = "src\\TN_Hiking\\Ressources\\Import";
+            pathlocalSave = pathDirName+"\\"+localSave;
+        } else { // then it is a mac/linux piece of shit
+            pathRSR="src/TN_Hiking/Ressources/Import";
+            pathlocalSave = pathDirName+"/"+localSave;
+        }
+        // on appel notre FileHandling
+            FileHandling fl = new FileHandling();
+            File fileSRC = new File(pathRSR);
+            File fileDest = new File(pathDirName);
+            try {
+                fl.copydir(fileSRC, fileDest);
+            } catch (IOException e){e.printStackTrace();}
+        // ################################################################
+
+
+        // pour ouvrir et ecrire un fichier ligne par ligne
+        File file = new File(pathlocalSave);
         BufferedWriter bufferedWriter = null;
         // try exceptions obligatoire
         try {
@@ -50,11 +75,34 @@ public class  Writter{
         //On commence par indiquer le debut du parcours
         try{bufferedWriter.write("#debutParcours\n");}catch(IOException e){e.printStackTrace();}
         //On commence par rajouter les donnees principales
+
+        //POUR LA PREMIERE LIGNE name:difficulte:note:departName:
         String name = parcours.getName();
         int diff = parcours.getDifficulte();
-        String debut = parcours.getDepart();
+        int note = parcours.getNote();
+        String departName = parcours.getDepartName();
+        //l'image est un peu special, on va recuperer que la tete
+        String iP = parcours.getImage();
+        File file = new File(iP);
+        String imageParcours = file.getName(); // on recupere bien que la tete, le reste c'est pour dieux
+        //POUR LA DEUXIEME LIGNE :descriptionCourte:
+        String descriptionCourte = parcours.getDescriptionCourte();
+        //POUR LA TROISIEME LIGNE :descriptonLongue:
+        // ici on a un text sur plusieurs ligne, on va faire un fonctionnement en balise spéciale
+        // sinon on s'en sortira pas
+        String descriptionLongue = parcours.getDescriptionDetaillee();
 
-        try{ bufferedWriter.write(":"+name+":"+diff+":"+debut+":\n");} catch(IOException e){e.printStackTrace();}
+
+        try{
+
+
+            bufferedWriter.write(name+":"+diff+":"+note+":"+departName+":"+imageParcours+"\n"); //premiere ligne
+            bufferedWriter.write(descriptionCourte + "\n"); //deuxieme ligne
+            bufferedWriter.write("#LDbegin#\n");
+            bufferedWriter.write(descriptionLongue + "\n");//troisieme ligne
+            bufferedWriter.write("#LDEND#\n");
+
+        } catch(IOException e){e.printStackTrace();}
         // on rajoute les etapes
         ArrayList<Etape> arrayList = new ArrayList<Etape>();
         arrayList = parcours.getEtapes();
@@ -75,8 +123,8 @@ public class  Writter{
 
 
 
-    public void setPathName(String pathName)
-    {this.pathName=pathName;}
-    public String getPathName(){return this.pathName;}
+    public void setPathDirName(String pathDirName)
+    {this.pathDirName=pathDirName;}
+    public String getPathDirName(){return this.pathDirName;}
 
 }

@@ -1,5 +1,7 @@
 package TN_Hiking.Models;
 
+import javafx.scene.image.Image;
+
 
 
 import java.util.ArrayList;
@@ -15,7 +17,8 @@ public class Parcours {
     protected Etape etapeDebut;
     protected String imageParcours;
     protected Etape etapeFin;
-
+    //private String fichierExcelCoords;
+    // j'ai supprime fichier ExcelCoors car on a GPX impport
     public Parcours(String name, int difficulte, String departName) {
         this.name = name;
         this.difficulte = difficulte;
@@ -42,11 +45,11 @@ public class Parcours {
 
 
     /** Getters and setters */
-    public String getDepart() {
+    public String getDepartName() {
         return departName;
     }
 
-    public void setDepart(String depart) {
+    public void setDepartName(String depart) {
         this.departName = depart;
     }
 
@@ -126,7 +129,9 @@ public class Parcours {
     public void setImage(String imageParcours){this.imageParcours = imageParcours;}
 
     public void showParcours(){
-        System.out.println("Parcours "+name+" diff "+difficulte+" depart "+departName);
+        System.out.println("ParcoursNom:"+name+" Difficulte:"+difficulte+" DepartName:"+departName);
+        System.out.println("DescriptionCourte:"+descriptionCourte+" Note:"+note+" imageParcours:" +imageParcours);
+        System.out.println("DescriptionDetaillee:"+descriptionDetaillee);
         for(int i = 0;i<etapes.size();i++) {
             etapes.get(i).etapeShow();
         }

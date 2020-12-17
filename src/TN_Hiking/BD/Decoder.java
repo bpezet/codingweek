@@ -11,24 +11,52 @@ public class Decoder {
     // -> analyse a file saveFile
     // -> create a gestionnaireParcours
     // -> fill the parcours and etapes as it should
-    // -> does not save local//active or somethind -> it is a tool ;)
+    // -> does not save local//active or something -> it is a tool ;)
     // Guide: Decoder dc = new Decoder(); GestionnaireParcours newGP = dc.decodeAction(file); //done
+    // Nouvelle options -> s'occupe des images :)
+
 
     GestionnaireParcours gestionnaireParcours;
-    String pathName ="localSave";
+
+    String pathDirName = "BDD";
+    String localSave ="localSave";
 
     public void Decoder(){
         this.gestionnaireParcours = new GestionnaireParcours();
     }
-    public void setPathName(String pathName){
-        this.pathName = pathName;
-    }
-    public String getPathName(){return this.pathName;}
+    public void setLocalSave(String localSave){ this.localSave = localSave; }
+    public String getLocalSave(){return this.localSave;}
+    public void setPathDirName(String pathDirName){this.pathDirName=pathDirName;}
+    public String getPathDirName(){return this.pathDirName;}
 
     public GestionnaireParcours decodeAction(){
         // pour ouvrir et lire un fichier ligne par ligne
+        // Achtung schopswherrr $$$ On doit retrouve le fichier a partir du path encule
 
-        File file = new File(pathName);
+        //###########################
+        // d'abord on import les images
+        // #############################
+        String pathAlienSave;
+        String pathLocalDir;
+        if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+        {
+            pathAlienSave = pathDirName+"\\"+localSave;
+            pathLocalDir = "src\\TN_Hiking\\Ressources\\Import";
+        } else { // then it is a mac/linux piece of shit
+            pathAlienSave = pathDirName+"/"+localSave;
+            pathLocalDir = "src/TN_Hiking/Ressources/Import";
+        }
+        File src = new File(pathDirName);
+        File dest = new File(pathLocalDir);
+
+        FileHandling fl = new FileHandling();
+        try{
+        fl.copydir(src,dest);}catch(Exception e){e.printStackTrace();}
+
+
+        // #########################
+
+        File file = new File(pathAlienSave);
         BufferedReader bufferedReader = null; // for file reading
 
         try {
@@ -67,7 +95,6 @@ public class Decoder {
                 nbline++;
             }/*whileBalise*/ } catch(IOException e) { e.printStackTrace(); }
         // on vide le bufferReader
-
         try { assert bufferedReader != null; bufferedReader.close(); } catch (IOException e){  e.printStackTrace(); }
         //gestionnaireParcours.showGestionnaire();
         return gestionnaireParcours;
@@ -85,17 +112,44 @@ public class Decoder {
         //First step: normalement on a une ligne du genre :name1:123.092:49.008764:
         // on va deja decrypter les donners n'est ce pas
         // pour ce faire on lit la ligne suivante ) #debutParcours
-        try {   // bloc catchant la premiere ligne de description du parcours
-            line = bufferedReader.readLine();
-                //System.out.println(line);
-                String[] spliter = line.split(":");
-                //System.out.println(spliter.length + "");
-                //System.out.println(spliter[1]);
-                //System.out.println(spliter[0]);
-                parcours.setName(spliter[1]);
-                parcours.setDifficulte(Integer.parseInt(spliter[2]));
-                parcours.setDepart(spliter[3]);
 
+
+        //POUR LA PREMIERE LIGNE name:difficulte:note:departName:
+        //POUR LA DEUXIEME LIGNE :descriptionCourte:
+        //POUR LA TROISIEME LIGNE :descriptonLongue:
+        // #LDbegin# et #LDEND#
+
+        try {   // bloc catchant la premiere ligne de description du parcours
+
+            // premire ligne name:difficulte:note:departName:
+            line = bufferedReader.readLine();
+            String[] splitter = line.split(":");
+            parcours.setName(splitter[0]);
+            parcours.setDifficulte(Integer.parseInt(splitter[1]));
+            parcours.setNote(Integer.parseInt(splitter[2]));
+            parcours.setDepartName(splitter[3]);
+            // petit travail en plus à faire pour recuperer le pointeur d'image
+            // on a juste la teté mais on connait très bien le directory
+            if(System.getProperty("os.name").startsWith("Windows")) //then it is a window ios lol
+            {
+                parcours.setImage("src\\TN_Hiking\\Ressources\\Import\\"+splitter[4]);
+            } else { // then it is a mac/linux piece of shit
+                parcours.setImage("src/TN_Hiking/Ressources/Import/"+splitter[4]);
+            }
+            // on passe a la deuxieme ligne: la description courte
+            line = bufferedReader.readLine();
+            parcours.setDescriptionCourte(line);
+            // on passe a la troisieme ligne: la description courte, alors la on a un catch à faire
+            line = bufferedReader.readLine();
+            String descriptionDet="";
+            if( line.equals("#LDbegin#") ){ // En sortant de ce if on en aura finit avec la description longue
+                while( !((line = bufferedReader.readLine()).equals("#LDEND#"))){
+                    // on est dans une ligne courante de descriptionDet
+                    descriptionDet=descriptionDet.concat(line+"\n");
+                }
+            } else {System.out.println("ERROR FILE FORMAT");}
+
+            parcours.setDescriptionDetaillee(descriptionDet);
         } catch(IOException e){ e.printStackTrace();}
 
         try{ // bloc catchant les etapes
