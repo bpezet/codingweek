@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.sothawo.mapjfx.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ShowEtapeView">
+    <children>
+      <MapView fx:id="mapView" layoutX="205.0" layoutY="6.0" prefHeight="288.0" prefWidth="291.0" />
+      <ListView fx:id="listView" layoutX="6.0" layoutY="6.0" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="288.0" prefWidth="193.0" />
+      <CheckBox fx:id="checkTracer" layoutX="371.0" layoutY="253.0" mnemonicParsing="false" onAction="#afficherParcours" prefHeight="22.0" prefWidth="125.0" style="-fx-background-color: white;" text="Afficher le parcours" />
+    </children>
+</Pane>
