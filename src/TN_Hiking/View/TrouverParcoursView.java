@@ -121,6 +121,64 @@ public class TrouverParcoursView implements Initializable {
         }
         ((Stage) valider.getScene().getWindow()).close();
     }
+    public void setResultatRechercheDistanceAjout(GestionnaireParcours resultatRecherche) {
+
+            for (int k = 0; k < resultatRecherche.getSize(); k++) {
+                if (this.gParcours.getParcours(k).getDistance() <= distancep) {
+                    resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                }
+            }
+
+    }
+    public void setResultatRechercheDureeAjout(GestionnaireParcours resultatRecherche) {
+
+            for (int k = 0; k < this.gParcours.getSize(); k++) {
+                if (this.gParcours.getParcours(k).getDuree() <= dureep) {
+                    resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                }
+            }
+
+    }
+    public void setResultatRechercheDifficulteAjout(GestionnaireParcours resultatRecherche){
+
+            for (int k = 0; k < this.gParcours.getSize(); k++) {
+
+                if (this.gParcours.getParcours(k).getDifficulte() <= difficultep) {
+                    resultatRecherche.addParcours(this.gParcours.getParcours(k));
+                }
+            }
+
+    }
+    public void setResultatRechercheDistanceSupp(GestionnaireParcours resultatRecherche) {
+
+        for (int k = 0; k < resultatRecherche.getSize(); k++) {
+            if (resultatRecherche.getParcours(k).getDistance() > distancep) {
+                resultatRecherche.deleteParcoursIndex(k);
+            }
+        }
+
+    }
+    public void setResultatRechercheDureeSupp(GestionnaireParcours resultatRecherche) {
+
+        for (int k = 0; k < resultatRecherche.getSize(); k++) {
+            if (resultatRecherche.getParcours(k).getDuree() > dureep) {
+                resultatRecherche.deleteParcoursIndex(k);
+            }
+        }
+
+    }
+    public void setResultatRechercheDifficulteSupp(GestionnaireParcours resultatRecherche){
+
+        for (int k = 0; k < resultatRecherche.getSize(); k++) {
+
+            if (resultatRecherche.getParcours(k).getDifficulte() > difficultep) {
+                resultatRecherche.deleteParcoursIndex(k);
+            }
+        }
+
+    }
+
+
     public void rechercherParcours() {
         this.resultatRecherche = new GestionnaireParcours();
         String titre = this.titreRecherche.getText();
@@ -130,33 +188,20 @@ public class TrouverParcoursView implements Initializable {
             }
         }
 
-        if (resultatRecherche.getSize() > 1) {
+        if (this.resultatRecherche.getSize() > 1) {
+            System.out.println("cas1");
             if (distancep < 21) {
-                System.out.println("distance");
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDistance() > distancep) {
-                        this.resultatRecherche.deleteParcours();
-                    }
-                }
+                System.out.println("distance1");
+                setResultatRechercheDistanceSupp(this.resultatRecherche);
             }
 
             if (dureep < 11) {
-                System.out.println("duree");
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDuree() > distancep) {
-                        this.resultatRecherche.deleteParcours();
-                    }
-                }
+                System.out.println("duree1");
+                setResultatRechercheDureeSupp(this.resultatRecherche);
             }
             if (difficultep <6) {
-                System.out.println("difficulte");
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    System.out.println(resultatRecherche.getParcours(k).getDifficulte());
-                    if (resultatRecherche.getParcours(k).getDifficulte() > distancep) {
-
-                        this.resultatRecherche.deleteParcours();
-                    }
-                }
+                System.out.println("difficulte1");
+                setResultatRechercheDifficulteSupp(this.resultatRecherche);
             }
             /**if (!departp.equals(null)) {
                 for (int k = 0; k < resultatRecherche.getSize(); k++) {
@@ -168,28 +213,40 @@ public class TrouverParcoursView implements Initializable {
 
         }
 
-        else { //seulemnt distance est modifée
-            if (distancep < 21 && dureep == 6 && difficultep == 11 ) {
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDistance() < distancep) {
-                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
-                    }
+        else { //au moins distance est modifée
+            System.out.println("cas2");
+            if (distancep < 21 ) {
+                System.out.println("distance2");
+                setResultatRechercheDistanceAjout(this.resultatRecherche);
+                if (dureep < 11) {
+                    setResultatRechercheDureeSupp(this.resultatRecherche);
+                }
+                if (difficultep < 6) {
+                    setResultatRechercheDifficulteSupp(this.resultatRecherche);
                 }
             }
-            //seulement duree est mofifiée
-            if (distancep ==21 && dureep < 6 && difficultep == 11 ) {
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDuree() > dureep) {
-                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
-                    }
+            //au moins duree est mofifiée
+            if (dureep < 6) {
+                System.out.println("duree2");
+                setResultatRechercheDureeAjout(this.resultatRecherche);
+                if (distancep < 21) {
+                    setResultatRechercheDistanceSupp(this.resultatRecherche);
+                }
+                if (difficultep < 6) {
+                    setResultatRechercheDifficulteSupp(this.resultatRecherche);
                 }
             }
+            //au moins diff est modifiée
             if (difficultep <6) {
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDifficulte() > distancep) {
-                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
-                    }
+                System.out.println("difficulte2");
+                setResultatRechercheDifficulteAjout(this.resultatRecherche);
+                if (distancep < 21) {
+                    setResultatRechercheDistanceSupp(this.resultatRecherche);
                 }
+                if (dureep < 11) {
+                    setResultatRechercheDureeSupp(this.resultatRecherche);
+                }
+
             }
            /** if (!departp.equals(null)) {
                 for (int k = 0; k < resultatRecherche.getSize(); k++) {
@@ -200,7 +257,7 @@ public class TrouverParcoursView implements Initializable {
             }*/
         }
         for (int k = 0; k < resultatRecherche.getSize(); k++) {
-            System.out.println(resultatRecherche.getParcours().get(k).getName());
+            System.out.println(resultatRecherche.getParcours().get(k).getDepartName());
         }
     }
 
