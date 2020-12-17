@@ -162,17 +162,17 @@ public class Parcours {
     }
     public double getEcart(Etape e1,Etape e2){
         double ecart = 0.0;
-        double lat1 = e1.getLatitude()*((2*Math.PI)/180);
-        double lat2 = e2.getLatitude()*((2*Math.PI)/180);
+        double lat1 = e1.getLatitude()*((Math.PI)/180);
+        double lat2 = e2.getLatitude()*((Math.PI)/180);
 
-        double long1 = e1.getLongitude()*((2*Math.PI)/180);
-        double long2 = e2.getLongitude()*((2*Math.PI)/180);
+        double long1 = e1.getLongitude()*((Math.PI)/180);
+        double long2 = e2.getLongitude()*((Math.PI)/180);
 
         // Distance en Km= ACOS(SIN(lat1)SIN(lat2)+COS(lat1)COS(lat2)COS(lon2-lon1))6371
         // y a une conversion degrés radian a faire
         // 180° = 2pi rad donc
         // x°   = x*2pi/180
-        ecart = 6371*Math.acos(   Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2) *Math.cos(long2-long1));
+        ecart = 6371*Math.acos(   Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2-long1));
 
         return ecart;
     }
