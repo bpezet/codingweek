@@ -403,7 +403,6 @@ public class WelcomeView implements Initializable {
         try {
             /**Test de l'affichage des parcours*/
             /**Premier Parcours*/
-            this.setGenerateParcours();
             this.titre1.setText(this.gestionnaireParcours.getParcours(k).getName());
             //this.duree1.setText(this.gestionnaireParcours.getParcours(k).getDuree());
             this.difficulte1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDifficulte()));
