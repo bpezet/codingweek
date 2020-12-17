@@ -15,7 +15,6 @@ public class Parcours {
     protected Etape etapeDebut;
     protected String imageParcours;
     protected Etape etapeFin;
-    private String fichierExcelCoords;
 
     public Parcours(String name, int difficulte, String departName) {
         this.name = name;
