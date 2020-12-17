@@ -73,7 +73,7 @@ public class FinalisationParcours implements Initializable {
         this.gParcours.getParcours().get(size-1).setNote((int)this.note.getValue());
         this.gParcours.getParcours().get(size-1).setName(this.lieuFin.getText());
         this.gParcours.getParcours().get(size-1).setDescriptionCourte(this.descrptionCourte.getText());
-        this.gParcours.getParcours().get(size-1).setDescriptionCourte(this.descriptionDetaillee.getText());
+        this.gParcours.getParcours().get(size-1).setDescriptionDetaillee(this.descriptionDetaillee.getText());
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Confirmation");
