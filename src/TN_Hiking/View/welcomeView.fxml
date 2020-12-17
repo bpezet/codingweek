@@ -47,7 +47,7 @@
         </Menu>
         <Menu mnemonicParsing="false" text="Gestion">
             <items>
-                <MenuItem mnemonicParsing="false" text="Favoris" />
+                <MenuItem fx:id="fav" mnemonicParsing="false" onAction="#eventHandlersfav" text="Favoris" />
             </items>
         </Menu>
     </menus>
@@ -103,4 +103,6 @@
          <Label fx:id="distance2" layoutX="324.0" layoutY="61.0" text="Distance" textFill="#fffefe" />
       </children>
    </Pane>
+   <Button fx:id="prec" layoutX="163.0" layoutY="362.0" mnemonicParsing="false" onAction="#affichageParcoursPrecedantBouton" text="Précédant" />
+   <Button fx:id="suiv" layoutX="326.0" layoutY="362.0" mnemonicParsing="false" onAction="#affichageParcoursSuivantBouton" text="Suivant" />
 </Pane>

@@ -1,5 +1,6 @@
 package TN_Hiking.View;
 
+import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
 import com.sothawo.mapjfx.Coordinate;
@@ -12,11 +13,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,27 +47,35 @@ public class VisualiserParcours {
     @FXML
     private Label end;
     @FXML
-    private ImageView imageParcours;
+    private ImageView imageParcours = new ImageView();
 
-    /** Constructeurs */
+    private GestionnaireParcours gestionnaireGlobale;
 
-    /** Pour Niels */
-    public VisualiserParcours(){
-     Etape deb = new Etape("Telecom Nancy", 48.669679,6.154803);
-     Etape fin = new Etape("Place Stanislas", 48.693829,6.182534);
-     this.p = new Parcours("Balade en centre-ville",1,deb,fin);
-     this.p.setDescriptionCourte("Petit parcours commençant à l'école Telecom menant à la place Stanislas.");
-     this.p.setDifficulte(1);
-     this.p.setNote(5);
-     this.p.getEtapes().add(deb);
-     Etape e2 = new Etape("Chez Yassin",48.666889,6.166486);
-     this.p.addEtape(e2);
-     Etape e3 = new Etape("Mac Carthy",48.692264,6.177400);
-     this.p.addEtape(e3);
-     this.p.getEtapes().add(fin);
-     this.p.setDescriptionDetaillee("Parcours sympa départ de l'école d'ingénieur Telecom Nancy, " +
-     "qui nous mène vers l'authentique kebab 'Chez Yassin'. Le repas peut se poursuivre par une bière " +
-     "au MacCarthy. La balade se terminera par la visite de la place Stanislas.");
+    @FXML
+    private MenuBar my_bar;
+
+    /** Constructeur */
+    public VisualiserParcours(GestionnaireParcours gestionnaireGlobale, Parcours parcours){
+        /*
+        Etape deb = new Etape("Telecom Nancy", 48.669679,6.154803);
+        Etape fin = new Etape("Place Stanislas", 48.693829,6.182534);
+        this.p = new Parcours("Balade en centre-ville",1,deb,fin);
+        this.p.setDescriptionCourte("Petit parcours commençant à l'école Telecom menant à la place Stanislas.");
+        this.p.setDifficulte(1);
+        this.p.setNote(5);
+        this.p.getEtapes().add(deb);
+        Etape e2 = new Etape("Chez Yassin",48.666889,6.166486);
+        this.p.addEtape(e2);
+        Etape e3 = new Etape("Mac Carthy",48.692264,6.177400);
+        this.p.addEtape(e3);
+        this.p.getEtapes().add(fin);
+        this.p.setDescriptionDetaillee("Parcours sympa départ de l'école d'ingénieur Telecom Nancy, " +
+                "qui nous mène vers l'authentique kebab 'Chez Yassin'. Le repas peut se poursuivre par une bière " +
+                "au MacCarthy. La balade se terminera par la visite de la place Stanislas.");
+                */
+
+        this.p= parcours;
+        this.gestionnaireGlobale = gestionnaireGlobale;
     }
 
     /** Pour rechercher parcours*/
@@ -81,16 +93,40 @@ public class VisualiserParcours {
     public void changeSceneCreerParcours(ActionEvent actionEvent) {
     }
 
+
+    @FXML
+    public void eventHandlerBoutonModifier(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("updateParcours.fxml"));
+            loader.setControllerFactory(iC->new UpdateParcours(this.gestionnaireGlobale,this.p));
+            Parent createParcoursParent = loader.load();
+
+            Scene createParcoursScene = new Scene(createParcoursParent);
+
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+
+
     @FXML
     public void initialize(){
         this.myMap.initialize();
-        this.myMap.setCenter(new Coordinate(48.693829,6.182534));
+        this.myMap.setCenter(new Coordinate(this.p.getSpecificEtape(0).getLatitude(),this.p.getSpecificEtape(0).getLongitude()));
         this.name.setText(this.p.getName());
         this.short_desc.setText(this.p.getDescriptionCourte());
         this.difficulty.setText(String.valueOf(this.p.getDifficulte()));
         this.note.setText(String.valueOf(this.p.getNote()));
-        //this.begin.setText(this.p.getEtapeDebut().getName());
-        //this.end.setText(this.p.getEtapeFin().getName());
+        this.begin.setText(this.p.getSpecificEtape(0).getName());
+        this.end.setText(this.p.getSpecificEtape(this.p.getEtapes().size()-1).getName());
         this.long_desc.setText(this.p.getDescriptionDetaillee());
 
         /** tracer le parcours */
@@ -101,6 +137,15 @@ public class VisualiserParcours {
         this.track = new CoordinateLine(list).setColor(Color.BLACK).setWidth(10);
         this.track.setVisible(true);
         this.myMap.addCoordinateLine(this.track);
+        try {
+            File file = new File(this.p.getImage());
+            Image image = new Image("lapin.jpeg");
+            this.imageParcours.setImage(image);
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println(this.p.getImage());
+            System.out.println("Ca marche pas");
+        }
     }
 
     public void initMapAndControls(){

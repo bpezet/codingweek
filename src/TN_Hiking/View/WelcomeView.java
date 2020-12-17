@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 
@@ -85,6 +86,12 @@ public class WelcomeView implements Initializable {
     private ImageView image2;
 
     private int k=0;
+
+    @FXML
+    private Button prec;
+
+    @FXML
+    private Button suiv;
 
     private GestionnaireParcours gestionnaireParcours;
 
@@ -175,6 +182,17 @@ public class WelcomeView implements Initializable {
         dc.setLocalSave(localSave);
         neuGP = dc.decodeAction();
         gestionnaireParcours = neuGP;
+
+        /**Update des boutons*/
+
+        k=0;
+        prec.setDisable(true);
+        if(this.gestionnaireParcours.getSize()<=2){
+            suiv.setDisable(true);
+        }else{
+            suiv.setDisable(false);
+        }
+        this.affichageParcours(0);
     }
     @FXML
     public void setSaveButton() {
@@ -357,34 +375,66 @@ public class WelcomeView implements Initializable {
 
 
     public void eventHandlerFirstButtonParcours() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
-        loader.setControllerFactory(iC->new VisualiserParcours(/*this.gestionnaireParcours.getParcours(0)*/));
-        Parent createParcoursParent = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
+            loader.setControllerFactory(iC -> new VisualiserParcours(this.gestionnaireParcours, this.gestionnaireParcours.getParcours(k+0)));
+            Parent createParcoursParent = loader.load();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
+            VisualiserParcours visualiserParcours = loader.getController();
+            visualiserParcours.initMapAndControls();
 
-        Stage window = (Stage) my_bar.getScene().getWindow();
+            Scene createParcoursScene = new Scene(createParcoursParent);
 
-        window.setScene(createParcoursScene);
-        window.show();
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+
+        }
     }
 
 
     public void eventHandlerSecondButtonParcours() throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
-        loader.setControllerFactory(iC->new VisualiserParcours(/*this.gestionnaireParcours.getParcours(1)*/));
-        Parent createParcoursParent = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("VisualiserParcours.fxml"));
+            loader.setControllerFactory(iC -> new VisualiserParcours(this.gestionnaireParcours, this.gestionnaireParcours.getParcours(k+1)));
+            Parent createParcoursParent = loader.load();
 
-        Scene createParcoursScene = new Scene(createParcoursParent);
+            VisualiserParcours visualiserParcours = loader.getController();
+            visualiserParcours.initMapAndControls();
 
-        Stage window = (Stage) my_bar.getScene().getWindow();
+            Scene createParcoursScene = new Scene(createParcoursParent);
 
-        window.setScene(createParcoursScene);
-        window.show();
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+
+        }
     }
 
+    @FXML
+    public void eventHandlersfav(){
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("listeParcoursView.fxml"));
+            loader.setControllerFactory(iC -> new ListeParcoursView(this.gestionnaireParcours));
+            Parent createParcoursParent = loader.load();
+
+            Scene createParcoursScene = new Scene(createParcoursParent);
+
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+
+        }
+    }
 
 
     /** Bouton : fermer l'application*/
@@ -395,11 +445,19 @@ public class WelcomeView implements Initializable {
 
     public void affichageParcoursSuivantBouton(){
         k=k+2;
+        if (k>=((this.gestionnaireParcours.getSize()-1))/2){
+            suiv.setDisable(true);
+        }
+        prec.setDisable(false);
         affichageParcours(1);
     }
 
     public void affichageParcoursPrecedantBouton(){
         k=k-2;
+        if (k==0){
+            prec.setDisable(true);
+        }
+        suiv.setDisable(false);
         affichageParcours(-1);
     }
 
@@ -411,31 +469,31 @@ public class WelcomeView implements Initializable {
             /**Test de l'affichage des parcours*/
             /**Premier Parcours*/
             this.titre1.setText(this.gestionnaireParcours.getParcours(k).getName());
-            //this.duree1.setText(this.gestionnaireParcours.getParcours(k).getDuree());
+            this.duree1.setText(String.valueOf(gestionnaireParcours.getParcours(k).getDuree()));
             this.difficulte1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDifficulte()));
-            //this.distance1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDistance()));
+            this.distance1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDistance()));
         }catch(Exception e){
             System.out.println("Parcours 1 inconnu :(");
-            if (type ==1){
-                k=k-2;
-            } else if (type == -1) {
-                k=k+2;
-            }
+            this.titre1.setText("");
+            this.duree1.setText("");
+            this.difficulte1.setText("");
+            this.distance1.setText("");
         }
+
+
 
         try {
             /**Deuxième parcours*/
             this.titre2.setText(this.gestionnaireParcours.getParcours(k+1).getName());
-            //this.duree2.setText(this.gestionnaireParcours.getParcours(k+1).getDuree());
+            this.duree2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDuree()));
             this.difficulte2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDifficulte()));
-            //this.distance2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDistance()));
+            this.distance2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDistance()));
         }catch(Exception e){
             System.out.println("Parcours 2 inconnu :(");
-            if (type ==1){
-                k=k-2;
-            } else if (type == -1) {
-                k=k+2;
-            }
+            this.titre2.setText("");
+            this.duree2.setText("");
+            this.difficulte2.setText("");
+            this.distance2.setText("");
         }
 
     }
@@ -449,6 +507,11 @@ public class WelcomeView implements Initializable {
         image2.setImage(img2);
 
         this.affichageParcours(0);
+
+        prec.setDisable(true);
+        if (this.gestionnaireParcours.getSize()<=2){
+            suiv.setDisable(true);
+        }
 
     }
 }
