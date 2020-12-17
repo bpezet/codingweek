@@ -44,6 +44,8 @@ public class UpdateParcours {
     @FXML
     private MenuItem menuItemUpdate = new MenuItem();
 
+    @FXML
+    private MenuItem homeButton;
 
     GestionnaireParcours ges;
     Parcours parcours;
@@ -146,6 +148,7 @@ public class UpdateParcours {
         this.eventHadlerBackBouton();
 
     }
+
 
     @FXML
     public void initialize(){

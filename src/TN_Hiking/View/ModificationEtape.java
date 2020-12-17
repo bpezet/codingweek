@@ -91,7 +91,19 @@ public class ModificationEtape {
         this.newEtapeMarker = Marker.createProvided(Marker.Provided.GREEN).setVisible(true);
 
     }
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.ges));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
 
     public void initMapAndControls(){
         mapView.setZoom(ZOOM_DEFAULT);

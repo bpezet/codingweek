@@ -85,6 +85,9 @@ public class WelcomeView implements Initializable {
     @FXML
     private ImageView image2;
 
+    @FXML
+    private MenuItem homeButton;
+
     private int k=0;
 
     @FXML
@@ -501,6 +504,7 @@ public class WelcomeView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.homeButton.setDisable(true);
         Image img1 = new Image("TN_Hiking/Ressources/lapin.jpeg");
         image1.setImage(img1);
         Image img2 = new Image("TN_Hiking/Ressources/lapin.jpeg");

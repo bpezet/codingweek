@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.UpdateParcours">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.UpdateParcours">
    <children>
       <Pane layoutX="14.0" layoutY="31.0" prefHeight="310.0" prefWidth="480.0">
          <children>
@@ -29,6 +29,7 @@
                <Menu mnemonicParsing="false" text="Home">
                    <items>
                        <MenuItem mnemonicParsing="false" text="Close" />
+                       <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Outils">

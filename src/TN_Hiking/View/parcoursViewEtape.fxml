@@ -26,6 +26,7 @@
                <Menu mnemonicParsing="false" text="Home">
                    <items>
                        <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                       <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Outils">
