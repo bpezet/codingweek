@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+<Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
 
     <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
     <menus>
@@ -62,7 +62,7 @@
          <Label layoutX="121.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
          <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
          <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
-         <Button contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="192.0" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS">
+         <Button contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventHandlerFirstButtonParcours" prefHeight="102.0" prefWidth="192.0" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS">
             <graphic>
                <ImageView fx:id="image1" fitHeight="108.0" fitWidth="187.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
             </graphic>
@@ -89,7 +89,7 @@
          <Label layoutX="121.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
          <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
          <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
-         <Button graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="192.0" textAlignment="CENTER" textOverrun="CLIP">
+         <Button graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventHandlerSecondButtonParcours" prefHeight="102.0" prefWidth="192.0" textAlignment="CENTER" textOverrun="CLIP">
             <graphic>
                <ImageView fx:id="image2" fitHeight="108.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
