@@ -127,7 +127,7 @@ public class WelcomeView implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("updateParcours.fxml"));
-            loader.setControllerFactory(iC -> new UpdateParcours(this.gestionnaireParcours, this.gestionnaireParcours.getParcours(0)));
+            loader.setControllerFactory(iC -> new UpdateParcours(this.gestionnaireParcours, this.gestionnaireParcours.getParcours(1)));
             Parent createParcoursParent = loader.load();
 
             Scene createParcoursScene = new Scene(createParcoursParent);
@@ -137,6 +137,7 @@ public class WelcomeView implements Initializable {
             window.setScene(createParcoursScene);
             window.show();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
