@@ -320,7 +320,7 @@ public class TrouverParcoursView implements Initializable {
 
         Stage stage = new Stage();
         stage.setTitle("Vue du parcours");
-        stage.setScene(new Scene(root1, 600, 400));
+        stage.setScene(new Scene(root1, 600, 370));
         stage.show();
     }
 }
