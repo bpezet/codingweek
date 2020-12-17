@@ -35,12 +35,22 @@ public class TrouverParcoursView implements Initializable {
     Slider difficulte;
     @FXML
     TextField depart;
+    @FXML
+    CheckBox distanceCheck;
+    @FXML
+    CheckBox dureeCheck;
+    @FXML
+    CheckBox difficulteCheck;
+    @FXML
+    CheckBox departCheck;
+    @FXML
+    Button valider;
 
     private GestionnaireParcours gParcours;
     private GestionnaireParcours resultatRecherche = new GestionnaireParcours();
-    Double difficultep;
-    Double distancep;
-    Double dureep;
+    int difficultep = 3;
+    int distancep = 1;
+    int dureep = 1;
     String departp;
 
     public void closeApp() {
@@ -82,30 +92,47 @@ public class TrouverParcoursView implements Initializable {
     }
 
     public void plusDeCritère(ActionEvent actionEvent) throws IOException {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("searchingClass.fxml"));
-        loader.setControllerFactory(iC->new SearchingClass());
+        loader.setControllerFactory(iC->this);
         Parent root1 = loader.load();
 
 
         Stage stage = new Stage();
         stage.setTitle("Critère possible pour affiner la recherche");
-        stage.setScene(new Scene(root1, 487, 214));
+        stage.setScene(new Scene(root1, 603, 266));
         stage.show();
-        difficultep = this.distance.getValue();
-        dureep = this.duree.getValue();
-        distancep = this.difficulte.getValue();
-        departp = this.depart.getText();
+
     }
 
-
+    public void validationCriteres() {
+        if (this.difficulteCheck.isSelected() == false) {
+            difficultep = (int)this.difficulte.getValue();
+        }
+        if (this.dureeCheck.isSelected() == false) {
+            distancep = (int)this.distance.getValue();
+        }
+        if (this.dureeCheck.isSelected() == false) {
+            dureep = (int)this.duree.getValue();
+        }
+        if (this.departCheck.isSelected() == false) {
+            departp = this.depart.getText();
+        }
+        System.out.println(departp);
+        System.out.println(dureep);
+        System.out.println(distancep);
+        System.out.println(difficultep);
+        ((Stage) valider.getScene().getWindow()).close();
+    }
     public void rechercherParcours() {
         String titre = this.titreRecherche.getText();
-        for (int k=0; k < gParcours.getSize(); k++) {
+        for (int k = 0; k < gParcours.getSize(); k++) {
             if (gParcours.getParcours(k).getName() == titre ) {
                 this.resultatRecherche.addParcours(gParcours.getParcours(k));
             }
         }
+
 
     }
 
