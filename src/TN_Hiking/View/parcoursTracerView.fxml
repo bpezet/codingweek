@@ -20,24 +20,23 @@
                <Menu mnemonicParsing="false" text="Home">
                    <items>
                        <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
-                       <MenuItem fx:id="homeButton" mnemonicParsing="false" text="Home" />
+                       <MenuItem fx:id="homeButton" disable="true" mnemonicParsing="false" text="Home" />
                    </items>
                </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File" />
                <Menu mnemonicParsing="false" text="Outils">
                    <items>
-                       <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                       <MenuItem fx:id="borderPane" disable="true" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Randonnées">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                       <MenuItem disable="true" mnemonicParsing="false" text="Trouver un parcours" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Gestion">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Favoris" />
+                       <MenuItem disable="true" mnemonicParsing="false" text="Afficher les parcours" />
                    </items>
                </Menu>
            </menus>
