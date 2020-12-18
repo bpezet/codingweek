@@ -25,13 +25,6 @@
                 <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addCSV from.." />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Debugg">
-            <items>
-                <MenuItem fx:id="printActiveButton" mnemonicParsing="false" onAction="#setPrintActiveButton" text="printFromActive" />
-                <MenuItem fx:id="printLocalButton" mnemonicParsing="false" onAction="#setPrintLocalButton" text="printFromLocal" />
-                <MenuItem fx:id="generateParcours" mnemonicParsing="false" onAction="#setGenerateParcours" text="generateParcours" />
-            </items>
-        </Menu>
         <Menu mnemonicParsing="false" text="Outils">
             <items>
                 <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
