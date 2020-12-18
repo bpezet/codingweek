@@ -318,7 +318,24 @@ public class TrouverParcoursView implements Initializable {
         stage.setScene(new Scene(root1, 600, 370));
         stage.show();
     }
+    public void eventHandlersfav(ActionEvent actionEvent) throws IOException{
+        try {
 
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("listeParcoursView.fxml"));
+            loader.setControllerFactory(iC -> new ListeParcoursView(this.gParcours));
+            Parent createParcoursParent = loader.load();
+
+            Scene createParcoursScene = new Scene(createParcoursParent);
+
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     public void eventHandlerBoutonModifier(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader();
