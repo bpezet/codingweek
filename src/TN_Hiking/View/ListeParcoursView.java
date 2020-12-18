@@ -4,26 +4,43 @@ import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
 import com.sothawo.mapjfx.Coordinate;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
 
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class ListeParcoursView {
+public class ListeParcoursView implements Initializable {
 
     @FXML
     private ListView<String> list;
 
     @FXML
     private MenuBar my_bar;
+
+    @FXML
+    private MenuItem afficher;
+
+    @FXML
+    private MenuItem visualiser;
+
+    @FXML
+    private MenuItem close;
 
     private GestionnaireParcours gestionnaireGlobale;
 
@@ -56,7 +73,36 @@ public class ListeParcoursView {
         }
     }
 
+    public void retourButton(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC->new WelcomeView(this.gestionnaireGlobale));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+    public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("createParcoursView.fxml"));
+        loader.setControllerFactory(iC->new CreateParcoursView(this.gestionnaireGlobale));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+    public void closeButton(ActionEvent actionEvent) throws IOException {
+        Platform.exit();
+    }
     @FXML
     public void initialize(){
         ArrayList<Parcours> listParcours = this.gestionnaireGlobale.getParcours();
@@ -68,4 +114,9 @@ public class ListeParcoursView {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.afficher.setDisable(true);
+        this.visualiser.setDisable(true);
+    }
 }

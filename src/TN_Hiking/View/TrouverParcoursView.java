@@ -28,8 +28,6 @@ public class TrouverParcoursView implements Initializable {
     @FXML
     private MenuItem trouverParcours;
     @FXML
-    private ScrollPane rechercheParcours;
-    @FXML
     private TextField titreRecherche;
     @FXML
     private Slider distance;
@@ -37,8 +35,6 @@ public class TrouverParcoursView implements Initializable {
     private Slider duree;
     @FXML
     private Slider difficulte;
-    @FXML
-    private TextField depart;
     @FXML
     private CheckBox distanceCheck;
     @FXML
