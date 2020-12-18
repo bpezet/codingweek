@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class WelcomeView implements Initializable {
@@ -419,8 +420,9 @@ public class WelcomeView implements Initializable {
 
 
     @FXML
-    public void eventHandlersfav(){
+    public void eventHandlersfav(ActionEvent actionEvent) throws IOException{
         try {
+
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("listeParcoursView.fxml"));
             loader.setControllerFactory(iC -> new ListeParcoursView(this.gestionnaireParcours));
@@ -432,8 +434,8 @@ public class WelcomeView implements Initializable {
 
             window.setScene(createParcoursScene);
             window.show();
-        }catch(Exception e){
-
+        } catch(Exception e){
+            e.printStackTrace();
         }
     }
 

@@ -54,18 +54,16 @@ public class ListeParcoursView implements Initializable {
             Parcours etapeselected = this.gestionnaireGlobale.getParcours(this.list.getSelectionModel().getSelectedIndex());
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("visualiserParcours.fxml"));
-            loader.setControllerFactory(iC->new VisualiserParcours(this.gestionnaireGlobale,etapeselected));
-            Parent createParcoursParent = loader.load();
+            loader.setControllerFactory(iC-> new VisualiserParcours(etapeselected));
+            Parent root1 = loader.load();
 
             VisualiserParcours visualiserParcours = loader.getController();
             visualiserParcours.initMapAndControls();
 
-            Scene createParcoursScene = new Scene(createParcoursParent);
-
-            Stage window = (Stage) my_bar.getScene().getWindow();
-
-            window.setScene(createParcoursScene);
-            window.show();
+            Stage stage = new Stage();
+            stage.setTitle("Vue du parcours");
+            stage.setScene(new Scene(root1, 600, 370));
+            stage.show();
 
 
         }catch(Exception e){
@@ -86,7 +84,19 @@ public class ListeParcoursView implements Initializable {
         window.setScene(createParcoursScene);
         window.show();
     }
+    public void trouverParcoursMenu(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("trouverParcoursView.fxml"));
+        loader.setControllerFactory(iC->new TrouverParcoursView(this.gestionnaireGlobale));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
     public void changeSceneCreerParcours(javafx.event.ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("createParcoursView.fxml"));
@@ -110,13 +120,18 @@ public class ListeParcoursView implements Initializable {
         for(Parcours parcours : listParcours){
             listNom.add(parcours.getName());
         }
-        list.getItems().setAll(listNom);
+        this.list.getItems().setAll(listNom);
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.afficher.setDisable(true);
-        this.visualiser.setDisable(true);
+        ArrayList<Parcours> listParcours = this.gestionnaireGlobale.getParcours();
+        ArrayList<String> listNom =new ArrayList<>();
+        for(Parcours parcours : listParcours){
+            listNom.add(parcours.getName());
+        }
+        this.list.getItems().setAll(listNom);
     }
 }
