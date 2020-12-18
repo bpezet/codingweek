@@ -145,9 +145,7 @@ public class TrouverParcoursView implements Initializable {
         if (this.dureeCheck.isSelected() == false) {
             dureep = (int)this.duree.getValue();
         }
-        if (this.departCheck.isSelected() == false) {
-            departp = this.depart.getText();
-        }
+
         ((Stage) valider.getScene().getWindow()).close();
     }
     public void setResultatRechercheDistanceAjout(GestionnaireParcours resultatRecherche) {
@@ -210,6 +208,9 @@ public class TrouverParcoursView implements Initializable {
 
     public void rechercherParcours() {
         this.resultatRecherche = new GestionnaireParcours();
+        if (departp >= 21 & distancep >= 11 & difficultep >= 6) {
+            this.resultatRecherche = gParcours;
+        }
         String titre = this.titreRecherche.getText();
         for (int k = 0; k < gParcours.getSize(); k++) {
             if (gParcours.getParcours(k).getName().equals(titre)) {
@@ -232,60 +233,56 @@ public class TrouverParcoursView implements Initializable {
                 System.out.println("difficulte1");
                 setResultatRechercheDifficulteSupp(this.resultatRecherche);
             }
-            if (!departp.equals("")) {
-                System.out.println(departp);
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (!resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
-                        this.resultatRecherche.deleteParcoursIndex(k);
-                    }
-                }
-            }
+
 
         }
 
         else { //au moins distance est modifée
             System.out.println("cas2");
             if (distancep < 21 ) {
+                System.out.println("AFFFICHEEEE :"+ dureep);
                 System.out.println("distance2");
                 setResultatRechercheDistanceAjout(this.resultatRecherche);
+
                 if (dureep < 11) {
+                    System.out.println("duree 21");
                     setResultatRechercheDureeSupp(this.resultatRecherche);
                 }
                 if (difficultep < 6) {
+                    System.out.println("difficulte 21");
                     setResultatRechercheDifficulteSupp(this.resultatRecherche);
                 }
             }
             //au moins duree est mofifiée
-            if (dureep < 6) {
+            else if (dureep < 6) {
                 System.out.println("duree2");
                 setResultatRechercheDureeAjout(this.resultatRecherche);
                 if (distancep < 21) {
+                    System.out.println("distance21");
                     setResultatRechercheDistanceSupp(this.resultatRecherche);
                 }
                 if (difficultep < 6) {
+                    System.out.println("difficultee 22");
                     setResultatRechercheDifficulteSupp(this.resultatRecherche);
                 }
             }
             //au moins diff est modifiée
-            if (difficultep <6) {
+            else if (difficultep <6) {
                 System.out.println("difficulte2");
                 setResultatRechercheDifficulteAjout(this.resultatRecherche);
                 if (distancep < 21) {
+                    System.out.println("distance22");
                     setResultatRechercheDistanceSupp(this.resultatRecherche);
                 }
                 if (dureep < 11) {
+                    System.out.println("duree 22");
                     setResultatRechercheDureeSupp(this.resultatRecherche);
                 }
 
             }
-           if (!departp.equals(null)) {
-                for (int k = 0; k < resultatRecherche.getSize(); k++) {
-                    if (resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
-                        this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
-                    }
-                }
-            }
+
         }
+
         for (int k = 0; k < resultatRecherche.getSize(); k++) {
             System.out.println(resultatRecherche.getParcours().get(k).getDepartName());
             System.out.println(resultatRecherche.getParcours().get(k).getDistance());
@@ -299,6 +296,10 @@ public class TrouverParcoursView implements Initializable {
             listResultat.add(p.getName());
         }
         this.affichageResultats.getItems().setAll(listResultat);
+
+        this.difficultep = 6;
+        this.distancep = 21;
+        this.dureep = 11;
     }
 
     @Override
