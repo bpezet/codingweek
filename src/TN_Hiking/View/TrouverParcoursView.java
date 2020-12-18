@@ -59,7 +59,7 @@ public class TrouverParcoursView implements Initializable {
     private int difficultep = 6;
     private int distancep = 21;
     private int dureep = 11;
-    private String departp;
+    private String departp = "";
 
     private List<String> listResultat;
     private Parcours selectedParcours;
@@ -232,13 +232,14 @@ public class TrouverParcoursView implements Initializable {
                 System.out.println("difficulte1");
                 setResultatRechercheDifficulteSupp(this.resultatRecherche);
             }
-            /**if (!departp.equals(null)) {
+            if (!departp.equals("")) {
+                System.out.println(departp);
                 for (int k = 0; k < resultatRecherche.getSize(); k++) {
                     if (!resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
-                        this.resultatRecherche.deleteParcours();
+                        this.resultatRecherche.deleteParcoursIndex(k);
                     }
                 }
-            }*/
+            }
 
         }
 
@@ -277,13 +278,13 @@ public class TrouverParcoursView implements Initializable {
                 }
 
             }
-           /** if (!departp.equals(null)) {
+           if (!departp.equals(null)) {
                 for (int k = 0; k < resultatRecherche.getSize(); k++) {
                     if (resultatRecherche.getParcours(k).getDepartName().equals(departp)) {
                         this.resultatRecherche.addParcours(this.gParcours.getParcours(k));
                     }
                 }
-            }*/
+            }
         }
         for (int k = 0; k < resultatRecherche.getSize(); k++) {
             System.out.println(resultatRecherche.getParcours().get(k).getDepartName());
