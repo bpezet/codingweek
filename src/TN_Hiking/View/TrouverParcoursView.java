@@ -208,11 +208,9 @@ public class TrouverParcoursView implements Initializable {
 
     public void rechercherParcours() {
         this.resultatRecherche = new GestionnaireParcours();
-        if (departp >= 21 & distancep >= 11 & difficultep >= 6) {
-            this.resultatRecherche = gParcours;
-        }
+
         String titre = this.titreRecherche.getText();
-        for (int k = 0; k < gParcours.getSize(); k++) {
+        for (int k = 0; k < this.gParcours.getSize(); k++) {
             if (gParcours.getParcours(k).getName().equals(titre)) {
                 this.resultatRecherche.addParcours(gParcours.getParcours(k));
             }
@@ -240,7 +238,6 @@ public class TrouverParcoursView implements Initializable {
         else { //au moins distance est modifée
             System.out.println("cas2");
             if (distancep < 21 ) {
-                System.out.println("AFFFICHEEEE :"+ dureep);
                 System.out.println("distance2");
                 setResultatRechercheDistanceAjout(this.resultatRecherche);
 
