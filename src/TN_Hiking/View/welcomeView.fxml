@@ -68,10 +68,10 @@
             <font>
                <Font name="Al Bayan Plain" size="1.0" />
             </font></Button>
-         <Label fx:id="titre1" layoutX="28.0" layoutY="61.0" text="Titre" textFill="WHITE" />
-         <Label fx:id="duree1" layoutX="121.0" layoutY="61.0" text="Durée" textFill="#fffefe" />
-         <Label fx:id="difficulte1" layoutX="221.0" layoutY="61.0" text="Difficulté" textFill="#fffefe" />
-         <Label fx:id="distance1" layoutX="324.0" layoutY="61.0" text="Distance" textFill="#fffefe" />
+         <Label fx:id="titre1" layoutX="28.0" layoutY="61.0" textFill="WHITE" />
+         <Label fx:id="duree1" layoutX="121.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="difficulte1" layoutX="221.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="distance1" layoutX="324.0" layoutY="61.0" textFill="#fffefe" />
       </children></Pane>
    <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Meilleurs parcours à essayer" textFill="#c30808" textOverrun="CLIP">
       <font>
@@ -96,10 +96,10 @@
                <Font size="1.0" />
             </font>
          </Button>
-         <Label fx:id="titre2" layoutX="28.0" layoutY="61.0" text="Titre" textFill="WHITE" />
-         <Label fx:id="duree2" layoutX="121.0" layoutY="61.0" text="Durée" textFill="#fffefe" />
-         <Label fx:id="difficulte2" layoutX="221.0" layoutY="61.0" text="Difficulté" textFill="#fffefe" />
-         <Label fx:id="distance2" layoutX="324.0" layoutY="61.0" text="Distance" textFill="#fffefe" />
+         <Label fx:id="titre2" layoutX="28.0" layoutY="61.0" textFill="WHITE" />
+         <Label fx:id="duree2" layoutX="121.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="difficulte2" layoutX="221.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="distance2" layoutX="324.0" layoutY="61.0" textFill="#fffefe" />
       </children>
    </Pane>
    <Button fx:id="prec" layoutX="163.0" layoutY="362.0" mnemonicParsing="false" onAction="#affichageParcoursPrecedantBouton" text="Précédant" />

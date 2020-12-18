@@ -472,9 +472,14 @@ public class WelcomeView implements Initializable {
             /**Premier Parcours*/
             Image i1 = new Image(this.gestionnaireParcours.getParcours().get(k).getImage().substring(4));
             this.titre1.setText(this.gestionnaireParcours.getParcours(k).getName());
-            this.duree1.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k).getDuree()*1000)/1000+"km"));
+
+            String heure = String.valueOf((int)(((this.gestionnaireParcours.getParcours().get(k).getDuree()*60)/60)));
+            String minutes = String.valueOf((int)(((this.gestionnaireParcours.getParcours().get(k).getDuree()*60)%60)));
+            if(minutes.length()==1){ minutes = "0"+minutes; }
+            this.duree1.setText(heure+"h"+minutes+"min");
+            this.distance1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDistance()).substring(0,3)+" km");
+
             this.difficulte1.setText(String.valueOf(this.gestionnaireParcours.getParcours(k).getDifficulte()));
-            this.distance1.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k).getDistance()*1000)/1000+"km"));
             this.image1.setImage(i1);
             this.image1.setVisible(true);
         }catch(Exception e){
@@ -491,9 +496,14 @@ public class WelcomeView implements Initializable {
             /**Deuxième parcours*/
             Image i2 = new Image(this.gestionnaireParcours.getParcours().get(k+1).getImage().substring(4));
             this.titre2.setText((this.gestionnaireParcours.getParcours(k+1).getName()));
-            this.duree2.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k+1).getDuree()*100)/100)+"h");
+
+            String heure = String.valueOf((int)(((this.gestionnaireParcours.getParcours().get(k+1).getDuree()*60)/60)));
+            String minutes = String.valueOf((int)(((this.gestionnaireParcours.getParcours().get(k+1).getDuree()*60)%60)));
+            if(minutes.length()==1){ minutes = "0"+minutes; }
+            this.duree2.setText(heure+"h"+minutes+"min");
+            this.distance2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDistance()).substring(0,3)+" km");
+
             this.difficulte2.setText(String.valueOf(this.gestionnaireParcours.getParcours(k+1).getDifficulte()));
-            this.distance2.setText(String.valueOf(Math.round(this.gestionnaireParcours.getParcours(k+1).getDistance()*1000)/1000+"km"));
             this.image2.setImage(i2);
             this.image2.setVisible(true);
         }catch(Exception e){
