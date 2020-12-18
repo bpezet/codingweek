@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -126,8 +127,8 @@ public class VisualiserParcours {
         this.track.setVisible(true);
         this.myMap.addCoordinateLine(this.track);
         try {
-          //File file = new File(this.p.getImage());
-            Image image = new Image(this.p.getImage().substring(4));
+            FileInputStream inputstream = new FileInputStream(this.p.getImage());
+            Image image = new Image(inputstream);
             this.imageParcours.setImage(image);
         }catch(Exception e){
             e.printStackTrace();

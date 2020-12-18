@@ -474,7 +474,8 @@ public class WelcomeView implements Initializable {
             /**Premier Parcours*/
             Parcours p1 = this.gestionnaireParcours.getParcours(this.gestionnaireParcours.getParcours().size()-(k+1));
 
-            Image i1 = new Image(p1.getImage().substring(4));
+            FileInputStream inputstream = new FileInputStream(p1.getImage());
+            Image i1 = new Image(inputstream);
             this.titre1.setText(p1.getName());
 
             String heure = String.valueOf((int)(((p1.getDuree()*60)/60)));
@@ -500,8 +501,9 @@ public class WelcomeView implements Initializable {
         try {
             /**Deuxième parcours*/
             Parcours p2 = this.gestionnaireParcours.getParcours(this.gestionnaireParcours.getParcours().size()-(k+2));
+            FileInputStream inputstream = new FileInputStream(p2.getImage());
+            Image i2 = new Image(inputstream);
 
-            Image i2 = new Image(p2.getImage().substring(4));
             this.titre2.setText((p2.getName()));
 
             String heure = String.valueOf((int)(((p2.getDuree()*60)/60)));
