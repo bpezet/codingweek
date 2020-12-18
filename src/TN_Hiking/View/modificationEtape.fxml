@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.sothawo.mapjfx.*?>
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="652.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ModificationEtape">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="652.0">
-         <top>
-            <MenuBar fx:id="my_bar" prefHeight="26.0" prefWidth="627.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <MapView fx:id="mapView" prefHeight="282.0" prefWidth="452.0" />
+            <MenuBar fx:id="my_bar" prefHeight="26.0" prefWidth="627.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Home">
                      <items>
@@ -36,31 +36,14 @@
                   </Menu>
                </menus>
             </MenuBar>
-         </top>
-         <right>
-
-         </right>
-         <left>
-            <ListView fx:id="listView" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="275.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </left>
-         <bottom>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="557.0" spacing="15.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#eventHandlerBackButton" text="Retour" />
-                  <Button mnemonicParsing="false" onAction="#eventHandlerTracer" text="Tracer le parcours" />
-                  <Button mnemonicParsing="false" onAction="#supprimeEtape" text="Supprimer étape" />
-                  <Button mnemonicParsing="false" onAction="#addEtape" prefHeight="28.0" prefWidth="88.0" text="Ajouter Etape" />
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </HBox>
-         </bottom>
-         <center>
-            <MapView fx:id="mapView" prefHeight="274.0" prefWidth="462.0" />
-         </center>
-      </BorderPane>
-      <TextField fx:id="nomNewEtape" layoutX="523.0" layoutY="319.0" prefHeight="26.0" prefWidth="128.0" promptText="Nom de la nouvelle étape" />
-      <TextField fx:id="numEtape" layoutX="523.0" layoutY="345.0" prefHeight="26.0" prefWidth="128.0" promptText="Numéro de la nouvelle étape" />
+            <ListView fx:id="listView" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="324.0" prefWidth="200.0" />
+            <Button mnemonicParsing="false" onAction="#eventHandlerBackButton" text="Retour" />
+            <Button mnemonicParsing="false" onAction="#eventHandlerTracer" text="Tracer le parcours" />
+            <Button mnemonicParsing="false" onAction="#supprimeEtape" text="Supprimer étape" />
+            <Button mnemonicParsing="false" onAction="#addEtape" prefHeight="28.0" prefWidth="88.0" text="Ajouter Etape" />
+            <TextField fx:id="nomNewEtape" prefHeight="26.0" prefWidth="128.0" promptText="Nom de la nouvelle étape" />
+            <TextField fx:id="numEtape" prefHeight="26.0" prefWidth="128.0" promptText="Numéro de la nouvelle étape" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
