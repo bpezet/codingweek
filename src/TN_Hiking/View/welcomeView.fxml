@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
+<Pane fx:id="firstPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.WelcomeView">
 
     <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
     <menus>
@@ -19,10 +19,10 @@
         <Menu mnemonicParsing="false" text="File">
             <items>
                 <MenuItem fx:id="RefreshButton" mnemonicParsing="false" onAction="#setRefreshButton" text="Refresh" />
-                <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
+                <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="SaveBDD" />
                 <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" onAction="#setSaveAsButton" text="SaveAS.." />
                 <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" onAction="#setOpenFromButton" text="Open from .." />
-                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addGpx from.." />
+                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addCSV from.." />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Debugg">
@@ -35,20 +35,14 @@
         <Menu mnemonicParsing="false" text="Outils">
             <items>
                 <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Randonnées">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
-                <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Gestion">
-            <items>
-                <MenuItem fx:id="fav" mnemonicParsing="false" onAction="#eventHandlersfav" text="Favoris" />
-            </items>
-        </Menu>
+
     </menus>
     </MenuBar>
    <Pane layoutY="113.0" prefHeight="119.0" prefWidth="600.0" style="-fx-background-color: black;">
