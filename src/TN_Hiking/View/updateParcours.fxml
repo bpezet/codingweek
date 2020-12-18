@@ -28,25 +28,23 @@
            <menus>
                <Menu mnemonicParsing="false" text="Home">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Close" />
+                       <MenuItem mnemonicParsing="false" onAction="#closeButton" text="Close" />
                        <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Outils">
                    <items>
                        <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Randonnées">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
+                       <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Gestion">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Favoris" />
+                       <MenuItem mnemonicParsing="false" onAction="#eventHandlersfav" text="Affiche tous les parcours" />
                    </items>
                </Menu>
            </menus>

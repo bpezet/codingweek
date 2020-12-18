@@ -4,6 +4,7 @@ import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Etape;
 import TN_Hiking.Models.Parcours;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -105,6 +106,40 @@ public class UpdateParcours {
         window.show();
     }
 
+    public void eventHandlersfav(ActionEvent actionEvent) throws IOException{
+        try {
+
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("listeParcoursView.fxml"));
+            loader.setControllerFactory(iC -> new ListeParcoursView(this.ges));
+            Parent createParcoursParent = loader.load();
+
+            Scene createParcoursScene = new Scene(createParcoursParent);
+
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void trouverParcoursMenu(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("trouverParcoursView.fxml"));
+        loader.setControllerFactory(iC->new TrouverParcoursView(this.ges));
+        Parent createParcoursParent = loader.load();
+
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+
     @FXML
     public void eventHandlerUpdateBouton() throws IOException{
         try {
@@ -146,6 +181,10 @@ public class UpdateParcours {
         }
 
         this.eventHadlerBackBouton();
+
+    }
+    public void closeButton(){
+        Platform.exit();
 
     }
 
