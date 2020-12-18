@@ -42,6 +42,11 @@
                 <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
             </items>
         </Menu>
+         <Menu mnemonicParsing="false" text="Gestion">
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#eventHandlersfav" text="Voir parcours" />
+            </items>
+         </Menu>
 
     </menus>
     </MenuBar>
