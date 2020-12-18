@@ -12,31 +12,31 @@
             <Menu mnemonicParsing="false" text="Home">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="homeButton" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                </items>
             </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File" />
             <Menu mnemonicParsing="false" text="Outils">
                <items>
                   <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                  <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Randonnées">
                <items>
                   <MenuItem fx:id="trouverParcours" mnemonicParsing="false" text="Trouver un parcours" />
-                  <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                  <MenuItem mnemonicParsing="false" text="Importer" />
-                  <MenuItem mnemonicParsing="false" text="Exporter" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Gestion">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Favoris" />
+                  <MenuItem mnemonicParsing="false" onAction="#eventHandlersfav" text="Afficher tous les parcours" />
                </items>
             </Menu>
          </menus>
       </MenuBar>
       <Button layoutX="351.0" layoutY="54.0" mnemonicParsing="false" onAction="#plusDeCritère" text="+ de critère" />
       <Button layoutX="458.0" layoutY="54.0" mnemonicParsing="false" onAction="#rechercherParcours" prefHeight="27.0" prefWidth="92.0" text="Rechercher" />
-      <ScrollPane fx:id="rechercheParcours" layoutX="13.0" layoutY="113.0" prefHeight="273.0" prefWidth="573.0" />
+      <ListView fx:id="affichageResultats" layoutX="19.0" layoutY="100.0" onMouseClicked="#parcoursSelectionned" prefHeight="284.0" prefWidth="263.0" />
+      <Button layoutX="379.0" layoutY="200.0" mnemonicParsing="false" onAction="#visualiserParcours" text="Voir le parcours" />
+      <Button layoutX="379.0" layoutY="254.0" mnemonicParsing="false" onAction="#eventHandlerBoutonModifier" text="Modifier le parcours" />
    </children>
 </Pane>

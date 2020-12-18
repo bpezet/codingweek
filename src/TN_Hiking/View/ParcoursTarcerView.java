@@ -15,17 +15,21 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ParcoursTarcerView implements Initializable {
     @FXML
-    MenuBar my_bar;
-
+    private MenuBar my_bar;
     @FXML
-    MenuItem borderPane;
-    GestionnaireParcours gParcours;
+    private MenuItem homeButton;
+    @FXML
+    private MenuItem borderPane;
+
+
+    private GestionnaireParcours gParcours;
 
     /** Constructeur */
     public ParcoursTarcerView(GestionnaireParcours gParcours) {
@@ -36,6 +40,7 @@ public class ParcoursTarcerView implements Initializable {
 
     /** Boutton Annuler le parcours*/
     public void changeSceneTracerToWelcomeView(ActionEvent actionEvent) throws IOException {
+        
         this.gParcours.deleteParcours();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("welcomeView.fxml"));
@@ -87,6 +92,8 @@ public class ParcoursTarcerView implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {this.borderPane.setDisable(true);
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.borderPane.setDisable(true);
+        this.homeButton.setDisable(true);
     }
 }

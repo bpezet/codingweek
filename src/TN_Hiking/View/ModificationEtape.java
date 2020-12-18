@@ -11,15 +11,20 @@ import com.sothawo.mapjfx.event.MarkerEvent;
 import com.sothawo.mapjfx.offline.OfflineCache;
 import javafx.animation.AnimationTimer;
 import javafx.animation.Transition;
+import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -39,6 +44,9 @@ public class ModificationEtape {
     private static final int ZOOM_DEFAULT = 14;
 
     private Parcours parcours;
+
+    @FXML
+    private MenuBar my_bar;
 
     private Marker markerSet;
 
@@ -62,14 +70,14 @@ public class ModificationEtape {
 
     private CoordinateLine track;
 
+    private GestionnaireParcours ges;
+
     /**Constructeur*/
-    public ModificationEtape(Parcours parcours){
+    public ModificationEtape(GestionnaireParcours ges,Parcours parcours){
+
+        this.ges = ges;
 
         this.parcours = parcours;
-        System.out.println(parcours.getName());
-        this.parcours.addEtape(new Etape("Toulouse", 43.6, 1.43));
-        this.parcours.addEtape(new Etape("Montcuq", 44.3333, 1.21667));
-        this.parcours.addEtape(new Etape("Carcassonne", 43.21667, 2.35));
         Coordinate coords= new Coordinate(43.6, 1.43);
         this.markerSet = Marker.createProvided(Marker.Provided.BLUE).setVisible(false);
 
@@ -84,7 +92,24 @@ public class ModificationEtape {
         this.newEtapeMarker = Marker.createProvided(Marker.Provided.GREEN).setVisible(true);
 
     }
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.ges));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
+
+    /** Bouton : fermer l'application*/
+    public void closeApp() {
+        Platform.exit();
+    }
 
     public void initMapAndControls(){
         mapView.setZoom(ZOOM_DEFAULT);
@@ -104,7 +129,6 @@ public class ModificationEtape {
     @FXML
     public void eventHandlerMouseClickListView(){
         try {
-            System.out.println("Tu as cliquer sur : " + this.listView.getSelectionModel().getSelectedItem());
             Etape etapeselected = this.parcours.getSpecificEtape(this.listView.getSelectionModel().getSelectedIndex());
             this.mapView.setCenter(new Coordinate(etapeselected.getLatitude(), etapeselected.getLongitude()));
 
@@ -204,14 +228,39 @@ public class ModificationEtape {
     }
 
 
+    @FXML
+    public void eventHandlerBackButton() throws IOException {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("updateParcours.fxml"));
+            loader.setControllerFactory(iC -> new UpdateParcours(this.ges, this.ges.getParcours(0)));
+            Parent createParcoursParent = loader.load();
+
+            Scene createParcoursScene = new Scene(createParcoursParent);
+
+            Stage window = (Stage) my_bar.getScene().getWindow();
+
+            window.setScene(createParcoursScene);
+            window.show();
+        }catch(Exception e){
+        }
+    }
+
 
     @FXML
     public void initialize(){
         this.mapView.initialize();
-        this.mapView.setCenter(new Coordinate(49.00515,8.394922));
-        this.updateList();
-        this.listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        this.eventHandlerTracer();
+        try {
+            this.mapView.setCenter(new Coordinate(this.parcours.getSpecificEtape(0).getLatitude(), this.parcours.getSpecificEtape(0).getLongitude()));
+            this.updateList();
+            this.listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            this.eventHandlerTracer();
+        }catch(Exception e){
+            this.mapView.setCenter(new Coordinate(1.0, 1.0));
+            this.updateList();
+            this.listView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            this.eventHandlerTracer();
+        }
 
     }
 

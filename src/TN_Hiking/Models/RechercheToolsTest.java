@@ -19,10 +19,10 @@ public class RechercheToolsTest {
 
     //113.66 km
 
-    Etape e1 = new Etape("Nancy",48.684357299999995,6.178623099999999);
-    Etape e2 = new Etape("Strasbourg",48.59107971191406,7.718184471130371);
+    Etape e1 = new Etape("Nancy",48.40107,6.09201);
+    Etape e2 = new Etape("Strasbourg",48.41369,6.10586);
     Double Ecart = 0.05; // ecart a 5%
-    Double realDist = 113.66; // calculee via google map
+    Double realDist = 3.43; // calculee via google map
 
     Parcours parcours = new Parcours("",0,"");
 

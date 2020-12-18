@@ -19,6 +19,7 @@ public class GestionnaireParcours {
     public void  deleteParcours() {
         this.parcours.remove(this.parcours.size()-1);
     }
+    public void deleteParcoursIndex(int k) {this.parcours.remove(this.parcours.get(k));}
 
     /**Getters and Setters*/
 

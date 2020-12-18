@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ParcoursViewEtape">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ParcoursViewEtape">
    <children>
       <Label layoutX="208.0" layoutY="14.0" prefHeight="88.0" prefWidth="185.0" text="Créer une étape" underline="true">
          <font>
@@ -19,32 +19,34 @@
       <TextField fx:id="longitude" layoutX="273.0" layoutY="171.0" prefHeight="25.0" prefWidth="136.0" />
       <Label layoutX="199.0" layoutY="175.0" text="Longitude" />
       <Button layoutX="199.0" layoutY="206.0" mnemonicParsing="false" onAction="#chooseCoordMap" text="Choisir un point sur la map" />
-      <Button layoutX="199.0" layoutY="239.0" mnemonicParsing="false" text="Utiliser sa position gps" />
       <Button layoutX="309.0" layoutY="351.0" mnemonicParsing="false" onAction="#changeSceneParcoursTracer" text="Créer !" />
        <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
            <menus>
                <Menu mnemonicParsing="false" text="Home">
                    <items>
                        <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                       <MenuItem fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                    </items>
                </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="homeButton1" disable="true" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
+               </items>
+            </Menu>
                <Menu mnemonicParsing="false" text="Outils">
                    <items>
-                       <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                       <MenuItem fx:id="borderPane" disable="true" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Randonnées">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Importer" />
-                       <MenuItem mnemonicParsing="false" text="Exporter" />
+                       <MenuItem disable="true" mnemonicParsing="false" text="Trouver un parcours" />
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Gestion">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Favoris" />
+                       <MenuItem disable="true" mnemonicParsing="false" text="Afficher tous les parcours" />
                    </items>
                </Menu>
            </menus>

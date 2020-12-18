@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="246.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ListeParcoursView">
+    <children>
+        <Pane prefHeight="246.0" prefWidth="394.0">
+            <children>
+                <Button layoutX="324.0" layoutY="90.0" mnemonicParsing="false" onAction="#eventHandlerBouton" prefHeight="66.0" prefWidth="35.0" text="&gt;" />
+                <ListView fx:id="list" layoutX="82.0" layoutY="35.0" prefHeight="177.0" prefWidth="107.0" style="-fx-border-color: Grey;" />
+            </children>
+        </Pane>
+        <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Home">
+                    <items>
+                        <MenuItem id="closeButton" fx:id="close" mnemonicParsing="false" onAction="#closeButton" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#retourButton" text="Home" />
+                    </items>
+                </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem id="closeButton" fx:id="close1" mnemonicParsing="false" onAction="#closeButton" text="Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#retourButton" text="Home" />
+               </items>
+            </Menu>
+                <Menu mnemonicParsing="false" text="Outils">
+                    <items>
+                        <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Randonnées">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Gestion">
+                    <items>
+                        <MenuItem fx:id="afficher" disable="true" mnemonicParsing="false" text="Afficher tous les parcours" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+      <Button layoutX="445.0" layoutY="195.0" mnemonicParsing="false" onAction="#retourButton" text="Home" />
+    </children>
+</AnchorPane>

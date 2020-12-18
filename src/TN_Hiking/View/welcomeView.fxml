@@ -13,15 +13,16 @@
         <Menu mnemonicParsing="false" text="Home">
             <items>
                 <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+               <MenuItem fx:id="homeButton" mnemonicParsing="false" text="Home" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="File">
             <items>
                 <MenuItem fx:id="RefreshButton" mnemonicParsing="false" onAction="#setRefreshButton" text="Refresh" />
-                <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="Save" />
+                <MenuItem fx:id="SaveButton" mnemonicParsing="false" onAction="#setSaveButton" text="SaveBDD" />
                 <MenuItem fx:id="SaveAsButton" mnemonicParsing="false" onAction="#setSaveAsButton" text="SaveAS.." />
                 <MenuItem fx:id="OpenFromButton" mnemonicParsing="false" onAction="#setOpenFromButton" text="Open from .." />
-                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addGpx from.." />
+                <MenuItem fx:id="addGpxFromButton" mnemonicParsing="false" onAction="#setAddGpxFromButton" text="addCSV from.." />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Debugg">
@@ -34,22 +35,19 @@
         <Menu mnemonicParsing="false" text="Outils">
             <items>
                 <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" onAction="#eventHandlerUpdateBouton" text="Mise a jour" />
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Randonnées">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#trouverParcoursMenu" text="Trouver un parcours" />
-                <MenuItem mnemonicParsing="false" onAction="#visualiserParcours" text="Visualiser un parcours" />
-                <MenuItem mnemonicParsing="false" text="Importer" />
-                <MenuItem mnemonicParsing="false" text="Exporter" />
             </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Gestion">
+         <Menu mnemonicParsing="false" text="Gestion">
             <items>
-                <MenuItem mnemonicParsing="false" text="Favoris" />
+               <MenuItem mnemonicParsing="false" onAction="#eventHandlersfav" text="Afficher tous les parcours" />
             </items>
-        </Menu>
+         </Menu>
+
     </menus>
     </MenuBar>
    <Pane layoutY="113.0" prefHeight="119.0" prefWidth="600.0" style="-fx-background-color: black;">
@@ -62,19 +60,19 @@
          <Label layoutX="121.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
          <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
          <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
-         <Button contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventHandlerFirstButtonParcours" prefHeight="102.0" prefWidth="192.0" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS">
+         <Button contentDisplay="GRAPHIC_ONLY" graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#visualiserParcours1" prefHeight="102.0" prefWidth="192.0" textAlignment="JUSTIFY" textOverrun="LEADING_ELLIPSIS">
             <graphic>
                <ImageView fx:id="image1" fitHeight="108.0" fitWidth="187.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
             </graphic>
             <font>
                <Font name="Al Bayan Plain" size="1.0" />
             </font></Button>
-         <Label fx:id="titre1" layoutX="28.0" layoutY="61.0" text="Titre" textFill="WHITE" />
-         <Label fx:id="duree1" layoutX="121.0" layoutY="61.0" text="Durée" textFill="#fffefe" />
-         <Label fx:id="difficulte1" layoutX="221.0" layoutY="61.0" text="Difficulté" textFill="#fffefe" />
-         <Label fx:id="distance1" layoutX="324.0" layoutY="61.0" text="Distance" textFill="#fffefe" />
+         <Label fx:id="titre1" layoutX="28.0" layoutY="61.0" textFill="WHITE" />
+         <Label fx:id="duree1" layoutX="121.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="difficulte1" layoutX="221.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="distance1" layoutX="324.0" layoutY="61.0" textFill="#fffefe" />
       </children></Pane>
-   <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Meilleurs parcours à essayer" textFill="#c30808" textOverrun="CLIP">
+   <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Les derniers parcours créés" textFill="#c30808" textOverrun="CLIP">
       <font>
          <Font name="Bangla MN" size="21.0" />
       </font>
@@ -89,7 +87,7 @@
          <Label layoutX="121.0" layoutY="14.0" text="Durée" textFill="#fffefe" />
          <Label layoutX="221.0" layoutY="14.0" text="Difficulté" textFill="#fffefe" />
          <Label layoutX="324.0" layoutY="14.0" text="Distance" textFill="#fffefe" />
-         <Button graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#eventHandlerSecondButtonParcours" prefHeight="102.0" prefWidth="192.0" textAlignment="CENTER" textOverrun="CLIP">
+         <Button graphicTextGap="1.0" layoutX="400.0" layoutY="5.0" mnemonicParsing="false" onAction="#visualiserParcours2" prefHeight="102.0" prefWidth="192.0" textAlignment="CENTER" textOverrun="CLIP">
             <graphic>
                <ImageView fx:id="image2" fitHeight="108.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
@@ -97,10 +95,12 @@
                <Font size="1.0" />
             </font>
          </Button>
-         <Label fx:id="titre2" layoutX="28.0" layoutY="61.0" text="Titre" textFill="WHITE" />
-         <Label fx:id="duree2" layoutX="121.0" layoutY="61.0" text="Durée" textFill="#fffefe" />
-         <Label fx:id="difficulte2" layoutX="221.0" layoutY="61.0" text="Difficulté" textFill="#fffefe" />
-         <Label fx:id="distance2" layoutX="324.0" layoutY="61.0" text="Distance" textFill="#fffefe" />
+         <Label fx:id="titre2" layoutX="28.0" layoutY="61.0" textFill="WHITE" />
+         <Label fx:id="duree2" layoutX="121.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="difficulte2" layoutX="221.0" layoutY="61.0" textFill="#fffefe" />
+         <Label fx:id="distance2" layoutX="324.0" layoutY="61.0" textFill="#fffefe" />
       </children>
    </Pane>
+   <Button fx:id="prec" layoutX="163.0" layoutY="362.0" mnemonicParsing="false" onAction="#affichageParcoursPrecedantBouton" text="Précédant" />
+   <Button fx:id="suiv" layoutX="326.0" layoutY="362.0" mnemonicParsing="false" onAction="#affichageParcoursSuivantBouton" text="Suivant" />
 </Pane>

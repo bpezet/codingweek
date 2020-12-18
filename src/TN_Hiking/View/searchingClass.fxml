@@ -3,25 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.TrouverParcoursView">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.TrouverParcoursView">
    <children>
       <Label layoutX="10.0" layoutY="34.0" prefHeight="17.0" prefWidth="98.0" text="Distance (en KM)" />
        <Slider fx:id="distance" blockIncrement="1.0" cache="true" layoutX="128.0" layoutY="23.0" majorTickUnit="4.0" max="20.0" min="0.0" minorTickCount="0" prefHeight="38.0" prefWidth="310.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-      <Label layoutX="10.0" layoutY="75.0" prefHeight="17.0" prefWidth="89.0" text="Duree (en jours)" />
+      <Label layoutX="10.0" layoutY="75.0" prefHeight="17.0" prefWidth="98.0" text="Duree (en heures)" />
       <Label layoutX="10.0" layoutY="120.0" prefHeight="17.0" prefWidth="62.0" text="Difficultée" />
       <Slider fx:id="duree" blockIncrement="1.0" cache="true" layoutX="128.0" layoutY="64.0" majorTickUnit="1.0" max="10.0" min="0.0" minorTickCount="0" prefHeight="38.0" prefWidth="310.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <Slider fx:id="difficulte" blockIncrement="1.0" cache="true" layoutX="128.0" layoutY="110.0" majorTickUnit="1.0" max="5.0" min="0.0" minorTickCount="0" prefHeight="38.0" prefWidth="310.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-      <Label layoutX="10.0" layoutY="166.0" text="Lieu Départ" />
-      <TextField fx:id="depart" layoutX="128.0" layoutY="161.0" prefHeight="27.0" prefWidth="310.0" />
       <Label layoutX="84.0" layoutY="129.0" text="Facile" />
       <Label layoutX="444.0" layoutY="129.0" text="Dur" />
-      <CheckBox layoutX="185.0" layoutY="212.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" text="Favoris" />
       <CheckBox fx:id="distanceCheck" layoutX="473.0" layoutY="25.0" mnemonicParsing="false" text="Indifférent" />
       <CheckBox fx:id="dureeCheck" layoutX="473.0" layoutY="66.0" mnemonicParsing="false" text="Indifférent" />
       <CheckBox fx:id="difficulteCheck" layoutX="473.0" layoutY="111.0" mnemonicParsing="false" text="Indifférent" />
-      <CheckBox fx:id="departCheck" layoutX="473.0" layoutY="166.0" mnemonicParsing="false" text="Indifférent" />
-      <Label layoutX="10.0" layoutY="217.0" text="Les parcours favoris" />
-      <Button fx:id="valider" layoutX="421.0" layoutY="221.0" mnemonicParsing="false" onAction="#validationCriteres" prefHeight="27.0" prefWidth="89.0" text="Valider" />
+      <Button fx:id="valider" layoutX="454.0" layoutY="181.0" mnemonicParsing="false" onAction="#validationCriteres" prefHeight="27.0" prefWidth="89.0" text="Valider" />
 
    </children>
 </Pane>

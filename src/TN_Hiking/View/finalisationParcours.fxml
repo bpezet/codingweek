@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#ajoutImage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.FinalisationParcours">
+<Pane id="note" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#ajoutImage" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.FinalisationParcours">
    <children>
       <Label layoutX="51.0" layoutY="100.0" text="Note" />
       <Label layoutX="50.0" layoutY="149.0" text="Nom du lieu de fin" />
@@ -18,25 +18,28 @@
             <Menu mnemonicParsing="false" text="Home">
                <items>
                   <MenuItem fx:id="close" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
+               </items>
+            </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem fx:id="close1" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="homeButton1" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Outils">
                <items>
-                  <MenuItem fx:id="borderPane" mnemonicParsing="false" text="Créer un parcours" />
-                  <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
+                  <MenuItem fx:id="borderPane" disable="true" mnemonicParsing="false" text="Créer un parcours" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Randonnées">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
-                  <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                  <MenuItem mnemonicParsing="false" text="Importer" />
-                  <MenuItem mnemonicParsing="false" text="Exporter" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Trouver un parcours" />
                </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Gestion">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Favoris" />
+                  <MenuItem disable="true" mnemonicParsing="false" text="Favoris" />
                </items>
             </Menu>
          </menus>
@@ -46,6 +49,6 @@
       <Button layoutX="420.0" layoutY="344.0" mnemonicParsing="false" onAction="#retourEnArriere" text="Retour" />
       <Label layoutX="149.0" layoutY="109.0" text="Mauvais" />
       <Label layoutX="383.0" layoutY="109.0" text="Excellent" />
-      <Button fx:id="Image" layoutX="37.0" layoutY="344.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="108.0" onAction="#ajoutImage" text="Image" />
+      <Button fx:id="Image" layoutX="37.0" layoutY="344.0" mnemonicParsing="false" onAction="#ajoutImage" prefHeight="27.0" prefWidth="108.0" text="Image" />
    </children>
 </Pane>

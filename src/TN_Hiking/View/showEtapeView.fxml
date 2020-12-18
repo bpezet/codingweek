@@ -8,6 +8,6 @@
     <children>
       <MapView fx:id="mapView" layoutX="205.0" layoutY="6.0" prefHeight="288.0" prefWidth="291.0" />
       <ListView fx:id="listView" layoutX="6.0" layoutY="6.0" onMouseClicked="#eventHandlerMouseClickListView" prefHeight="288.0" prefWidth="193.0" />
-      <CheckBox fx:id="checkTracer" layoutX="371.0" layoutY="253.0" mnemonicParsing="false" onAction="#afficherParcours" prefHeight="22.0" prefWidth="125.0" style="-fx-background-color: white;" text="Afficher le parcours" />
+      <CheckBox fx:id="checkTracer" layoutX="360.0" layoutY="253.0" mnemonicParsing="false" onAction="#afficherParcours" prefHeight="22.0" prefWidth="136.0" style="-fx-background-color: white;" text="Afficher le parcours" />
     </children>
 </Pane>

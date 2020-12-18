@@ -7,44 +7,13 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.VisualiserParcours">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.VisualiserParcours">
    <children>
-       <MenuBar fx:id="my_bar" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-           <menus>
-               <Menu mnemonicParsing="false" text="Home">
-                   <items>
-                       <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
-                   </items>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Outils">
-                   <items>
-                       <MenuItem fx:id="borderPane" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />
-                       <MenuItem fx:id="MenuCreerParcours" mnemonicParsing="false" text="Mise a jour" />
-                   </items>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Randonnées">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="Trouver un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Visualiser un parcours" />
-                       <MenuItem mnemonicParsing="false" text="Importer" />
-                       <MenuItem mnemonicParsing="false" text="Exporter" />
-                   </items>
-               </Menu>
-               <Menu mnemonicParsing="false" text="Gestion">
-                   <items>
-                       <MenuItem mnemonicParsing="false" text="Favoris" />
-                   </items>
-               </Menu>
-           </menus>
-        </MenuBar>
-      <MapView fx:id="myMap" layoutX="11.0" layoutY="46.0" prefHeight="337.0" prefWidth="285.0" />
-      <ImageView id="imageParcours" fitHeight="161.0" fitWidth="273.0" layoutX="315.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../Ressources/lapin.jpeg" />
-         </image></ImageView>
-      <TitledPane animated="false" expanded="false" layoutX="315.0" layoutY="223.0" onMouseClicked="#extendInfo" prefHeight="4.0" prefWidth="273.0" text="plus d'informations">
+      <MapView fx:id="myMap" layoutX="14.0" layoutY="14.0" prefHeight="337.0" prefWidth="285.0" />
+      <ImageView id="imageParcours" fx:id="imageParcours" fitHeight="154.0" fitWidth="273.0" layoutX="315.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" />
+      <TitledPane animated="false" expanded="false" layoutX="315.0" layoutY="183.0" onMouseClicked="#extendInfo" prefHeight="4.0" prefWidth="273.0" text="plus d'informations">
         <content>
-          <AnchorPane minHeight="145.0" minWidth="0.0" prefHeight="128.0" prefWidth="271.0">
+          <AnchorPane minHeight="145.0" minWidth="0.0" prefHeight="162.0" prefWidth="271.0">
                <children>
                   <Label fx:id="long_desc" layoutX="12.0" prefHeight="79.0" prefWidth="248.0" text="description_detaillée" wrapText="true" />
                   <Label layoutX="12.0" layoutY="93.0" text="Durée estimée : " />
@@ -55,13 +24,12 @@
                </children></AnchorPane>
         </content>
       </TitledPane>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000007" height="161.0" layoutX="315.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="273.0" />
-      <Label layoutX="369.0" layoutY="46.0" text="Parcours : ">
+      <Label layoutX="369.0" layoutY="6.0" text="Parcours : ">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Pane layoutX="320.0" layoutY="63.0" prefHeight="154.0" prefWidth="263.0">
+      <Pane layoutX="320.0" layoutY="23.0" prefHeight="154.0" prefWidth="263.0">
          <children>
             <Label fx:id="short_desc" layoutX="8.0" prefHeight="51.0" prefWidth="248.0" text="courte_descrition" wrapText="true" />
             <Label layoutX="6.0" layoutY="51.0" text="Difficulté : " />
@@ -72,8 +40,10 @@
              <Label fx:id="begin" layoutX="108.0" layoutY="103.0" text="" />
             <Label layoutX="6.0" layoutY="129.0" text="Étape d'arrivée : " />
              <Label fx:id="end" layoutX="108.0" layoutY="129.0" text="" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000007" height="161.0" layoutX="-5.0" layoutY="-3.0" stroke="BLACK" strokeType="INSIDE" width="273.0" />
          </children>
       </Pane>
-      <Label fx:id="name" layoutX="428.0" layoutY="46.0" text="nom_du_parcours" />
+      <Label fx:id="name" layoutX="428.0" layoutY="6.0" text="nom_du_parcours" />
+      <Button fx:id="fermerButton" layoutX="540.0" layoutY="339.0" mnemonicParsing="false" onAction="#closeWindow" text="Fermer" />
    </children>
 </Pane>

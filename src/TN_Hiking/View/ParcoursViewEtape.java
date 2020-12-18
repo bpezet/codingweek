@@ -40,7 +40,20 @@ public class ParcoursViewEtape implements Initializable {
     }
 
     /** Méthodes */
+    @FXML
+    public void eventHadlerBackBouton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("welcomeView.fxml"));
+        loader.setControllerFactory(iC -> new WelcomeView(this.gestionnaireParcours));
+        Parent createParcoursParent = loader.load();
 
+        Scene createParcoursScene = new Scene(createParcoursParent);
+
+        Stage window = (Stage) my_bar.getScene().getWindow();
+
+        window.setScene(createParcoursScene);
+        window.show();
+    }
     /** Boutton Créer ! */
     public void changeSceneParcoursTracer(ActionEvent actionEvent) throws IOException {
         /** Créer et ajouter l'étape */

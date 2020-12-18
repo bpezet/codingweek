@@ -17,6 +17,8 @@ public class Parcours {
     protected Etape etapeDebut;
     protected String imageParcours;
     protected Etape etapeFin;
+
+
     //private String fichierExcelCoords;
     // j'ai supprime fichier ExcelCoors car on a GPX impport
     public Parcours(String name, int difficulte, String departName) {
@@ -129,13 +131,13 @@ public class Parcours {
     public void setImage(String imageParcours){this.imageParcours = imageParcours;}
 
     public void showParcours(){
-        System.out.println("ParcoursNom:"+name+" Difficulte:"+difficulte+" DepartName:"+departName);
-        System.out.println("DescriptionCourte:"+descriptionCourte+" Note:"+note+" imageParcours:" +imageParcours);
-        System.out.println("DescriptionDetaillee:"+descriptionDetaillee);
+        System.out.println("ParcoursNom:"+this.name+" Difficulte:"+this.difficulte+" DepartName:"+this.departName);
+        System.out.println("DescriptionCourte:"+this.descriptionCourte+" Note:"+this.note+" imageParcours:" +this.imageParcours);
+        System.out.println("DescriptionDetaillee:"+this.descriptionDetaillee);
         for(int i = 0;i<etapes.size();i++) {
             etapes.get(i).etapeShow();
         }
-        System.out.println("Fin du parcours "+name);
+        System.out.println("Fin du parcours "+this.name);
     }
 
     public Etape getSpecificEtape(int i){
@@ -172,7 +174,7 @@ public class Parcours {
         // y a une conversion degrés radian a faire
         // 180° = 2pi rad donc
         // x°   = x*2pi/180
-        ecart = 6371*Math.acos(   Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2-long1));
+        ecart = 6371*Math.acos(Math.sin(lat1) * Math.sin(lat2) + Math.cos(lat1)*Math.cos(lat2)*Math.cos(long2-long1));
 
         return ecart;
     }
@@ -181,7 +183,7 @@ public class Parcours {
     {
         Double vitesseMoyenne = 4.0; //  km.h-1
         Double distance = this.getDistance();
-        return vitesseMoyenne*distance;
+        return distance/vitesseMoyenne;
     }
 
 }
