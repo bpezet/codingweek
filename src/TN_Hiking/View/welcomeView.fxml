@@ -73,7 +73,7 @@
          <Label fx:id="difficulte1" layoutX="221.0" layoutY="61.0" textFill="#fffefe" />
          <Label fx:id="distance1" layoutX="324.0" layoutY="61.0" textFill="#fffefe" />
       </children></Pane>
-   <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Meilleurs parcours à essayer" textFill="#c30808" textOverrun="CLIP">
+   <Label layoutX="27.0" layoutY="48.0" prefHeight="46.0" prefWidth="325.0" text="Les 4 derniers parcours créés" textFill="#c30808" textOverrun="CLIP">
       <font>
          <Font name="Bangla MN" size="21.0" />
       </font>

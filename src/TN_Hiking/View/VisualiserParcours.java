@@ -108,7 +108,9 @@ public class VisualiserParcours {
         this.begin.setText(this.p.getSpecificEtape(0).getName());
         this.end.setText(this.p.getSpecificEtape(this.p.getEtapes().size()-1).getName());
         this.long_desc.setText(this.p.getDescriptionDetaillee());
-        this.length.setText(String.valueOf(this.p.getDistance()).substring(0,3)+" km");
+
+        int pos = String.valueOf(p.getDistance()).indexOf(".");    // position du "." dans le string distance
+        this.length.setText(String.valueOf(p.getDistance()).substring(0,pos+2)+" km");
 
         String heure = String.valueOf((int)(((this.p.getDuree()*60)/60)));
         String minutes = String.valueOf((int)(((this.p.getDuree()*60)%60)));
