@@ -97,30 +97,6 @@ public class VisualiserParcours {
         Platform.exit();
     }
 
-
-    @FXML
-    public void eventHandlerBoutonModifier(){
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("updateParcours.fxml"));
-            loader.setControllerFactory(iC->new UpdateParcours(this.gestionnaireGlobale,this.p));
-            Parent createParcoursParent = loader.load();
-
-            Scene createParcoursScene = new Scene(createParcoursParent);
-
-            Stage window = (Stage) my_bar.getScene().getWindow();
-
-            window.setScene(createParcoursScene);
-            window.show();
-
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-
-
     @FXML
     public void initialize(){
         this.myMap.initialize();

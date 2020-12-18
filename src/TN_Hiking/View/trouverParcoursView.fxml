@@ -37,6 +37,7 @@
       <Button layoutX="351.0" layoutY="54.0" mnemonicParsing="false" onAction="#plusDeCritère" text="+ de critère" />
       <Button layoutX="458.0" layoutY="54.0" mnemonicParsing="false" onAction="#rechercherParcours" prefHeight="27.0" prefWidth="92.0" text="Rechercher" />
       <ListView fx:id="affichageResultats" layoutX="19.0" layoutY="100.0" onMouseClicked="#parcoursSelectionned" prefHeight="284.0" prefWidth="263.0" />
-      <Button layoutX="379.0" layoutY="230.0" mnemonicParsing="false" onAction="#visualiserParcours" text="Voir le parcours" />
+      <Button layoutX="379.0" layoutY="200.0" mnemonicParsing="false" onAction="#visualiserParcours" text="Voir le parcours" />
+      <Button layoutX="379.0" layoutY="254.0" mnemonicParsing="false" onAction="#eventHandlerBoutonModifier" text="Modifier le parcours" />
    </children>
 </Pane>
