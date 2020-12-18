@@ -535,6 +535,8 @@ public class WelcomeView implements Initializable {
         if (this.gestionnaireParcours.getSize()<=2){
             suiv.setDisable(true);
         }
+        setRefreshButton();
+        this.affichageParcours(0);
 
     }
 }
