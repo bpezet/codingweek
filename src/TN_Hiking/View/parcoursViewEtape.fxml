@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ParcoursViewEtape">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TN_Hiking.View.ParcoursViewEtape">
    <children>
       <Label layoutX="208.0" layoutY="14.0" prefHeight="88.0" prefWidth="185.0" text="Créer une étape" underline="true">
          <font>
@@ -28,6 +28,12 @@
                        <MenuItem fx:id="homeButton" disable="true" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
                    </items>
                </Menu>
+            <Menu disable="true" mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem id="closeButton" mnemonicParsing="false" onAction="#closeApp" text="Close" />
+                  <MenuItem fx:id="homeButton1" disable="true" mnemonicParsing="false" onAction="#eventHadlerBackBouton" text="Home" />
+               </items>
+            </Menu>
                <Menu mnemonicParsing="false" text="Outils">
                    <items>
                        <MenuItem fx:id="borderPane" disable="true" mnemonicParsing="false" onAction="#changeSceneCreerParcours" text="Créer un parcours" />

@@ -2,6 +2,7 @@ package TN_Hiking.View;
 
 import TN_Hiking.Gestionnaires.GestionnaireParcours;
 import TN_Hiking.Models.Parcours;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -74,6 +75,12 @@ public class CreateParcoursView  implements Initializable {
         window.setScene(createWelcomeScene);
         window.show();
     }
+
+    /** Bouton : fermer l'application*/
+    public void closeApp() {
+        Platform.exit();
+    }
+
     public void changeSceneCreateToTracer(ActionEvent actionEvent) throws IOException {
         Parcours parcours = new Parcours(this.name.getText(),Integer.parseInt(this.difficulte.getValue()),this.depart.getText());
         this.gParcours.addParcours(parcours);

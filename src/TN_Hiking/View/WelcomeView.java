@@ -238,6 +238,8 @@ public class WelcomeView implements Initializable {
         dc.setPathDirName(file.getPath());
         neuGP = dc.decodeAction();
         gestionnaireParcours = neuGP;
+
+        this.affichageParcours(0);
     }
     @FXML
     public void setAddGpxFromButton(){
@@ -537,6 +539,9 @@ public class WelcomeView implements Initializable {
         if (this.gestionnaireParcours.getSize()<=2){
             suiv.setDisable(true);
         }
+
+        setRefreshButton();
+
         this.affichageParcours(0);
 
 

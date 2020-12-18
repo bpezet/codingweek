@@ -11,6 +11,7 @@ import com.sothawo.mapjfx.event.MarkerEvent;
 import com.sothawo.mapjfx.offline.OfflineCache;
 import javafx.animation.AnimationTimer;
 import javafx.animation.Transition;
+import javafx.application.Platform;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
@@ -103,6 +104,11 @@ public class ModificationEtape {
 
         window.setScene(createParcoursScene);
         window.show();
+    }
+
+    /** Bouton : fermer l'application*/
+    public void closeApp() {
+        Platform.exit();
     }
 
     public void initMapAndControls(){
