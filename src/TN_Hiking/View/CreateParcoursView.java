@@ -32,6 +32,8 @@ public class CreateParcoursView  implements Initializable {
     private ChoiceBox<String> difficulte;
     @FXML
     private TextField depart;
+    @FXML
+    private MenuItem afficher;
 
     private GestionnaireParcours gParcours ;
 
@@ -91,6 +93,7 @@ public class CreateParcoursView  implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.afficher.setDisable(true);
         this.homeButton.setDisable(true);
     }
 }
