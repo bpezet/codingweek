@@ -540,6 +540,7 @@ public class WelcomeView implements Initializable {
             suiv.setDisable(true);
         }
 
+        //setSaveButton();
         //setRefreshButton();
 
         this.affichageParcours(0);
