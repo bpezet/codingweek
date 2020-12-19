@@ -68,6 +68,16 @@ Si un des critères ne l'intéresse pas il faut qu'il coche la case *Indifféren
 Les parcours correspondant à tous les critères sont affichés : un pourcours peut être vu ou modifier. Pour cela, il faut selectionner le parcours souhaité puis choisir l'action (*Visualiser le parcours* ou *Modifier le parcours*).
 ###### Modifier le parcours
 Cette fonctionnalité permet de modifier une ou plusieurs informations d'un parcours. Il suffit de remplir les champs concernés par une modification avec la nouvelle information puis d'*Enregistrer*.
+Il est possible dans la modification d'un parcours de modifier aussi les étapes qui le composent en cliquant sur le bouton *Modifier les étapes*.
+###### Modifier les étapes
+La vue affichée nous montre sur la gauche les étapes composant le parcours et sur la droite une map permettant de les situer (marqueur bleu). Il est possible de :
+--- supprimer une étape sélectionnée avec le bouton *Supprimer étape*,
+--- tracer le parcours composé des étapes de la liste (à gauche),
+--- ajouter une nouvelle étape, pour cela il faut :
+* choisir sa position sur la carte en cliquant dessus (marqueur vert),
+* renseigner dans le champs *Numéro de la nouvelle étape*, la place de l'étape dans le parcours (``0`` pour que l'étape soit la première du parcours),
+* renseigner le champs *Nom de la nouvelle étape*
+* cliquer sur le bouton *Ajouter Etape* : on voit alors la nouvelle étape dans la liste.
 
 ##### Gestion
 Ce dernier menu permet à un utilisateur d'*Afficher tous les parcours*. De la même façon que la recherche d'un parcours, l'utilisateur choisi le parcours dans la liste puis clique sur le bouton (__>__) pour le visualiser.
@@ -76,7 +86,7 @@ Ce dernier menu permet à un utilisateur d'*Afficher tous les parcours*. De la m
 
 __A lire :__ Nous voulions reproduire le comportement d'une application connectée à une base de donnée, nous avons décidé de  "simuler" l'existence d'une base de donnée à l'aide d'un répertoire nommé "BDD". On part du postulat que l'utilisateur est connecté à cette base de donnée et qu'il peut push ou pull des données dessus. Par exemple, à l'ouverture de l'application, il charge automatiquement les données de cette BD.
 
-![alt text](https://gitlab.telecomnancy.univ-lorraine.fr/codingweek2k20/project-grp12/-/raw/production/src/TN_Hiking/Ressources/file.PNG)
+![alt text](https://gitlab.telecomnancy.univ-lorraine.fr/codingweek2k20/project-grp12/-/raw/master/src/TN_Hiking/Ressources/file.PNG)
 
 On a dans la toolBar menu la possiblité d'avoir accès à un onglet "File"
 On a accès à différents boutons:
