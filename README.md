@@ -109,4 +109,5 @@ Ce répertoire va pouvoir être échangé avec d'autre utilisateur et ils pourro
 Les tests sont dans la branche test du git. Il est important d'avoir installé les librairies JUnit, MapFX et JavaFX pour la bonne exécution des tests. Les tests se trouve dans le fichier "FICHIER_TEST" dans le package BDD. L'exécution des tests se fait en exécutant test par test.
 
 ## Vidéo de démonstration
-Une vidéo montrant l'utilisation de l'application est disponible à /** lien vers la vidéo*/.
+Une vidéo montrant l'utilisation de l'application est disponible à https://www.youtube.com/channel/UChM9XeipvUvL-5j5J9CSi3w?view_as=subscriber.
+La vidéo s'appelle CodingWeek2k20 présentation.
