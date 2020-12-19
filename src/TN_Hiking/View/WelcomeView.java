@@ -540,7 +540,7 @@ public class WelcomeView implements Initializable {
             suiv.setDisable(true);
         }
 
-        setRefreshButton();
+        //setRefreshButton();
 
         this.affichageParcours(0);
 

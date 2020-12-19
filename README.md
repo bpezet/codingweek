@@ -20,26 +20,20 @@ Afin que l'application s'exécute, il vous faudra commencer par récuperer JavaF
 * JavaFx - Vous trouverez un liens pour le télécharger ici, il nous faudra le path du dossier.
 https://gluonhq.com/products/javafx/
 
-Pour l'executer à partir du dépôt, on peut utiliser intelliji avec les bonnes librairies importées.
+Pour l'executer à partir du dépôt, on peut utiliser intelliji avec les bonnes librairies importées: mapJfx, javaFx et Junit
 
-Pour executer le .jar en ligne de commande, il faut d'abord configurer un repertoire pour que l'application fonctionne bien:
-    - on créer un repertoire vide "root", on copie colle le .jar dedans
-    - dans ce répertoire root on ajoute un repertoire vide nommé "BDD"
-    - dans ce répertoire root on ajoute une cascade de repertoire vide de la forme:
-            src/TN_Hiking/Ressources/Import
-Ensuite on se place dans ce repertoire root et on execute une de ces commandes : 
+Pour executer le .jar en ligne de commande on execute une de ces commandes :
 --- Sur Windows
 ```sh
 ./java.exe --module-path ["Indiquez le path de votre librairie Javafx"]\javafx-sdk-11.0.2\lib --add-modules javafx.controls,javafx.fxml,javafx.web -Dfile.encoding=windows-1252 -jar ["Insérez le path du projet.jar"]
 ```
---- Sur Mac
+--- Sur Mac/linux
 ```sh
 java --module-path ["Indiquez le path de votre librairie Javafx"]/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml,javafx.web -Dfile.encoding=UTF-8 -jar ["Insérer le path du projet.jar"]
 ```
---- Sur Linux
-```sh
-java ["Indiquez le path de votre librairie Javafx"]/javafx-sdk-11.0.2/lib -Dfile.encoding=UTF-8 -jar ["Indiquez le path du projet .jar"]
-```
+(Attention ! ceci n'est valable seulement si on execute le .jar depuis le dépôt, en effet, le programme recherche dans les différents dossiers des informations pour se mettre à jour.
+Si on veut executer le .jar ailleurs, il faudra re-créer les repertoires dont dépend l'application: un repertoire BDD avec un fichier app localSave pour l'initilisation, et un repertoire src/TN_Hiking/Ressources/import pour les image)
+
 
 ### Précisions
 La base de données de l'application contient quelques parcours pour permettre à l'utilisateur de se familiariser avec l'environnement de l'application afin de créer ses propres parcours.
@@ -78,11 +72,11 @@ Cette fonctionnalité permet de modifier une ou plusieurs informations d'un parc
 ##### Gestion
 Ce dernier menu permet à un utilisateur d'*Afficher tous les parcours*. De la même façon que la recherche d'un parcours, l'utilisateur choisi le parcours dans la liste puis clique sur le bouton (__>__) pour le visualiser.
 
-##### File : Utilisation des Fonctions Import/Export
+##### File : Utilisation des Fonctions Import/Exporti
 
 __A lire :__ Nous voulions reproduire le comportement d'une application connectée à une base de donnée, nous avons décidé de  "simuler" l'existence d'une base de donnée à l'aide d'un répertoire nommé "BDD". On part du postulat que l'utilisateur est connecté à cette base de donnée et qu'il peut push ou pull des données dessus. Par exemple, à l'ouverture de l'application, il charge automatiquement les données de cette BD.
 
-![alt text](https://gitlab.telecomnancy.univ-lorraine.fr/codingweek2k20/project-grp12/-/raw/production/src/TN_Hiking/BD/screenBen.jpg)
+![alt text](https://gitlab.telecomnancy.univ-lorraine.fr/codingweek2k20/project-grp12/-/raw/production/src/TN_Hiking/Ressources/file.PNG)
 
 On a dans la toolBar menu la possiblité d'avoir accès à un onglet "File"
 On a accès à différents boutons:
