@@ -99,7 +99,7 @@ public class  Writter{
             bufferedWriter.write(name+":"+diff+":"+note+":"+departName+":"+imageParcours+"\n"); //premiere ligne
             bufferedWriter.write(descriptionCourte + "\n"); //deuxieme ligne
             bufferedWriter.write("#LDbegin#\n");
-            bufferedWriter.write(descriptionLongue + "\n");//troisieme ligne
+            bufferedWriter.write(descriptionLongue );//troisieme ligne
             bufferedWriter.write("#LDEND#\n");
 
         } catch(IOException e){e.printStackTrace();}
